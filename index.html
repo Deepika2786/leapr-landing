@@ -731,4 +731,21 @@
       <a href="/privacy">Privacy</a>
       <a href="/terms">Terms</a>
       <a href="/cdn-cgi/l/email-protection#fb939e979794bb979e9a8b89d59894">Contact</a>
-   
+    </div>
+  </footer>
+
+  <script>
+    try {
+      const keys = Object.keys(localStorage);
+      const sessionKey = keys.find(k => k.includes('supabase') && k.includes('auth'));
+      if (sessionKey) {
+        const session = JSON.parse(localStorage.getItem(sessionKey));
+        if (session?.access_token) {
+          window.location.href = 'https://app.leapr.co';
+        }
+      }
+    } catch (e) {}
+  </script>
+
+</body>
+</html>
