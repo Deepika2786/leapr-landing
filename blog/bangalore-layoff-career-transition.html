@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>I Walked Into Work on a Tuesday Morning. By Afternoon, My Entire Office Was Gone. | Leapr</title>
+  <meta name="description" content="In April 2024, I walked into work expecting a good day. US leaders were visiting. The entire Bangalore office was excited. By afternoon, we were all out of a job. This is what nobody tells you about career transitions." />
+  <meta property="og:title" content="I Walked Into Work on a Tuesday Morning. By Afternoon, My Entire Office Was Gone." />
+  <meta property="og:description" content="What a Bangalore layoff taught me about career transitions — and why I built Leapr." />
+  <meta property="og:url" content="https://leapr.co/blog/bangalore-layoff-career-transition" />
+  <link rel="canonical" href="https://leapr.co/blog/bangalore-layoff-career-transition" />
+  <link rel="icon" type="image/png" href="/icons/icon-512.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, sans-serif; color: #111; line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; background: #fff; }
+
+    /* NAV */
+    nav { position: sticky; top: 0; z-index: 100; height: 60px; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; background: rgba(91,33,182,0.97); backdrop-filter: blur(16px); }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo-text { font-size: 18px; font-weight: 800; letter-spacing: -0.04em; color: rgba(255,255,255,0.8); }
+    .nav-logo-text span { color: #fff; }
+    .nav-right { display: flex; align-items: center; gap: 10px; }
+    .btn-nav-ghost { padding: 7px 16px; border: 1px solid rgba(255,255,255,0.3); border-radius: 8px; font-size: 14px; color: rgba(255,255,255,0.8); background: transparent; text-decoration: none; font-weight: 500; }
+    .btn-nav-primary { padding: 8px 18px; background: #fff; border-radius: 8px; font-size: 14px; font-weight: 700; color: #5B21B6; text-decoration: none; }
+
+    /* HERO */
+    .post-hero { background: #0f0a1e; padding: 80px 48px 72px; position: relative; overflow: hidden; }
+    .post-hero::before { content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 600px; height: 400px; background: radial-gradient(ellipse, rgba(124,58,237,0.2) 0%, transparent 70%); pointer-events: none; }
+    .post-hero-inner { max-width: 760px; margin: 0 auto; position: relative; z-index: 1; }
+    .post-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(124,58,237,0.2); border: 1px solid rgba(124,58,237,0.3); border-radius: 100px; padding: 4px 14px; font-size: 11px; font-weight: 700; color: #a78bfa; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 24px; }
+    .post-title { font-size: clamp(32px, 5vw, 52px); font-weight: 900; color: #fff; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 20px; }
+    .post-title em { font-style: normal; color: #fde68a; }
+    .post-subtitle { font-size: 18px; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 32px; font-family: 'Lora', Georgia, serif; font-style: italic; }
+    .post-meta { display: flex; align-items: center; gap: 16px; }
+    .post-av { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #5B21B6, #A78BFA); display: flex; align-items: center; justify-content: center; font-weight: 800; color: #fff; font-size: 15px; flex-shrink: 0; }
+    .post-author { font-size: 14px; font-weight: 700; color: #fff; }
+    .post-date { font-size: 13px; color: rgba(255,255,255,0.4); }
+
+    /* ILLUSTRATION */
+    .post-illustration { background: #0f0a1e; padding: 0 48px 60px; }
+    .post-illustration-inner { max-width: 760px; margin: 0 auto; }
+
+    /* CONTENT */
+    .post-content { max-width: 760px; margin: 0 auto; padding: 60px 48px; }
+    .post-content p { font-size: 18px; color: #2d2d2d; line-height: 1.8; margin-bottom: 28px; font-family: 'Lora', Georgia, serif; }
+    .post-content p strong { font-weight: 700; color: #0f0a1e; font-family: 'Inter', sans-serif; }
+    .post-content h2 { font-size: 28px; font-weight: 900; color: #0f0a1e; letter-spacing: -0.03em; margin: 52px 0 20px; line-height: 1.2; font-family: 'Inter', sans-serif; }
+    .post-content h3 { font-size: 20px; font-weight: 700; color: #0f0a1e; letter-spacing: -0.02em; margin: 36px 0 14px; font-family: 'Inter', sans-serif; }
+    .post-content blockquote { border-left: 4px solid #7C3AED; padding: 20px 28px; background: #faf9ff; margin: 36px 0; border-radius: 0 12px 12px 0; }
+    .post-content blockquote p { font-size: 20px; color: #3b0764; font-style: italic; margin-bottom: 0; font-family: 'Lora', Georgia, serif; }
+    .post-content .highlight-box { background: #0f0a1e; border-radius: 16px; padding: 32px; margin: 40px 0; }
+    .post-content .highlight-box p { color: rgba(255,255,255,0.8); margin-bottom: 0; }
+    .post-content .highlight-box strong { color: #a78bfa; }
+    .post-content .stat-callout { display: flex; align-items: flex-start; gap: 20px; padding: 24px; background: #faf9ff; border: 1px solid #ede9fe; border-radius: 16px; margin: 36px 0; }
+    .post-content .stat-num { font-size: 48px; font-weight: 900; color: #7C3AED; letter-spacing: -0.04em; line-height: 1; flex-shrink: 0; font-family: 'Inter', sans-serif; }
+    .post-content .stat-text { font-size: 15px; color: #555; line-height: 1.6; padding-top: 8px; font-family: 'Inter', sans-serif; }
+    .post-content ul { margin: 20px 0 28px 20px; }
+    .post-content ul li { font-size: 17px; color: #2d2d2d; line-height: 1.7; margin-bottom: 10px; font-family: 'Lora', Georgia, serif; }
+    .post-content .search-box { background: #f8f7ff; border: 1px solid #e0d9ff; border-radius: 12px; padding: 20px 24px; margin: 28px 0; font-family: 'Inter', monospace; }
+    .post-content .search-box .search-query { font-size: 15px; color: #5B21B6; font-weight: 600; margin-bottom: 6px; }
+    .post-content .search-box .search-results { font-size: 13px; color: #888; }
+    .divider { width: 60px; height: 4px; background: linear-gradient(90deg, #7C3AED, #A78BFA); border-radius: 100px; margin: 48px 0; }
+
+    /* CTA */
+    .post-cta { background: linear-gradient(155deg, #5B21B6 0%, #7C3AED 60%, #8B5CF6 100%); padding: 80px 48px; text-align: center; position: relative; overflow: hidden; }
+    .post-cta::before { content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 600px; height: 300px; background: radial-gradient(ellipse, rgba(255,255,255,0.08) 0%, transparent 70%); pointer-events: none; }
+    .post-cta h2 { font-size: clamp(28px, 4vw, 44px); font-weight: 900; color: #fff; letter-spacing: -0.03em; margin-bottom: 16px; }
+    .post-cta p { font-size: 17px; color: rgba(255,255,255,0.75); margin-bottom: 32px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .btn-cta { display: inline-block; background: #fff; color: #5B21B6; padding: 16px 40px; border-radius: 12px; font-size: 17px; font-weight: 800; text-decoration: none; letter-spacing: -0.02em; }
+
+    /* FOOTER */
+    footer { background: #0f0a1e; padding: 32px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-logo-text { font-size: 16px; font-weight: 800; letter-spacing: -0.04em; color: rgba(255,255,255,0.6); text-decoration: none; }
+    footer p { font-size: 13px; color: rgba(255,255,255,0.35); }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,0.4); text-decoration: none; }
+
+    /* BLOG NAV */
+    .blog-nav { padding: 16px 48px; border-bottom: 1px solid #f0ebff; background: #fff; }
+    .blog-nav a { font-size: 13px; color: #7C3AED; text-decoration: none; font-weight: 600; }
+    .blog-nav a:hover { text-decoration: underline; }
+
+    @media(max-width: 640px) {
+      nav { padding: 0 20px; }
+      .post-hero { padding: 60px 24px 48px; }
+      .post-illustration { padding: 0 24px 40px; }
+      .post-content { padding: 40px 24px; }
+      .post-cta { padding: 60px 24px; }
+      footer { padding: 24px 20px; flex-direction: column; text-align: center; }
+      .blog-nav { padding: 16px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">
+    <span class="nav-logo-text">Leap<span>r</span></span>
+  </a>
+  <div class="nav-right">
+    <a href="https://app.leapr.co" class="btn-nav-ghost">Sign in</a>
+    <a href="https://app.leapr.co" class="btn-nav-primary">Join free →</a>
+  </div>
+</nav>
+
+<!-- BLOG BREADCRUMB -->
+<div class="blog-nav">
+  <a href="/blog">← Back to Blog</a>
+</div>
+
+<!-- HERO -->
+<section class="post-hero">
+  <div class="post-hero-inner">
+    <div class="post-tag">Founder Story</div>
+    <h1 class="post-title">
+      I walked into work on a Tuesday morning.<br/>
+      By afternoon, my <em>entire office was gone.</em>
+    </h1>
+    <p class="post-subtitle">
+      What a Bangalore layoff in April 2024 taught me about career transitions — 
+      and the gap in the market that nobody was filling.
+    </p>
+    <div class="post-meta">
+      <div class="post-av">D</div>
+      <div>
+        <div class="post-author">Deepika Sharma</div>
+        <div class="post-date">Founder, Leapr · March 2026 · 8 min read</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ILLUSTRATION -->
+<section class="post-illustration">
+  <div class="post-illustration-inner">
+    <svg width="100%" viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+          <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#2d1f5e" stroke-width="0.4"/>
+        </pattern>
+      </defs>
+      <rect width="760" height="320" fill="#0c0820"/>
+      <rect width="760" height="320" fill="url(#grid)" opacity="0.4"/>
+      <ellipse cx="380" cy="160" rx="300" ry="180" fill="#3b1d8a" opacity="0.15"/>
+
+      <!-- Office building outline -->
+      <rect x="280" y="80" width="200" height="180" rx="4" fill="#1a1040" stroke="#3b2d6e" stroke-width="1.5"/>
+      <!-- Windows -->
+      <rect x="298" y="98" width="30" height="24" rx="2" fill="#2d1f5e" stroke="#4c1d95" stroke-width="1"/>
+      <rect x="338" y="98" width="30" height="24" rx="2" fill="#2d1f5e" stroke="#4c1d95" stroke-width="1"/>
+      <rect x="378" y="98" width="30" height="24" rx="2" fill="#2d1f5e" stroke="#4c1d95" stroke-width="1"/>
+      <rect x="418" y="98" width="30" height="24" rx="2" fill="#2d1f5e" stroke="#4c1d95" stroke-width="1"/>
+      <rect x="298" y="134" width="30" height="24" rx="2" fill="#7c3aed" opacity="0.6" stroke="#7c3aed" stroke-width="1"/>
+      <rect x="338" y="134" width="30" height="24" rx="2" fill="#2d1f5e" stroke="#4c1d95" stroke-width="1"/>
+      <rect x="378" y="134" width="30" height="24" rx="2" fill="#2d1f5e" stroke="#4c1d95" stroke-width="1"/>
+      <rect x="418" y="134" width="30" height="24" rx="2" fill="#7c3aed" opacity="0.4" stroke="#7c3aed" stroke-width="1"/>
+      <!-- Door -->
+      <rect x="355" y="220" width="50" height="40" rx="2" fill="#251855" stroke="#3b2d6e" stroke-width="1.5"/>
+
+      <!-- People walking out - silhouettes -->
+      <circle cx="160" cy="210" r="12" fill="#a78bfa" opacity="0.7"/>
+      <rect x="152" y="222" width="16" height="28" rx="4" fill="#a78bfa" opacity="0.7"/>
+      <circle cx="200" cy="215" r="11" fill="#a78bfa" opacity="0.5"/>
+      <rect x="193" y="226" width="14" height="24" rx="4" fill="#a78bfa" opacity="0.5"/>
+      <circle cx="235" cy="208" r="12" fill="#a78bfa" opacity="0.6"/>
+      <rect x="227" y="220" width="16" height="28" rx="4" fill="#a78bfa" opacity="0.6"/>
+
+      <!-- Right side people -->
+      <circle cx="530" cy="212" r="11" fill="#a78bfa" opacity="0.5"/>
+      <rect x="523" y="223" width="14" height="24" rx="4" fill="#a78bfa" opacity="0.5"/>
+      <circle cx="565" cy="207" r="12" fill="#a78bfa" opacity="0.4"/>
+      <rect x="557" y="219" width="16" height="28" rx="4" fill="#a78bfa" opacity="0.4"/>
+      <circle cx="600" cy="215" r="10" fill="#a78bfa" opacity="0.3"/>
+      <rect x="594" y="225" width="12" height="22" rx="4" fill="#a78bfa" opacity="0.3"/>
+
+      <!-- Question marks floating -->
+      <text x="130" y="175" font-family="Inter, sans-serif" font-size="20" font-weight="900" fill="#4c1d95" opacity="0.8">?</text>
+      <text x="610" y="180" font-family="Inter, sans-serif" font-size="16" font-weight="900" fill="#4c1d95" opacity="0.6">?</text>
+      <text x="90" y="230" font-family="Inter, sans-serif" font-size="14" font-weight="900" fill="#4c1d95" opacity="0.5">?</text>
+
+      <!-- Caption -->
+      <text x="380" y="295" font-family="Inter, sans-serif" font-size="12" font-weight="500" fill="rgba(255,255,255,0.3)" text-anchor="middle">Bangalore, April 2024</text>
+    </svg>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<article class="post-content">
+
+  <p>
+    It was supposed to be a good day.
+  </p>
+
+  <p>
+    Leaders from the US were flying into our Bangalore office. The entire team was excited — 
+    the kind of energy you feel when something important is about to happen. 
+    People were dressed a little better than usual. There was a buzz.
+  </p>
+
+  <p>
+    I got caught in traffic that morning. By the time I walked through the door, 
+    the townhall had already ended.
+  </p>
+
+  <p>
+    I remember seeing my colleagues coming out. Their faces were wrong. 
+    Not disappointed — something heavier than that. They were talking in clusters, 
+    voices low, eyes unfocused. I couldn't make sense of what I was walking into.
+  </p>
+
+  <p>
+    Then my friend found me.
+  </p>
+
+  <blockquote>
+    <p>"The entire office has been laid off."</p>
+  </blockquote>
+
+  <p>
+    The entire office. Not a department. Not a team. Everyone.
+  </p>
+
+  <p>
+    A few people from the security team were offered a transfer to Hyderabad. 
+    The rest of us — gone. Just like that. On what was supposed to be a good day.
+  </p>
+
+  <div class="divider"></div>
+
+  <h2>The panic nobody prepares you for</h2>
+
+  <p>
+    The next few hours were a blur. People were calling family, calling recruiters, 
+    opening LinkedIn on their phones in the hallway. The panic was immediate and very real.
+  </p>
+
+  <p>
+    We weren't ready. Nobody is ever ready — but we genuinely weren't. 
+    That morning we had jobs. That afternoon we were updating resumes we hadn't touched in years.
+  </p>
+
+  <p>
+    I came back to the US. And I discovered that the market here was even more brutal.
+  </p>
+
+  <div class="stat-callout">
+    <div class="stat-num">6+</div>
+    <div class="stat-text">
+      <strong>months of applying</strong> before anything meaningful happened. 
+      Hundreds of applications. A handful of callbacks. 
+      The same rejection silence, over and over again.
+    </div>
+  </div>
+
+  <p>
+    What made it harder was that I wasn't just looking for any job. 
+    I was trying to transition — from Cloud Security Analyst into AI GRC and AI Governance. 
+    A move that made complete sense to me. A move I couldn't explain clearly enough 
+    to get past the first screen.
+  </p>
+
+  <p>
+    Every night I was searching for the same things:
+  </p>
+
+  <div class="search-box">
+    <div class="search-query">🔍 "cloud security analyst to AI governance transition"</div>
+    <div class="search-results">About 4,200 results · Generic blog posts · Nothing specific</div>
+  </div>
+
+  <div class="search-box">
+    <div class="search-query">🔍 "what skills do I need to move from security to AI GRC"</div>
+    <div class="search-results">About 1,800 results · Job descriptions · Reddit threads with no answers</div>
+  </div>
+
+  <div class="search-box">
+    <div class="search-query">🔍 "data analyst to cybersecurity transition roadmap"</div>
+    <div class="search-results">About 12,400 results · Course ads · Nothing about the actual gap</div>
+  </div>
+
+  <p>
+    Nothing told me what I actually needed to know. 
+    <strong>Not what the gap was. Not how to close it. Not who else was making this exact move.</strong>
+  </p>
+
+  <div class="divider"></div>
+
+  <h2>What I was actually looking for</h2>
+
+  <p>
+    I didn't need a course. I didn't need a mentor with a $500/hour coaching package. 
+    I didn't need another LinkedIn post about "transferable skills."
+  </p>
+
+  <p>
+    I needed three things that didn't exist in one place:
+  </p>
+
+  <ul>
+    <li>Someone to tell me <strong>exactly which skills</strong> were standing between me and the roles I was targeting</li>
+    <li>A <strong>realistic roadmap</strong> — not a generic one, but one built for MY background and MY target</li>
+    <li><strong>Other people</strong> making the exact same transition — not to follow, just to talk to honestly</li>
+  </ul>
+
+  <p>
+    The loneliest part of career transition isn't the rejection emails. 
+    It's not knowing if you're even on the right track. 
+    It's applying into silence and having no way to know if the silence means "not yet" or "never."
+  </p>
+
+  <blockquote>
+    <p>
+      I needed a room full of people going through the same thing. 
+      Not mentors. Not influencers. Just real people, mid-transition, willing to talk honestly.
+    </p>
+  </blockquote>
+
+  <p>
+    That room didn't exist.
+  </p>
+
+  <div class="divider"></div>
+
+  <h2>The DMs that changed everything</h2>
+
+  <p>
+    Eventually I landed a role at Purogaly as an AI Governance Specialist. 
+    The transition I had been trying to make for months — I made it.
+  </p>
+
+  <p>
+    But I kept getting DMs. From people in the same situation I had been in. 
+    Cloud security professionals wanting to move into AI governance. 
+    Data analysts wanting to move into cybersecurity. 
+    Experienced professionals who had been laid off and were confused about what to do next.
+  </p>
+
+  <p>
+    Every message had the same shape:
+  </p>
+
+  <div class="highlight-box">
+    <p>
+      <strong>"I don't know what skills I'm missing."</strong><br/>
+      <strong>"I don't know who else is making this transition."</strong><br/>
+      <strong>"I don't know if I'm even close or years away."</strong>
+    </p>
+  </div>
+
+  <p>
+    I had answers for some of them. But I couldn't answer everyone manually. 
+    And more importantly — I wasn't the right person to answer. 
+    The right answer wasn't my experience. It was data. It was community. 
+    It was a platform that could do for everyone what I had had to figure out alone.
+  </p>
+
+  <p>
+    That's when I started building Leapr.
+  </p>
+
+  <div class="divider"></div>
+
+  <h2>What Leapr actually does</h2>
+
+  <p>
+    Leapr is built for exactly the situation I was in. 
+    You tell it where you are and where you want to go. 
+    It shows you the gap — specifically, not generically. 
+    It gives you a roadmap built for your exact transition. 
+    And it connects you with other people making the same move right now.
+  </p>
+
+  <p>
+    Not mentors charging by the hour. Not generic advice from people who made a different transition 
+    five years ago. Real people, in the same situation, willing to be honest about it.
+  </p>
+
+  <p>
+    If you're a Cloud Security Analyst trying to move into AI Governance — 
+    Leapr tells you the exact skills that role requires, which ones you likely already have, 
+    and which ones are actually blocking you. Not a guess. A gap analysis.
+  </p>
+
+  <p>
+    If you're a Data Analyst trying to move into Cybersecurity — same thing. 
+    Specific. Measurable. Actionable.
+  </p>
+
+  <div class="stat-callout">
+    <div class="stat-num">73%</div>
+    <div class="stat-text">
+      <strong>of career changers spend months optimising the wrong thing.</strong> 
+      They fix their resume. They polish their LinkedIn. They apply to more jobs. 
+      But the gap is the problem — and nobody told them what it was.
+    </div>
+  </div>
+
+  <p>
+    That's what I needed in April 2024, standing in a hallway in Bangalore, 
+    watching my colleagues walk out of a building we'd all shown up to that morning 
+    expecting something good.
+  </p>
+
+  <p>
+    That room didn't exist then. It does now.
+  </p>
+
+</article>
+
+<!-- CTA -->
+<section class="post-cta">
+  <h2>Find out exactly where you stand.</h2>
+  <p>Upload your resume. Tell us your target role. Get your gap analysis in minutes.</p>
+  <a href="https://app.leapr.co" class="btn-cta">Start free on Leapr →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="/" class="footer-logo-text">Leapr</a>
+  <p>© 2026 Leapr. All rights reserved. · Patent Pending</p>
+  <div class="footer-links">
+    <a href="/privacy">Privacy</a>
+    <a href="/terms">Terms</a>
+    <a href="mailto:hello@leapr.co">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>
