@@ -433,6 +433,33 @@
   </div>
 </section>
 
+<!-- EMAIL SIGNUP -->
+<section style="background:#fff;padding:80px 48px;border-top:1px solid #f0eeff;border-bottom:1px solid #f0eeff;">
+  <div style="max-width:560px;margin:0 auto;text-align:center;" class="reveal">
+    <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8B5CF6;margin-bottom:14px;">Stay in the loop</div>
+    <h2 style="font-family:'Syne',sans-serif;font-size:clamp(28px,3.5vw,40px);font-weight:800;letter-spacing:-0.03em;color:#0f0820;margin-bottom:12px;">Not ready to join yet?</h2>
+    <p style="font-size:16px;color:#6b7280;margin-bottom:32px;line-height:1.7;">Get weekly career transition insights, new cohort announcements, and market intelligence — straight to your inbox.</p>
+    <div style="display:flex;gap:10px;max-width:440px;margin:0 auto;" id="email-form">
+      <input
+        id="email-input"
+        type="email"
+        placeholder="your@email.com"
+        style="flex:1;padding:13px 18px;border:1.5px solid #ede9fe;border-radius:10px;font-size:15px;font-family:'Inter',sans-serif;outline:none;color:#111;transition:border-color 0.2s;"
+        onfocus="this.style.borderColor='#8B5CF6'"
+        onblur="this.style.borderColor='#ede9fe'"
+      />
+      <button
+        onclick="handleEmailSignup()"
+        id="signup-btn"
+        style="padding:13px 24px;background:#5B21B6;color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;white-space:nowrap;transition:transform 0.2s,box-shadow 0.2s;font-family:'Inter',sans-serif;"
+        onmouseover="this.style.transform='translateY(-1px)';this.style.boxShadow='0 8px 24px rgba(91,33,182,0.3)'"
+        onmouseout="this.style.transform='none';this.style.boxShadow='none'"
+      >Get updates →</button>
+    </div>
+    <p id="signup-msg" style="font-size:13px;color:#9ca3af;margin-top:12px;">No spam. Unsubscribe anytime.</p>
+  </div>
+</section>
+
 <section class="cta-section">
   <div class="cta-blob"></div>
   <h2 class="cta-h2 reveal">You don't have to<br/>figure this out alone.</h2>
@@ -494,6 +521,51 @@
     });
   }, { threshold: 0.5 });
   document.querySelectorAll('[data-count]').forEach(el => counterObs.observe(el));
+
+  // Email signup
+  async function handleEmailSignup() {
+    const email = document.getElementById('email-input').value.trim();
+    const btn = document.getElementById('signup-btn');
+    const msg = document.getElementById('signup-msg');
+
+    if (!email || !email.includes('@')) {
+      msg.textContent = 'Please enter a valid email address.';
+      msg.style.color = '#ef4444';
+      return;
+    }
+
+    btn.textContent = 'Saving...';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch('https://rlefumadvzpijgxjogoo.supabase.co/rest/v1/email_signups', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJsZWZ1bWFkdnpwaWpneGpvZ29vIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk4MjA0NzgsImV4cCI6MjA1NTM5NjQ3OH0.sMkBVMBpVZCqCNkJnUuTqQ5n3D3u2x0MpgQIIlHQnPY',
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify({ email, source: 'landing_page' })
+      });
+
+      if (res.ok || res.status === 409) {
+        document.getElementById('email-form').innerHTML = `
+          <div style="text-align:center;width:100%">
+            <div style="font-size:32px;margin-bottom:8px;">🎉</div>
+            <p style="font-size:16px;font-weight:700;color:#5B21B6;">You're on the list!</p>
+            <p style="font-size:14px;color:#9ca3af;margin-top:4px;">We'll be in touch soon.</p>
+          </div>`;
+      } else {
+        throw new Error('Failed');
+      }
+    } catch(e) {
+      msg.textContent = 'Something went wrong. Please try again.';
+      msg.style.color = '#ef4444';
+      btn.textContent = 'Get updates →';
+      btn.disabled = false;
+    }
+  }
+  window.handleEmailSignup = handleEmailSignup;
 </script>
 </body>
 </html>
