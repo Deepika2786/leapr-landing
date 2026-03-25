@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Deletion — Leapr</title>
+  <meta name="description" content="How to delete your data from Leapr." />
+  <link rel="icon" type="image/png" href="/icons/icon-512.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', -apple-system, sans-serif; color: #111; line-height: 1.6; background: #fff; -webkit-font-smoothing: antialiased; }
+
+    nav { height: 60px; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; background: rgba(91,33,182,0.97); }
+    .nav-logo-text { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800; letter-spacing: -0.04em; color: rgba(255,255,255,0.85); text-decoration: none; }
+    .nav-logo-text span { color: #fff; }
+    .btn-nav { padding: 8px 18px; background: #fff; border-radius: 8px; font-size: 14px; font-weight: 700; color: #5B21B6; text-decoration: none; }
+
+    .hero { background: linear-gradient(155deg, #5B21B6 0%, #7C3AED 60%, #8B5CF6 100%); padding: 64px 48px; text-align: center; }
+    .hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(32px, 5vw, 48px); font-weight: 800; letter-spacing: -0.04em; color: #fff; margin-bottom: 12px; }
+    .hero p { font-size: 16px; color: rgba(255,255,255,0.7); }
+
+    .content { max-width: 720px; margin: 0 auto; padding: 64px 48px; }
+
+    .section { margin-bottom: 40px; }
+    .section h2 { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; color: #0f0820; margin-bottom: 12px; letter-spacing: -0.02em; }
+    .section p { font-size: 15px; color: #4b5563; line-height: 1.75; margin-bottom: 12px; }
+    .section ul { list-style: none; padding: 0; }
+    .section ul li { font-size: 15px; color: #4b5563; padding: 6px 0; padding-left: 20px; position: relative; }
+    .section ul li::before { content: '→'; position: absolute; left: 0; color: #8B5CF6; font-weight: 700; }
+
+    .steps { background: #F9F8FF; border: 1px solid #ede9fe; border-radius: 16px; padding: 32px; margin: 32px 0; }
+    .steps h3 { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 800; color: #0f0820; margin-bottom: 20px; }
+    .step { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 16px; }
+    .step:last-child { margin-bottom: 0; }
+    .step-num { width: 28px; height: 28px; border-radius: 50%; background: #5B21B6; color: #fff; font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .step-text { font-size: 15px; color: #374151; line-height: 1.6; padding-top: 3px; }
+    .step-text strong { color: #0f0820; }
+
+    .email-box { background: #0f0820; border-radius: 16px; padding: 32px; text-align: center; margin: 32px 0; }
+    .email-box p { font-size: 15px; color: rgba(255,255,255,0.6); margin-bottom: 12px; }
+    .email-box a { display: inline-block; background: #5B21B6; color: #fff; padding: 12px 28px; border-radius: 8px; font-size: 15px; font-weight: 700; text-decoration: none; transition: transform 0.2s; }
+    .email-box a:hover { transform: translateY(-1px); }
+
+    .divider { border: none; border-top: 1px solid #f0eeff; margin: 40px 0; }
+
+    footer { background: #0f0820; padding: 24px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-logo { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 800; color: #A78BFA; text-decoration: none; }
+    footer p { font-size: 12px; color: rgba(255,255,255,0.3); }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,0.35); text-decoration: none; }
+    .footer-links a:hover { color: rgba(255,255,255,0.7); }
+
+    @media(max-width:640px) {
+      nav { padding: 0 20px; }
+      .hero { padding: 48px 24px; }
+      .content { padding: 48px 24px; }
+      footer { padding: 24px 20px; flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo-text">Lea<span>pr</span></a>
+  <a href="https://app.leapr.co" class="btn-nav">Open app →</a>
+</nav>
+
+<section class="hero">
+  <h1>Data Deletion</h1>
+  <p>How to delete your data from Leapr — fully and permanently.</p>
+</section>
+
+<div class="content">
+
+  <div class="section">
+    <h2>What data does Leapr store?</h2>
+    <p>When you use Leapr, we store the following information:</p>
+    <ul>
+      <li>Your name, email address, and profile information</li>
+      <li>Your resume content (used only for gap analysis)</li>
+      <li>Your career analyses and gap reports</li>
+      <li>Your cohort memberships and community posts</li>
+      <li>Your job applications and saved jobs</li>
+      <li>Your connections and coffee chat history</li>
+      <li>Your notification preferences and settings</li>
+    </ul>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="section">
+    <h2>Delete your account from the app</h2>
+    <p>The fastest way to delete all your data is directly from within the Leapr app. This will permanently delete your account and all associated data within 30 days.</p>
+
+    <div class="steps">
+      <h3>Steps to delete your account:</h3>
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">Open <strong>app.leapr.co</strong> and sign in to your account</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">Go to your <strong>Profile</strong> page</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">Scroll to the bottom and tap <strong>"Delete Account"</strong></div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-text">Confirm the deletion — your account and all data will be permanently removed</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="section">
+    <h2>Request deletion by email</h2>
+    <p>If you no longer have access to your account or prefer to request deletion via email, contact us directly. We will process your request within 30 days and confirm when your data has been deleted.</p>
+
+    <div class="email-box">
+      <p>Send your deletion request to our privacy team</p>
+      <a href="mailto:privacy@leapr.co?subject=Data Deletion Request&body=Please delete all data associated with my account. My registered email is: [your email]">Email privacy@leapr.co →</a>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="section">
+    <h2>What happens after deletion?</h2>
+    <ul>
+      <li>Your profile and personal information is permanently deleted</li>
+      <li>Your analyses, roadmaps, and gap reports are removed</li>
+      <li>Your posts and cohort activity are anonymised or deleted</li>
+      <li>Your email is removed from all marketing lists</li>
+      <li>Backups are purged within 30 days</li>
+      <li>We retain only what is legally required (e.g. billing records)</li>
+    </ul>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="section">
+    <h2>Questions?</h2>
+    <p>If you have any questions about your data or this process, email us at <a href="mailto:privacy@leapr.co" style="color:#5B21B6;font-weight:600;">privacy@leapr.co</a> and we'll respond within 48 hours.</p>
+  </div>
+
+</div>
+
+<footer>
+  <a href="/" class="footer-logo">Leapr</a>
+  <p>© 2026 Leapr. All rights reserved. · Patent Pending</p>
+  <div class="footer-links">
+    <a href="/privacy">Privacy</a>
+    <a href="/terms">Terms</a>
+    <a href="mailto:hello@leapr.co">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>
