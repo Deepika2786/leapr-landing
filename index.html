@@ -214,6 +214,35 @@
     <span class="social-text">Join <strong>500+ people</strong> already navigating their transition</span>
   </div>
 
+  <!-- MASCOT PEEKING -->
+  <div style="position:relative;z-index:10;display:flex;justify-content:center;margin-bottom:-20px;">
+    <div style="position:relative;display:inline-block;animation:leapr-peek 3s ease-in-out infinite;">
+      <style>
+        @keyframes leapr-peek { 0%,100%{transform:translateY(0) rotate(-2deg)} 50%{transform:translateY(-10px) rotate(2deg)} }
+        @keyframes leapr-ball-pulse { 0%,100%{box-shadow:0 0 6px 2px rgba(196,181,253,0.5)} 50%{box-shadow:0 0 18px 6px rgba(196,181,253,1),0 0 28px 4px rgba(139,92,246,0.8)} }
+        @keyframes leapr-blink { 0%,90%,100%{transform:scaleY(1)} 95%{transform:scaleY(0.1)} }
+      </style>
+      <!-- HEAD -->
+      <div style="width:80px;height:70px;background:linear-gradient(145deg,#8b5cf6 0%,#6d28d9 100%);border-radius:24px;position:relative;box-shadow:0 0 36px rgba(139,92,246,0.55),inset 0 1px 0 rgba(255,255,255,0.1);">
+        <!-- ANTENNA STICK -->
+        <div style="width:4px;height:22px;background:linear-gradient(to top,#7c3aed,#c4b5fd);border-radius:3px;position:absolute;top:-30px;left:50%;transform:translateX(-50%);">
+          <!-- ANTENNA BALL -->
+          <div style="width:14px;height:14px;background:radial-gradient(circle at 35% 30%,#ddd6fe,#8b5cf6);border-radius:50%;position:absolute;top:-8px;left:-5px;animation:leapr-ball-pulse 2s ease-in-out infinite;"></div>
+        </div>
+        <!-- LEFT EYE -->
+        <div style="width:18px;height:18px;background:white;border-radius:50%;position:absolute;top:28%;left:16%;box-shadow:0 0 8px rgba(255,255,255,0.35);animation:leapr-blink 4s ease-in-out infinite;">
+          <div style="width:8px;height:8px;background:#1a0a2e;border-radius:50%;position:absolute;top:25%;left:25%;"></div>
+        </div>
+        <!-- RIGHT EYE -->
+        <div style="width:18px;height:18px;background:white;border-radius:50%;position:absolute;top:28%;right:16%;box-shadow:0 0 8px rgba(255,255,255,0.35);animation:leapr-blink 4s ease-in-out infinite;">
+          <div style="width:8px;height:8px;background:#1a0a2e;border-radius:50%;position:absolute;top:25%;left:25%;"></div>
+        </div>
+        <!-- SMILE -->
+        <div style="width:36px;height:16px;border-bottom:3px solid rgba(255,255,255,0.65);border-radius:0 0 24px 24px;position:absolute;bottom:16%;left:50%;transform:translateX(-50%);"></div>
+      </div>
+    </div>
+  </div>
+
   <div class="hero-screenshot-wrap fade-up d5">
     <div class="mock-bar">
       <div class="mock-dot" style="background:#ff5f57"></div>
@@ -470,6 +499,55 @@
     <span class="cta-check">✓ Web and mobile</span>
   </div>
   <a href="https://app.leapr.co" class="btn-hero-w reveal" style="font-size:17px;padding:16px 40px;display:inline-block">Join Leapr Free →</a>
+
+  <!-- MASCOT CELEBRATING -->
+  <div style="display:flex;justify-content:center;margin-top:40px;" class="reveal">
+    <div style="position:relative;display:inline-block;">
+      <style>
+        @keyframes leapr-bounce-cta { 0%,100%{transform:rotate(-4deg) scale(1) translateY(0)} 25%{transform:rotate(4deg) scale(1.06) translateY(-22px)} 75%{transform:rotate(-2deg) scale(1.03) translateY(-10px)} }
+        @keyframes leapr-sparkle { 0%,100%{opacity:0.25;transform:scale(0.8) rotate(0deg)} 50%{opacity:1;transform:scale(1.5) rotate(20deg)} }
+      </style>
+      <!-- SPARKLES -->
+      <span style="position:absolute;top:-16px;left:-16px;color:#c4b5fd;font-size:18px;animation:leapr-sparkle 0.9s ease-in-out infinite;animation-delay:0s;pointer-events:none;">✦</span>
+      <span style="position:absolute;top:-6px;right:-18px;color:#a78bfa;font-size:14px;animation:leapr-sparkle 0.9s ease-in-out infinite;animation-delay:0.3s;pointer-events:none;">✦</span>
+      <span style="position:absolute;bottom:10px;left:-20px;color:#c4b5fd;font-size:12px;animation:leapr-sparkle 0.9s ease-in-out infinite;animation-delay:0.6s;pointer-events:none;">✦</span>
+      <span style="position:absolute;bottom:-4px;right:-14px;color:#a78bfa;font-size:16px;animation:leapr-sparkle 0.9s ease-in-out infinite;animation-delay:0.15s;pointer-events:none;">✦</span>
+
+      <div style="animation:leapr-bounce-cta 0.75s ease-in-out infinite;">
+        <!-- BODY -->
+        <div style="width:100px;height:88px;background:linear-gradient(160deg,#7c3aed 0%,#5b21b6 100%);border-radius:30px;position:relative;box-shadow:0 0 90px rgba(255,255,255,0.25),0 0 55px rgba(196,181,253,0.4),inset 0 1px 0 rgba(255,255,255,0.12);margin:0 auto;">
+          <!-- LEFT ARM raised -->
+          <div style="width:15px;height:44px;background:linear-gradient(to bottom,#7c3aed,#5b21b6);border-radius:8px;position:absolute;top:15%;left:-17px;transform:rotate(-50deg) translateY(-12px);transform-origin:top center;"></div>
+          <!-- RIGHT ARM raised -->
+          <div style="width:15px;height:44px;background:linear-gradient(to bottom,#7c3aed,#5b21b6);border-radius:8px;position:absolute;top:15%;right:-17px;transform:rotate(50deg) translateY(-12px);transform-origin:top center;"></div>
+
+          <!-- HEAD -->
+          <div style="width:84px;height:80px;background:linear-gradient(145deg,#8b5cf6 0%,#6d28d9 100%);border-radius:26px;position:absolute;top:-65px;left:50%;transform:translateX(-50%);box-shadow:0 0 36px rgba(139,92,246,0.55),inset 0 1px 0 rgba(255,255,255,0.1);">
+            <!-- ANTENNA -->
+            <div style="width:4px;height:24px;background:linear-gradient(to top,#7c3aed,#c4b5fd);border-radius:3px;position:absolute;top:-30px;left:50%;transform:translateX(-50%);">
+              <div style="width:16px;height:16px;background:radial-gradient(circle at 35% 30%,#ddd6fe,#8b5cf6);border-radius:50%;position:absolute;top:-9px;left:-6px;animation:leapr-ball-pulse 2s ease-in-out infinite;"></div>
+            </div>
+            <!-- LEFT EYE -->
+            <div style="width:19px;height:19px;background:white;border-radius:50%;position:absolute;top:30%;left:15%;box-shadow:0 0 8px rgba(255,255,255,0.35);">
+              <div style="width:9px;height:9px;background:#1a0a2e;border-radius:50%;position:absolute;top:25%;left:25%;"></div>
+            </div>
+            <!-- RIGHT EYE -->
+            <div style="width:19px;height:19px;background:white;border-radius:50%;position:absolute;top:30%;right:15%;box-shadow:0 0 8px rgba(255,255,255,0.35);">
+              <div style="width:9px;height:9px;background:#1a0a2e;border-radius:50%;position:absolute;top:25%;left:25%;"></div>
+            </div>
+            <!-- BIG SMILE celebrating -->
+            <div style="width:52px;height:25px;border-bottom:4px solid rgba(255,255,255,0.9);border-radius:0 0 30px 30px;position:absolute;bottom:14%;left:50%;transform:translateX(-50%);"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SPEECH BUBBLE -->
+      <div style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);border-radius:12px;padding:8px 16px;text-align:center;font-size:13px;color:#fff;font-weight:700;margin-top:16px;backdrop-filter:blur(8px);">
+        Let's make the leap together! 🚀
+      </div>
+    </div>
+  </div>
+
 </section>
 
 <footer>
