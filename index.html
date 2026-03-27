@@ -9,7 +9,7 @@
   <meta property="og:description" content="Leapr maps your exact skill gap and builds a personalised roadmap to your target role. Join free." />
   <meta property="og:url" content="https://leapr.co" />
   <link rel="canonical" href="https://leapr.co" />
-  <link rel="icon" type="image/png" href="/icons/icon-512.png" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Leapr","url":"https://leapr.co","applicationCategory":"BusinessApplication","operatingSystem":"Web, iOS, Android","description":"Leapr is a career transition intelligence platform that maps your exact skill gap and builds a personalised roadmap to your target role.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"creator":{"@type":"Person","name":"Deepika Sharma"},"featureList":["Career gap analysis","Personalised transition roadmap","Cohort community","Find Your Twin","Market intelligence","Coffee chats"]}</script>
 
@@ -37,7 +37,7 @@
     .reveal-right{opacity:0;transform:translateX(32px);transition:opacity 0.7s ease,transform 0.7s ease}
     .reveal-right.visible{opacity:1;transform:translateX(0)}
 
-    nav{position:sticky;top:0;z-index:100;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(91,33,182,0.97);backdrop-filter:blur(16px);transition:box-shadow 0.3s}
+    nav{position:sticky;top:0;z-index:100;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(10,9,16,0.97);backdrop-filter:blur(16px);transition:box-shadow 0.3s}
     nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,0.3)}
     .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
     .nav-logo-img{width:28px;height:28px;object-fit:contain}
@@ -181,7 +181,12 @@
 
 <nav id="nav">
   <a href="/" class="nav-logo">
-    <img class="nav-logo-img" src="/icons/icon-512.png" alt="Leapr" onerror="this.style.display='none'" />
+    <svg viewBox="0 0 80 110" class="nav-logo-img" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="40" y1="88" x2="40" y2="28" stroke="#7F77DD" stroke-width="5" stroke-linecap="round"/>
+      <path d="M40 60 Q14 48 12 20 Q36 18 40 54" fill="#7F77DD" opacity="0.38"/>
+      <path d="M40 38 Q66 24 68 4 Q44 2 40 32" fill="#7F77DD"/>
+      <line x1="24" y1="88" x2="56" y2="88" stroke="#7F77DD" stroke-width="3" stroke-linecap="round" opacity="0.15"/>
+    </svg>
     <span class="nav-logo-text">Lea<span>pr</span></span>
   </a>
   <div class="nav-right">
