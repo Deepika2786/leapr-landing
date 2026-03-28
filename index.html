@@ -881,7 +881,7 @@
 
         <!-- Maya's bubble -->
         <rect x="258" y="110" width="148" height="44" rx="12" fill="white" stroke="rgba(0,0,0,0.07)" stroke-width="1"/>
-        <path d="M368" y="154" L376 162 L360 154" fill="white" stroke="rgba(0,0,0,0.07)" stroke-width="1"/>
+        <path d="M368 154 L376 162 L360 154" fill="white" stroke="rgba(0,0,0,0.07)" stroke-width="1"/>
         <path d="M362 154 L370 162 L354 154" fill="white" stroke="rgba(0,0,0,0.06)" stroke-width="1"/>
         <text x="332" y="128" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" fill="#0f0f1a" font-weight="600">Here's how I prepped</text>
         <text x="332" y="144" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" fill="#9ca3af">for the PM interview →</text>
@@ -1144,8 +1144,15 @@
   } catch(e) {}
 
   const revealObs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0 });
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        e.target.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(child => {
+          child.classList.add('visible');
+        });
+      }
+    });
+  }, { threshold: 0, rootMargin: '0px 0px 0px 0px' });
   document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => revealObs.observe(el));
 
   const counterObs = new IntersectionObserver(entries => {
@@ -1202,4 +1209,12 @@
       }
     } catch(e) {
       msg.textContent = 'Something went wrong. Please try again.';
+      msg.style.color = '#ef4444';
+      btn.textContent = 'Get weekly insights →';
+      btn.disabled = false;
+    }
+  }
+</script>
+</body>
+</html>
      
