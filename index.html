@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Leapr — Career Transition Intelligence</title>
-  <meta name="description" content="Leapr is a career transition intelligence platform that maps your exact skill gap and builds a personalised roadmap to your target role. Free to join." />
+  <meta name="description" content="Leapr maps your exact skill gap to your target role and builds a personalised roadmap. Know exactly what stands between you and your next role. Free to join." />
   <meta property="og:title" content="Leapr — Career Transition Intelligence" />
   <meta property="og:description" content="Leapr maps your exact skill gap and builds a personalised roadmap to your target role. Join free." />
   <meta property="og:url" content="https://leapr.co" />
@@ -14,527 +14,955 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Leapr","url":"https://leapr.co","applicationCategory":"BusinessApplication","operatingSystem":"Web, iOS, Android","description":"Leapr is a career transition intelligence platform that maps your exact skill gap and builds a personalised roadmap to your target role.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"creator":{"@type":"Person","name":"Deepika Sharma"},"featureList":["Career gap analysis","Personalised transition roadmap","Cohort community","Find Your Twin","Market intelligence","Coffee chats"]}</script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', -apple-system, sans-serif; color: #111; line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
 
-    #cursor-glow { position:fixed; width:500px; height:500px; border-radius:50%; background:radial-gradient(circle,rgba(124,58,237,0.07) 0%,transparent 70%); pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition:left 0.12s ease,top 0.12s ease; }
+    :root {
+      --bg: #f0ede8;
+      --white: #ffffff;
+      --ink: #0f0f1a;
+      --ink-light: #4b5563;
+      --ink-muted: #9ca3af;
+      --purple: #7F77DD;
+      --purple-light: #f0effe;
+      --purple-border: rgba(127,119,221,0.2);
+      --border: rgba(0,0,0,0.08);
+      --border-light: rgba(0,0,0,0.05);
+    }
 
-    @keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
-    @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    body {
+      font-family: 'DM Sans', -apple-system, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
 
-    .fade-up{animation:fadeUp 0.7s ease-out both}
-    .d1{animation-delay:0.1s}.d2{animation-delay:0.2s}.d3{animation-delay:0.3s}.d4{animation-delay:0.45s}.d5{animation-delay:0.6s}
+    /* NAV */
+    nav {
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 0 48px;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .nav-logo-text { font-size: 15px; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; }
+    .nav-right { display: flex; gap: 8px; align-items: center; }
+    .btn-ghost { font-size: 13px; color: var(--ink-light); text-decoration: none; font-weight: 500; padding: 6px 14px; border-radius: 7px; transition: background 0.15s; }
+    .btn-ghost:hover { background: rgba(0,0,0,0.05); }
+    .btn-primary { font-size: 13px; font-weight: 700; color: #fff; background: var(--purple); padding: 8px 20px; border-radius: 7px; text-decoration: none; transition: opacity 0.15s, transform 0.15s; }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
 
-    .reveal{opacity:0;transform:translateY(32px);transition:opacity 0.7s ease,transform 0.7s ease}
-    .reveal.visible{opacity:1;transform:translateY(0)}
-    .reveal-left{opacity:0;transform:translateX(-32px);transition:opacity 0.7s ease,transform 0.7s ease}
-    .reveal-left.visible{opacity:1;transform:translateX(0)}
-    .reveal-right{opacity:0;transform:translateX(32px);transition:opacity 0.7s ease,transform 0.7s ease}
-    .reveal-right.visible{opacity:1;transform:translateX(0)}
+    /* HERO */
+    .hero {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 92vh;
+      align-items: center;
+    }
+    .hero-left { padding: 80px 56px 80px 80px; }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--purple-light);
+      border: 1px solid var(--purple-border);
+      border-radius: 99px;
+      padding: 4px 14px;
+      margin-bottom: 28px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--purple);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .hero-eyebrow-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--purple); }
 
-    nav{position:sticky;top:0;z-index:100;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(10,9,16,0.97);backdrop-filter:blur(16px);transition:box-shadow 0.3s}
-    nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,0.3)}
-    .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-    .nav-logo-img{width:28px;height:28px;object-fit:contain}
-    .nav-logo-text{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;letter-spacing:-0.04em;color:rgba(255,255,255,0.85)}
-    .nav-logo-text span{color:#fff}
-    .nav-right{display:flex;align-items:center;gap:10px}
-    .btn-nav-ghost{padding:7px 16px;border:1px solid rgba(255,255,255,0.3);border-radius:8px;font-size:14px;color:rgba(255,255,255,0.8);background:transparent;text-decoration:none;font-weight:500;transition:border-color 0.2s,color 0.2s}
-    .btn-nav-ghost:hover{border-color:rgba(255,255,255,0.7);color:#fff}
-    .btn-nav-primary{padding:8px 18px;background:#fff;border-radius:8px;font-size:14px;font-weight:700;color:#5B21B6;text-decoration:none;transition:transform 0.2s,box-shadow 0.2s}
-    .btn-nav-primary:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(255,255,255,0.2)}
+    .hero-h1 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: clamp(44px, 5.5vw, 64px);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+      color: var(--ink);
+      margin: 0 0 24px;
+    }
+    .hero-h1 em {
+      font-style: italic;
+      color: var(--purple);
+    }
+    .hero-sub {
+      font-size: 15px;
+      color: var(--ink-light);
+      line-height: 1.75;
+      margin: 0 0 36px;
+      max-width: 380px;
+    }
+    .hero-btns { display: flex; flex-direction: column; gap: 10px; max-width: 290px; margin-bottom: 20px; }
+    .btn-hero-primary {
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      background: var(--purple);
+      padding: 14px 24px;
+      border-radius: 9px;
+      text-decoration: none;
+      text-align: center;
+      transition: opacity 0.15s, transform 0.15s;
+    }
+    .btn-hero-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-hero-secondary {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink-light);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 13px 24px;
+      border-radius: 9px;
+      text-decoration: none;
+      text-align: center;
+      transition: border-color 0.15s;
+    }
+    .btn-hero-secondary:hover { border-color: rgba(0,0,0,0.2); }
+    .hero-note { font-size: 11px; color: var(--ink-muted); }
 
-    .hero{background:linear-gradient(155deg,#5B21B6 0%,#7C3AED 40%,#8B5CF6 70%,#A78BFA 100%);padding:88px 48px 0;text-align:center;position:relative;overflow:hidden;min-height:90vh}
-    .hero-blob-1{position:absolute;top:-120px;left:-150px;width:500px;height:500px;background:radial-gradient(circle,rgba(255,255,255,0.12) 0%,transparent 60%);border-radius:50%;pointer-events:none}
-    .hero-blob-2{position:absolute;top:-80px;right:-120px;width:420px;height:420px;background:radial-gradient(circle,rgba(255,255,255,0.08) 0%,transparent 60%);border-radius:50%;pointer-events:none}
+    .hero-social {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 28px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border-light);
+    }
+    .avatar-row { display: flex; }
+    .avatar {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 2px solid var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 700;
+      color: #fff;
+      margin-left: -6px;
+    }
+    .avatar:first-child { margin-left: 0; }
+    .social-text { font-size: 12px; color: var(--ink-muted); }
+    .social-text strong { color: var(--ink); font-weight: 600; }
 
-    .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:99px;border:1px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.12);font-size:12px;font-weight:600;color:rgba(255,255,255,0.9);margin-bottom:28px}
-    .hero-badge-dot{width:6px;height:6px;border-radius:50%;background:#fff;animation:pulse 2s infinite}
+    .hero-right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 60px 40px 20px;
+      background: var(--bg);
+      height: 100%;
+    }
 
-    .hero-h1{font-family:'Syne',sans-serif;font-size:clamp(48px,7.5vw,80px);font-weight:900;letter-spacing:-0.045em;line-height:1.0;color:#fff;max-width:820px;margin:0 auto 22px}
-    .hero-h1 .dim{opacity:0.75}
-    .hero-sub{font-size:19px;color:rgba(255,255,255,0.72);max-width:520px;margin:0 auto 40px;line-height:1.65}
-    .hero-btns{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
-    .btn-hero-w{padding:14px 32px;background:#fff;border-radius:10px;font-size:16px;font-weight:800;color:#5B21B6;text-decoration:none;display:inline-block;letter-spacing:-0.01em;transition:transform 0.2s,box-shadow 0.2s}
-    .btn-hero-w:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,0,0,0.2)}
-    .btn-hero-o{padding:14px 32px;background:transparent;border:2px solid rgba(255,255,255,0.45);border-radius:10px;font-size:16px;font-weight:600;color:#fff;text-decoration:none;display:inline-block;transition:border-color 0.2s}
-    .btn-hero-o:hover{border-color:rgba(255,255,255,0.8)}
-    .hero-note{font-size:12px;color:rgba(255,255,255,0.45);margin-bottom:20px}
+    /* TICKER */
+    .ticker {
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 0;
+      overflow: hidden;
+      height: 44px;
+      display: flex;
+      align-items: center;
+    }
+    .ticker-track {
+      display: flex;
+      animation: ticker 32s linear infinite;
+      width: max-content;
+      align-items: center;
+      height: 100%;
+    }
+    .ticker-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 32px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--ink-muted);
+      white-space: nowrap;
+    }
+    .ticker-from { color: var(--ink-light); }
+    .ticker-arrow { color: var(--purple); font-size: 14px; }
+    .ticker-to { color: var(--ink); font-weight: 600; }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    .hero-social-proof{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:56px}
-    .avatar-stack{display:flex;align-items:center}
-    .avatar-stack span{width:28px;height:28px;border-radius:50%;border:2px solid rgba(255,255,255,0.3);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:white;margin-left:-7px}
-    .avatar-stack span:first-child{margin-left:0}
-    .social-text{font-size:13px;color:rgba(255,255,255,0.65)}
-    .social-text strong{color:white}
+    /* SECTIONS */
+    .section-white { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .section-bg { background: var(--bg); }
 
-    .hero-screenshot-wrap{max-width:900px;margin:0 auto;border-radius:14px 14px 0 0;overflow:hidden;border:1px solid rgba(255,255,255,0.18);box-shadow:0 -20px 80px rgba(0,0,0,0.25),0 0 0 1px rgba(255,255,255,0.08)}
-    .mock-bar{background:#1a0a40;padding:11px 18px;display:flex;align-items:center;gap:8px}
-    .mock-dot{width:10px;height:10px;border-radius:50%}
-    .mock-url{flex:1;background:rgba(255,255,255,0.08);border-radius:5px;padding:4px 14px;font-size:11px;color:rgba(255,255,255,0.35);margin:0 14px;text-align:center}
-    .hero-screenshot-wrap img{width:100%;display:block}
+    .feat {
+      padding: 96px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+    .feat.reverse { direction: rtl; }
+    .feat.reverse > * { direction: ltr; }
 
-    .marquee-section{background:#fff;border-top:1px solid #f0f0f0;border-bottom:1px solid #f0f0f0;padding:16px 0;overflow:hidden}
-    .marquee-track{display:flex;animation:marquee 28s linear infinite;width:max-content}
-    .marquee-item{display:flex;align-items:center;gap:10px;padding:0 28px;font-size:13px;font-weight:600;color:#9ca3af;white-space:nowrap}
-    .marquee-dot{width:4px;height:4px;border-radius:50%;background:#8B5CF6;flex-shrink:0}
+    .feat-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--purple);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin: 0 0 12px;
+    }
+    .feat-h2 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 36px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: var(--ink);
+      margin: 0 0 16px;
+    }
+    .feat-h2 em { font-style: italic; color: var(--purple); }
+    .feat-desc { font-size: 14px; color: var(--ink-light); line-height: 1.8; margin: 0 0 24px; }
+    .feat-checks { display: flex; flex-direction: column; gap: 10px; }
+    .feat-check { display: flex; align-items: center; gap: 10px; font-size: 13px; color: #374151; }
+    .check-dot {
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: var(--purple);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-    .proof{background:#fff;padding:36px 48px;text-align:center}
-    .proof-label{font-size:11px;color:#9ca3af;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:20px;font-weight:600}
-    .proof-logos{display:flex;gap:48px;justify-content:center;align-items:center;flex-wrap:wrap}
-    .proof-logo{font-size:15px;font-weight:800;color:#d1d5db;letter-spacing:-0.02em}
+    /* COHORT SECTION */
+    .cohort-section {
+      padding: 96px 80px;
+      max-width: 1160px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
 
-    .stats-section{background:#F9F8FF;border-top:1px solid #f0eeff;border-bottom:1px solid #f0eeff;padding:64px 48px}
-    .stats-inner{max-width:800px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr)}
-    .stat-block{text-align:center;padding:24px;border-right:1px solid #ede9fe}
-    .stat-block:last-child{border-right:none}
-    .stat-num{font-family:'Syne',sans-serif;font-size:48px;font-weight:900;letter-spacing:-0.04em;color:#5B21B6;line-height:1;margin-bottom:6px}
-    .stat-label{font-size:13px;color:#6b7280}
+    /* FOUNDER */
+    .founder {
+      padding: 80px;
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .founder-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--purple);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 30px;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .founder-quote {
+      border-left: 3px solid var(--purple);
+      padding-left: 32px;
+    }
+    .founder-quote p:first-child {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 18px;
+      font-style: italic;
+      color: var(--ink);
+      line-height: 1.65;
+      margin: 0 0 16px;
+    }
+    .founder-quote p:last-child { font-size: 14px; color: var(--ink-light); line-height: 1.75; margin: 0; }
+    .founder-name { font-size: 13px; font-weight: 700; color: var(--ink); margin: 16px 0 2px; }
+    .founder-title { font-size: 11px; color: var(--ink-muted); }
 
-    .feat-section{padding:96px 48px}
-    .feat-section.gray{background:#F9F8FF;border-top:1px solid #f0eeff;border-bottom:1px solid #f0eeff}
-    .feat-section.white{background:#fff}
-    .feat-inner{max-width:980px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
-    .feat-inner.reverse{direction:rtl}
-    .feat-inner.reverse>*{direction:ltr}
-    .feat-eyebrow{font-size:12px;font-weight:700;color:#8B5CF6;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:12px}
-    .feat-h2{font-family:'Syne',sans-serif;font-size:clamp(32px,3.5vw,44px);font-weight:800;letter-spacing:-0.04em;color:#0f0820;line-height:1.1;margin-bottom:16px}
-    .feat-desc{font-size:16px;color:#6b7280;line-height:1.7;margin-bottom:28px}
-    .feat-checks{display:flex;flex-direction:column;gap:12px}
-    .feat-check{display:flex;align-items:center;gap:12px;font-size:15px;color:#374151}
-    .check-circle{width:20px;height:20px;border-radius:50%;background:#8B5CF6;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    /* EMAIL */
+    .email-section {
+      padding: 80px;
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .email-section h2 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 32px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      color: var(--ink);
+      margin: 0 0 10px;
+    }
+    .email-section h2 em { font-style: italic; color: var(--purple); }
+    .email-section p { font-size: 14px; color: var(--ink-light); line-height: 1.75; margin: 0; }
+    .email-form { display: flex; flex-direction: column; gap: 10px; }
+    .email-input {
+      width: 100%;
+      padding: 13px 16px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      font-size: 14px;
+      font-family: 'DM Sans', sans-serif;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .email-input:focus { border-color: var(--purple); }
+    .email-input::placeholder { color: var(--ink-muted); }
+    .email-submit {
+      width: 100%;
+      padding: 13px;
+      background: var(--purple);
+      color: #fff;
+      border: none;
+      border-radius: 9px;
+      font-size: 14px;
+      font-weight: 700;
+      font-family: 'DM Sans', sans-serif;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    .email-submit:hover { opacity: 0.9; }
+    .email-note { font-size: 11px; color: var(--ink-muted); text-align: center; }
 
-    .screenshot-wrap{position:relative}
-    .screenshot-wrap::after{content:'';position:absolute;inset:-30px;background:radial-gradient(ellipse at 50% 50%,rgba(124,58,237,0.1) 0%,transparent 70%);pointer-events:none;z-index:-1;border-radius:50%}
-    .screenshot-frame{border-radius:12px;overflow:hidden;border:1px solid rgba(124,58,237,0.15);box-shadow:0 24px 64px rgba(91,33,182,0.12),0 0 0 1px rgba(124,58,237,0.06)}
-    .screenshot-bar{background:#1a0a40;padding:9px 14px;display:flex;align-items:center;gap:6px}
-    .screenshot-bar-dot{width:8px;height:8px;border-radius:50%}
-    .screenshot-bar-url{flex:1;background:rgba(255,255,255,0.07);border-radius:4px;padding:3px 10px;font-size:10px;color:rgba(255,255,255,0.3);margin:0 10px;text-align:center}
-    .screenshot-frame img{width:100%;display:block}
+    /* CTA */
+    .cta-section {
+      background: var(--ink);
+      padding: 96px 80px;
+      text-align: center;
+    }
+    .cta-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--purple);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin: 0 0 18px;
+    }
+    .cta-h2 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 48px;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      color: #fff;
+      margin: 0 0 14px;
+      line-height: 1.1;
+    }
+    .cta-h2 em { font-style: italic; color: var(--purple); }
+    .cta-sub { font-size: 14px; color: rgba(255,255,255,0.4); margin: 0 0 36px; }
+    .btn-cta {
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--ink);
+      background: #fff;
+      padding: 14px 36px;
+      border-radius: 9px;
+      text-decoration: none;
+      transition: opacity 0.15s, transform 0.15s;
+    }
+    .btn-cta:hover { opacity: 0.92; transform: translateY(-1px); }
+    .cta-note { font-size: 11px; color: rgba(255,255,255,0.25); margin-top: 14px; }
 
-    .who-section{background:#0f0820;padding:96px 48px}
-    .who-inner{max-width:980px;margin:0 auto}
-    .who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:48px}
-    .who-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:22px;transition:border-color 0.2s,background 0.2s,transform 0.3s}
-    .who-card:hover{border-color:rgba(139,92,246,0.35);background:rgba(139,92,246,0.05);transform:translateY(-3px)}
-    .who-dot{width:8px;height:8px;border-radius:50%;background:#A78BFA;margin-bottom:12px;box-shadow:0 0 10px rgba(139,92,246,0.5)}
-    .who-text{font-size:14px;color:rgba(255,255,255,0.6);line-height:1.65}
-    .who-text strong{color:rgba(255,255,255,0.9);font-weight:600}
+    /* FOOTER */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 24px 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .footer-logo { display: flex; align-items: center; gap: 7px; text-decoration: none; }
+    .footer-logo-text { font-size: 13px; font-weight: 700; color: var(--ink); }
+    footer p { font-size: 11px; color: var(--ink-muted); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 12px; color: var(--ink-muted); text-decoration: none; transition: color 0.15s; }
+    .footer-links a:hover { color: var(--ink); }
 
-    .founder-section{background:#fff;padding:96px 48px}
-    .founder-inner{max-width:720px;margin:0 auto;text-align:center}
-    .founder-quote-card{background:#F9F8FF;border:1px solid #ede8ff;border-radius:20px;padding:40px;text-align:left;position:relative}
-    .quote-mark{position:absolute;top:20px;left:32px;font-size:80px;line-height:1;color:rgba(124,58,237,0.12);font-family:Georgia,serif;pointer-events:none}
-    .quote-text{font-size:17px;color:#374151;line-height:1.85;font-style:italic;padding-top:20px;position:relative;z-index:1}
-    .founder-info{display:flex;align-items:center;gap:14px;margin-top:28px}
-    .founder-av{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#a78bfa);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px;color:#fff;flex-shrink:0;box-shadow:0 0 20px rgba(124,58,237,0.3)}
-    .founder-name{font-weight:700;font-size:15px;color:#111}
-    .founder-role{font-size:13px;color:#9ca3af;margin-top:2px}
+    /* REVEAL ANIMATIONS */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(-24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
 
-    .transitions-section{background:#F9F8FF;padding:80px 48px;border-top:1px solid #f0eeff;border-bottom:1px solid #f0eeff}
-    .transitions-inner{max-width:980px;margin:0 auto}
-    .transitions-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;margin:40px 0}
-    .transition-card{display:flex;align-items:center;justify-content:space-between;background:#fff;border:1px solid #ede9fe;border-radius:12px;padding:16px 20px;text-decoration:none;transition:border-color 0.2s,box-shadow 0.2s,transform 0.2s}
-    .transition-card:hover{border-color:#8B5CF6;box-shadow:0 4px 20px rgba(139,92,246,0.12);transform:translateY(-2px)}
-    .tc-title{font-size:13px;font-weight:700;color:#0f0820;margin-bottom:3px}
-    .tc-meta{font-size:11px;color:#9ca3af}
-    .tc-arrow{color:#8B5CF6;font-size:16px;flex-shrink:0}
-
-    .cta-section{background:linear-gradient(135deg,#5B21B6,#7C3AED,#8B5CF6);padding:110px 48px;text-align:center;position:relative;overflow:hidden}
-    .cta-blob{position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(255,255,255,0.1) 0%,transparent 65%);pointer-events:none}
-    .cta-h2{font-family:'Syne',sans-serif;font-size:clamp(40px,6vw,58px);font-weight:900;letter-spacing:-0.04em;color:#fff;margin-bottom:16px;line-height:1.05;position:relative}
-    .cta-sub{font-size:17px;color:rgba(255,255,255,0.65);margin-bottom:32px;position:relative}
-    .cta-checks{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;margin-bottom:36px;position:relative}
-    .cta-check{font-size:14px;color:rgba(255,255,255,0.8);font-weight:500}
-
-    footer{background:#0f0820;border-top:1px solid rgba(255,255,255,0.07);padding:28px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
-    .footer-logo-text{font-family:'Syne',sans-serif;font-size:16px;font-weight:800;letter-spacing:-0.04em;color:#A78BFA;text-decoration:none}
-    footer p{font-size:12px;color:rgba(255,255,255,0.3)}
-    .footer-links{display:flex;gap:24px}
-    .footer-links a{font-size:13px;color:rgba(255,255,255,0.35);text-decoration:none;transition:color 0.2s}
-    .footer-links a:hover{color:rgba(255,255,255,0.7)}
-
-    @media(max-width:900px){
-      nav{padding:0 20px}
-      .hero{padding:64px 24px 0}
-      .feat-section{padding:64px 24px}
-      .feat-inner{grid-template-columns:1fr;gap:40px;direction:ltr!important}
-      .feat-inner>*{direction:ltr!important}
-      .feat-h2{font-size:32px}
-      .who-section,.founder-section,.transitions-section,.cta-section{padding:64px 24px}
-      .who-grid{grid-template-columns:1fr}
-      .stats-inner{grid-template-columns:1fr}
-      .stat-block{border-right:none;border-bottom:1px solid #ede9fe}
-      footer{padding:24px 20px;flex-direction:column;align-items:center;text-align:center}
-      .proof{padding:36px 24px}
+    @media (max-width: 900px) {
+      nav { padding: 0 20px; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 56px 24px 32px; }
+      .hero-right { padding: 0 24px 56px; height: auto; }
+      .hero-h1 { font-size: 38px; }
+      .feat, .cohort-section, .founder, .email-section { grid-template-columns: 1fr; padding: 64px 24px; gap: 40px; }
+      .feat.reverse { direction: ltr; }
+      .cta-section { padding: 64px 24px; }
+      .cta-h2 { font-size: 34px; }
+      footer { padding: 24px 20px; flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
 <body>
 
-<div id="cursor-glow"></div>
-
-<nav id="nav">
+<nav>
   <a href="/" class="nav-logo">
-    <svg viewBox="0 0 80 110" class="nav-logo-img" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 80 110" width="18" height="24" fill="none">
       <line x1="40" y1="88" x2="40" y2="28" stroke="#7F77DD" stroke-width="5" stroke-linecap="round"/>
       <path d="M40 60 Q14 48 12 20 Q36 18 40 54" fill="#7F77DD" opacity="0.38"/>
       <path d="M40 38 Q66 24 68 4 Q44 2 40 32" fill="#7F77DD"/>
       <line x1="24" y1="88" x2="56" y2="88" stroke="#7F77DD" stroke-width="3" stroke-linecap="round" opacity="0.15"/>
     </svg>
-    <span class="nav-logo-text">Lea<span>pr</span></span>
+    <span class="nav-logo-text">Leapr</span>
   </a>
   <div class="nav-right">
-    <a href="https://app.leapr.co" class="btn-nav-ghost">Sign in</a>
-    <a href="https://app.leapr.co" class="btn-nav-primary">Join free →</a>
+    <a href="https://app.leapr.co" class="btn-ghost">Sign in</a>
+    <a href="https://app.leapr.co" class="btn-primary">Join free →</a>
   </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-blob-1"></div>
-  <div class="hero-blob-2"></div>
-
-  <div class="hero-badge fade-up"><span class="hero-badge-dot"></span>Now live — Career Transition Intelligence</div>
-  <h1 class="hero-h1 fade-up d1">Know exactly what<br/>stands between you<br/><span class="dim">and your dream role.</span></h1>
-  <p class="hero-sub fade-up d2">Leapr maps your exact skill gap to your target role, builds a personalised roadmap, and puts you in a room with people making the exact same move.</p>
-
-  <div class="hero-btns fade-up d3">
-    <a href="https://app.leapr.co" class="btn-hero-w">Start for free →</a>
-    <a href="#features" class="btn-hero-o">See how it works</a>
-  </div>
-  <p class="hero-note fade-up d4">No credit card required · Free to join · Web and mobile</p>
-
-  <div class="hero-social-proof fade-up d4">
-    <div class="avatar-stack">
-      <span style="background:linear-gradient(135deg,#7c3aed,#a78bfa)">S</span>
-      <span style="background:linear-gradient(135deg,#10b981,#34d399)">R</span>
-      <span style="background:linear-gradient(135deg,#f59e0b,#fcd34d)">M</span>
-      <span style="background:linear-gradient(135deg,#ef4444,#f87171)">J</span>
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <span class="hero-eyebrow-dot"></span>
+      Career transition intelligence
     </div>
-    <span class="social-text">Join <strong>500+ people</strong> already navigating their transition</span>
+
+    <h1 class="hero-h1">
+      Your next role<br/>exists. You just<br/>don't know<br/><em>what's in the way.</em>
+    </h1>
+
+    <p class="hero-sub">Leapr reads your resume, compares it against your target role, and tells you precisely — not vaguely — what skills stand between you and getting hired. Then builds you the roadmap.</p>
+
+    <div class="hero-btns">
+      <a href="https://app.leapr.co" class="btn-hero-primary">See what's blocking you →</a>
+      <a href="#how" class="btn-hero-secondary">See how it works</a>
+    </div>
+    <p class="hero-note">Free · No credit card · 2 minutes to your first analysis</p>
+
+    <div class="hero-social">
+      <div class="avatar-row">
+        <div class="avatar" style="background:#7F77DD;">S</div>
+        <div class="avatar" style="background:#9490E8;">R</div>
+        <div class="avatar" style="background:#6B64C9;">M</div>
+        <div class="avatar" style="background:#A8A3EE;">J</div>
+        <div class="avatar" style="background:#5B54B8;">K</div>
+      </div>
+      <span class="social-text">Join <strong>500+ people</strong> already navigating their transition</span>
+    </div>
   </div>
 
-  <div class="hero-screenshot-wrap fade-up d5">
-    <div class="mock-bar">
-      <div class="mock-dot" style="background:#ff5f57"></div>
-      <div class="mock-dot" style="background:#fbbf24"></div>
-      <div class="mock-dot" style="background:#4ade80"></div>
-      <div class="mock-url">app.leapr.co — Your Career Gap Analysis</div>
-    </div>
-    <img src="/screenshots/journey.png" alt="Leapr career gap analysis dashboard" loading="eager" />
+  <div class="hero-right">
+    <svg viewBox="0 0 440 400" width="440" height="400" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Ground shadow -->
+      <ellipse cx="220" cy="372" rx="190" ry="14" fill="rgba(0,0,0,0.04)"/>
+
+      <!-- LEFT path — wrong/faded -->
+      <path d="M220 320 Q165 272 105 210 Q75 178 58 138" stroke="#d1d5db" stroke-width="2.5" stroke-dasharray="6 5" stroke-linecap="round"/>
+      <!-- Left path end label -->
+      <rect x="14" y="108" width="82" height="26" rx="6" fill="#f5f3ef" stroke="#e5e7eb" stroke-width="1"/>
+      <text x="55" y="125" text-anchor="middle" font-family="DM Sans,-apple-system,sans-serif" font-size="10" fill="#9ca3af" font-weight="500">Old path</text>
+
+      <!-- RIGHT path — the right one -->
+      <path d="M220 320 Q275 272 335 210 Q365 178 382 138" stroke="#7F77DD" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- Right path glow dots -->
+      <circle cx="335" cy="210" r="3.5" fill="#7F77DD" opacity="0.5"/>
+      <circle cx="362" cy="172" r="2.5" fill="#7F77DD" opacity="0.35"/>
+      <circle cx="382" cy="138" r="5" fill="#7F77DD" opacity="0.7"/>
+
+      <!-- Destination badge -->
+      <rect x="340" y="100" width="96" height="32" rx="8" fill="#7F77DD"/>
+      <text x="388" y="120" text-anchor="middle" font-family="DM Sans,-apple-system,sans-serif" font-size="11" font-weight="700" fill="white">UX Designer</text>
+
+      <!-- PERSON -->
+      <!-- Body -->
+      <rect x="205" y="268" width="30" height="46" rx="10" fill="#7F77DD"/>
+      <!-- Head -->
+      <circle cx="220" cy="256" r="18" fill="#f5c5a0"/>
+      <!-- Hair -->
+      <ellipse cx="220" cy="244" rx="18" ry="11" fill="#2d1a0e"/>
+      <!-- Eyes -->
+      <circle cx="214" cy="257" r="2" fill="#2d1a0e"/>
+      <circle cx="226" cy="257" r="2" fill="#2d1a0e"/>
+      <!-- Smile -->
+      <path d="M214 264 Q220 269 226 264" stroke="#2d1a0e" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <!-- Left arm — hesitant -->
+      <path d="M205 280 Q186 275 174 268" stroke="#7F77DD" stroke-width="9" stroke-linecap="round"/>
+      <!-- Right arm — pointing -->
+      <path d="M235 276 Q254 268 268 260" stroke="#7F77DD" stroke-width="9" stroke-linecap="round"/>
+      <!-- Legs -->
+      <rect x="207" y="310" width="10" height="28" rx="5" fill="#2d1a0e"/>
+      <rect x="223" y="310" width="10" height="28" rx="5" fill="#2d1a0e"/>
+      <!-- Shoes -->
+      <ellipse cx="212" cy="339" rx="9" ry="5" fill="#111"/>
+      <ellipse cx="228" cy="339" rx="9" ry="5" fill="#111"/>
+
+      <!-- Skill pills floating on right path -->
+      <rect x="278" y="248" width="70" height="22" rx="11" fill="white" stroke="rgba(127,119,221,0.25)" stroke-width="1"/>
+      <text x="313" y="263" text-anchor="middle" font-family="DM Sans,-apple-system,sans-serif" font-size="10" fill="#7F77DD" font-weight="600">Figma</text>
+
+      <rect x="296" y="186" width="86" height="22" rx="11" fill="white" stroke="rgba(127,119,221,0.25)" stroke-width="1"/>
+      <text x="339" y="201" text-anchor="middle" font-family="DM Sans,-apple-system,sans-serif" font-size="10" fill="#7F77DD" font-weight="600">User Research</text>
+
+      <rect x="286" y="218" width="82" height="22" rx="11" fill="white" stroke="rgba(127,119,221,0.25)" stroke-width="1"/>
+      <text x="327" y="233" text-anchor="middle" font-family="DM Sans,-apple-system,sans-serif" font-size="10" fill="#7F77DD" font-weight="600">Prototyping</text>
+
+      <!-- Match badge -->
+      <rect x="142" y="182" width="62" height="46" rx="12" fill="white" stroke="rgba(0,0,0,0.07)" stroke-width="1"/>
+      <text x="173" y="206" text-anchor="middle" font-family="DM Sans,-apple-system,sans-serif" font-size="18" font-weight="800" fill="#7F77DD">72%</text>
+      <text x="173" y="221" text-anchor="middle" font-family="DM Sans,-apple-system,sans-serif" font-size="9" fill="#9ca3af">ready</text>
+    </svg>
   </div>
 </section>
 
-<div class="marquee-section">
-  <div class="marquee-track">
-    <div class="marquee-item"><span class="marquee-dot"></span>Gap Analysis</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>Personalised Roadmap</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>Cohort Community</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>Find Your Twin</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>Market Intelligence</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>Coffee Chats</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>Salary Insights</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>Career Transitions</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>Skill Mapping</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>Gap Analysis</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>Personalised Roadmap</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>Cohort Community</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>Find Your Twin</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>Market Intelligence</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>Coffee Chats</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>Salary Insights</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>Career Transitions</div>
-    <div class="marquee-item"><span class="marquee-dot"></span>Skill Mapping</div>
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <div class="ticker-item"><span class="ticker-from">Teacher</span><span class="ticker-arrow">→</span><span class="ticker-to">Product Manager</span></div>
+    <div class="ticker-item"><span class="ticker-from">Software Engineer</span><span class="ticker-arrow">→</span><span class="ticker-to">Data Scientist</span></div>
+    <div class="ticker-item"><span class="ticker-from">Marketing Manager</span><span class="ticker-arrow">→</span><span class="ticker-to">UX Designer</span></div>
+    <div class="ticker-item"><span class="ticker-from">Nurse</span><span class="ticker-arrow">→</span><span class="ticker-to">Health Tech PM</span></div>
+    <div class="ticker-item"><span class="ticker-from">Accountant</span><span class="ticker-arrow">→</span><span class="ticker-to">Financial Analyst</span></div>
+    <div class="ticker-item"><span class="ticker-from">HR Manager</span><span class="ticker-arrow">→</span><span class="ticker-to">People Operations</span></div>
+    <div class="ticker-item"><span class="ticker-from">Sales Manager</span><span class="ticker-arrow">→</span><span class="ticker-to">Customer Success</span></div>
+    <div class="ticker-item"><span class="ticker-from">Consultant</span><span class="ticker-arrow">→</span><span class="ticker-to">Strategy Lead</span></div>
+    <div class="ticker-item"><span class="ticker-from">Teacher</span><span class="ticker-arrow">→</span><span class="ticker-to">Product Manager</span></div>
+    <div class="ticker-item"><span class="ticker-from">Software Engineer</span><span class="ticker-arrow">→</span><span class="ticker-to">Data Scientist</span></div>
+    <div class="ticker-item"><span class="ticker-from">Marketing Manager</span><span class="ticker-arrow">→</span><span class="ticker-to">UX Designer</span></div>
+    <div class="ticker-item"><span class="ticker-from">Nurse</span><span class="ticker-arrow">→</span><span class="ticker-to">Health Tech PM</span></div>
+    <div class="ticker-item"><span class="ticker-from">Accountant</span><span class="ticker-arrow">→</span><span class="ticker-to">Financial Analyst</span></div>
+    <div class="ticker-item"><span class="ticker-from">HR Manager</span><span class="ticker-arrow">→</span><span class="ticker-to">People Operations</span></div>
+    <div class="ticker-item"><span class="ticker-from">Sales Manager</span><span class="ticker-arrow">→</span><span class="ticker-to">Customer Success</span></div>
+    <div class="ticker-item"><span class="ticker-from">Consultant</span><span class="ticker-arrow">→</span><span class="ticker-to">Strategy Lead</span></div>
   </div>
 </div>
 
-<div class="proof">
-  <p class="proof-label">Trusted by people making the leap</p>
-  <div class="proof-logos">
-    <span class="proof-logo">500+ members</span>
-    <span class="proof-logo">20+ cohorts</span>
-    <span class="proof-logo">Free to join</span>
-    <span class="proof-logo">✦ Career transition intelligence</span>
-  </div>
-</div>
-
-<section class="stats-section">
-  <div class="stats-inner reveal">
-    <div class="stat-block"><div class="stat-num" data-count="500" data-suffix="+">0+</div><div class="stat-label">Members navigating transitions</div></div>
-    <div class="stat-block"><div class="stat-num" data-count="20" data-suffix="+">0+</div><div class="stat-label">Active cohorts and growing</div></div>
-    <div class="stat-block"><div class="stat-num" data-count="488" data-suffix="+">0+</div><div class="stat-label">Career paths mapped</div></div>
-  </div>
-</section>
-
-<section class="feat-section white" id="features">
-  <div class="feat-inner">
-    <div class="screenshot-wrap reveal-left">
-      <div class="screenshot-frame">
-        <div class="screenshot-bar">
-          <div class="screenshot-bar-dot" style="background:#ff5f57"></div>
-          <div class="screenshot-bar-dot" style="background:#fbbf24"></div>
-          <div class="screenshot-bar-dot" style="background:#4ade80"></div>
-          <div class="screenshot-bar-url">app.leapr.co — Gap Analysis</div>
-        </div>
-        <img src="/screenshots/journey.png" alt="Leapr career gap analysis" loading="lazy" />
+<!-- FEATURE 1 — Gap Analysis -->
+<section class="section-white" id="how">
+  <div class="feat reveal">
+    <div class="reveal-left">
+      <p class="feat-eyebrow">Gap analysis</p>
+      <h2 class="feat-h2">Not vague advice.<br/><em>Exact skills.</em></h2>
+      <p class="feat-desc">Upload your resume and tell us your target role. Leapr compares you against thousands of real job postings and tells you precisely — not in platitudes — what stands between you and getting hired.</p>
+      <div class="feat-checks">
+        <div class="feat-check"><div class="check-dot"><svg width="7" height="7" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>Mentor-quality analysis in 30 seconds</div>
+        <div class="feat-check"><div class="check-dot"><svg width="7" height="7" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>Timeline and readiness score included</div>
+        <div class="feat-check"><div class="check-dot"><svg width="7" height="7" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>Courses and resources for each gap</div>
+        <div class="feat-check"><div class="check-dot"><svg width="7" height="7" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>Updated as you grow and the market shifts</div>
       </div>
     </div>
     <div class="reveal-right">
-      <div class="feat-eyebrow">1 — Gap Analysis</div>
-      <h2 class="feat-h2">Know exactly<br/>what to do next.</h2>
-      <p class="feat-desc">Upload your resume and tell us your target role. Leapr compares you against thousands of real job postings and tells you precisely — not vaguely — what stands between you and your next role.</p>
-      <div class="feat-checks">
-        <div class="feat-check"><div class="check-circle"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg></div>Mentor-quality analysis in 30 seconds</div>
-        <div class="feat-check"><div class="check-circle"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg></div>Specific skills to close — not vague advice</div>
-        <div class="feat-check"><div class="check-circle"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg></div>Timeline and readiness percentage included</div>
-        <div class="feat-check"><div class="check-circle"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg></div>Updated as you grow and the market shifts</div>
-      </div>
+      <svg viewBox="0 0 380 310" width="100%" height="auto" fill="none">
+        <rect x="0" y="0" width="380" height="310" rx="16" fill="#f0ede8"/>
+        <rect x="16" y="16" width="348" height="278" rx="12" fill="white" stroke="rgba(0,0,0,0.06)" stroke-width="1"/>
+        <text x="32" y="46" font-family="DM Sans,-apple-system,sans-serif" font-size="10" fill="#9ca3af" font-weight="500" letter-spacing="0.05em">GAP ANALYSIS</text>
+        <text x="32" y="66" font-family="DM Sans,-apple-system,sans-serif" font-size="14" fill="#0f0f1a" font-weight="700">Marketing Manager → PM</text>
+        <text x="336" y="66" text-anchor="end" font-family="DM Sans,-apple-system,sans-serif" font-size="26" fill="#7F77DD" font-weight="800">68%</text>
+        <rect x="32" y="76" width="316" height="3" rx="1.5" fill="#f0ede8"/>
+        <rect x="32" y="76" width="215" height="3" rx="1.5" fill="#7F77DD"/>
+        <line x1="32" y1="96" x2="348" y2="96" stroke="#f5f3ef" stroke-width="1"/>
+        <text x="32" y="118" font-family="DM Sans,-apple-system,sans-serif" font-size="13" fill="#0f0f1a">Strategic thinking</text>
+        <rect x="268" y="106" width="78" height="20" rx="10" fill="#f0fdf4"/>
+        <text x="307" y="120" text-anchor="middle" font-family="DM Sans,-apple-system,sans-serif" font-size="10" fill="#16a34a" font-weight="600">You have it</text>
+        <line x1="32" y1="136" x2="348" y2="136" stroke="#f5f3ef" stroke-width="1"/>
+        <text x="32" y="158" font-family="DM Sans,-apple-system,sans-serif" font-size="13" fill="#0f0f1a">Product roadmapping</text>
+        <rect x="264" y="146" width="82" height="20" rx="10" fill="#f0effe"/>
+        <text x="305" y="160" text-anchor="middle" font-family="DM Sans,-apple-system,sans-serif" font-size="10" fill="#7F77DD" font-weight="600">Build this</text>
+        <line x1="32" y1="176" x2="348" y2="176" stroke="#f5f3ef" stroke-width="1"/>
+        <text x="32" y="198" font-family="DM Sans,-apple-system,sans-serif" font-size="13" fill="#0f0f1a">Stakeholder management</text>
+        <rect x="268" y="186" width="78" height="20" rx="10" fill="#f0fdf4"/>
+        <text x="307" y="200" text-anchor="middle" font-family="DM Sans,-apple-system,sans-serif" font-size="10" fill="#16a34a" font-weight="600">You have it</text>
+        <line x1="32" y1="216" x2="348" y2="216" stroke="#f5f3ef" stroke-width="1"/>
+        <text x="32" y="238" font-family="DM Sans,-apple-system,sans-serif" font-size="13" fill="#0f0f1a">SQL / data analysis</text>
+        <rect x="264" y="226" width="82" height="20" rx="10" fill="#f0effe"/>
+        <text x="305" y="240" text-anchor="middle" font-family="DM Sans,-apple-system,sans-serif" font-size="10" fill="#7F77DD" font-weight="600">Build this</text>
+        <rect x="16" y="262" width="348" height="32" rx="0" fill="#f8f7f5"/>
+        <rect x="16" y="262" width="348" height="1" fill="rgba(0,0,0,0.04)"/>
+        <rect x="16" y="278" width="348" height="16" rx="0" fill="#f8f7f5"/>
+        <rect x="16" y="278" width="348" height="16" rx="0" fill="transparent"/>
+        <rect x="248" y="266" width="112" height="22" rx="7" fill="#7F77DD"/>
+        <text x="304" y="281" text-anchor="middle" font-family="DM Sans,-apple-system,sans-serif" font-size="10" fill="white" font-weight="600">View roadmap →</text>
+        <text x="32" y="281" font-family="DM Sans,-apple-system,sans-serif" font-size="10" fill="#9ca3af">2 gaps · 4 months · 3 courses</text>
+      </svg>
     </div>
   </div>
 </section>
 
-<section class="feat-section gray">
-  <div class="feat-inner reverse">
-    <div class="screenshot-wrap reveal-right">
-      <div class="screenshot-frame">
-        <div class="screenshot-bar">
-          <div class="screenshot-bar-dot" style="background:#ff5f57"></div>
-          <div class="screenshot-bar-dot" style="background:#fbbf24"></div>
-          <div class="screenshot-bar-dot" style="background:#4ade80"></div>
-          <div class="screenshot-bar-url">app.leapr.co — My Cohorts</div>
-        </div>
-        <img src="/screenshots/cohorts.png" alt="Leapr cohort community" loading="lazy" />
-      </div>
+<!-- FEATURE 2 — Find Your Twin -->
+<section class="section-bg">
+  <div class="feat reverse reveal">
+    <div class="reveal-right">
+      <svg viewBox="0 0 380 300" width="100%" height="auto" fill="none">
+        <rect x="0" y="0" width="380" height="300" rx="16" fill="white" stroke="rgba(0,0,0,0.06)" stroke-width="1"/>
+        <!-- Person 1 -->
+        <circle cx="96" cy="118" r="36" fill="#f0effe" stroke="rgba(127,119,221,0.15)" stroke-width="1"/>
+        <circle cx="96" cy="104" r="15" fill="#f5c5a0"/>
+        <ellipse cx="96" cy="96" rx="15" ry="9" fill="#2d1a0e"/>
+        <circle cx="91" cy="105" r="1.8" fill="#2d1a0e"/>
+        <circle cx="101" cy="105" r="1.8" fill="#2d1a0e"/>
+        <rect x="83" y="120" width="26" height="30" rx="9" fill="#7F77DD"/>
+        <rect x="85" y="146" width="9" height="20" rx="4.5" fill="#2d1a0e"/>
+        <rect x="98" y="146" width="9" height="20" rx="4.5" fill="#2d1a0e"/>
+        <text x="96" y="184" text-anchor="middle" font-family="DM Sans,-apple-system,sans-serif" font-size="11" fill="#0f0f1a" font-weight="600">You</text>
+        <text x="96" y="198" text-anchor="middle" font-family="DM Sans,-apple-system,sans-serif" font-size="10" fill="#9ca3af">Marketing Mgr</text>
+
+        <!-- Person 2 -->
+        <circle cx="284" cy="118" r="36" fill="#f0effe" stroke="rgba(127,119,221,0.15)" stroke-width="1"/>
+        <circle cx="284" cy="104" r="15" fill="#d4a574"/>
+        <ellipse cx="284" cy="96" rx="15" ry="9" fill="#1a0800"/>
+        <circle cx="279" cy="105" r="1.8" fill="#1a0800"/>
+        <circle cx="289" cy="105" r="1.8" fill="#1a0800"/>
+        <rect x="271" y="120" width="26" height="30" rx="9" fill="#9490E8"/>
+        <rect x="273" y="146" width="9" height="20" rx="4.5" fill="#1a0800"/>
+        <rect x="286" y="146" width="9" height="20" rx="4.5" fill="#1a0800"/>
+        <text x="284" y="184" text-anchor="middle" font-family="DM Sans,-apple-system,sans-serif" font-size="11" fill="#0f0f1a" font-weight="600">Your Twin</text>
+        <text x="284" y="198" text-anchor="middle" font-family="DM Sans,-apple-system,sans-serif" font-size="10" fill="#9ca3af">Now a PM at Stripe</text>
+
+        <!-- Connection -->
+        <path d="M134 116 Q190 96 246 116" stroke="#7F77DD" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <circle cx="190" cy="100" r="24" fill="white" stroke="rgba(127,119,221,0.2)" stroke-width="1"/>
+        <text x="190" y="97" text-anchor="middle" font-family="DM Sans,-apple-system,sans-serif" font-size="13" fill="#7F77DD" font-weight="800">94%</text>
+        <text x="190" y="112" text-anchor="middle" font-family="DM Sans,-apple-system,sans-serif" font-size="9" fill="#9ca3af">match</text>
+
+        <!-- Tags -->
+        <rect x="110" y="224" width="160" height="22" rx="11" fill="#f0effe" stroke="rgba(127,119,221,0.2)" stroke-width="1"/>
+        <text x="190" y="239" text-anchor="middle" font-family="DM Sans,-apple-system,sans-serif" font-size="10" fill="#7F77DD" font-weight="600">Same transition path</text>
+        <rect x="130" y="256" width="120" height="30" rx="9" fill="#7F77DD"/>
+        <text x="190" y="275" text-anchor="middle" font-family="DM Sans,-apple-system,sans-serif" font-size="11" fill="white" font-weight="600">☕ Start coffee chat</text>
+      </svg>
     </div>
     <div class="reveal-left">
-      <div class="feat-eyebrow">2 — Your Cohort</div>
-      <h2 class="feat-h2">People making<br/>the exact same<br/>move as you.</h2>
-      <p class="feat-desc">Join a cohort of people targeting your same role. Share wins. Ask the questions you can't ask in public. Get honest answers from people mid-transition — not career coaches.</p>
+      <p class="feat-eyebrow">Find Your Twin</p>
+      <h2 class="feat-h2">Someone already<br/>made your<br/><em>exact move.</em></h2>
+      <p class="feat-desc">Leapr matches you with people who made the exact same career transition — same background, same starting point, same target role. Learn from someone who's already on the other side.</p>
       <div class="feat-checks">
-        <div class="feat-check"><div class="check-circle"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg></div>Grouped by your exact target role</div>
-        <div class="feat-check"><div class="check-circle"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg></div>20+ active cohorts and growing</div>
-        <div class="feat-check"><div class="check-circle"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg></div>Coffee chats — one tap to connect</div>
-        <div class="feat-check"><div class="check-circle"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg></div>Real people, mid-transition. No career coaches.</div>
+        <div class="feat-check"><div class="check-dot"><svg width="7" height="7" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>Matched by role, skills and background</div>
+        <div class="feat-check"><div class="check-dot"><svg width="7" height="7" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>One tap to start a coffee chat</div>
+        <div class="feat-check"><div class="check-dot"><svg width="7" height="7" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>Real advice from someone who made it</div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="feat-section white">
-  <div class="feat-inner">
-    <div class="screenshot-wrap reveal-left">
-      <div class="screenshot-frame">
-        <div class="screenshot-bar">
-          <div class="screenshot-bar-dot" style="background:#ff5f57"></div>
-          <div class="screenshot-bar-dot" style="background:#fbbf24"></div>
-          <div class="screenshot-bar-dot" style="background:#4ade80"></div>
-          <div class="screenshot-bar-url">app.leapr.co — Market Intelligence</div>
-        </div>
-        <img src="/screenshots/discover.png" alt="Leapr market intelligence" loading="lazy" />
+<!-- FEATURE 3 — Projects -->
+<section class="section-white">
+  <div class="feat reveal">
+    <div class="reveal-left">
+      <p class="feat-eyebrow">Built for you</p>
+      <h2 class="feat-h2">A project that<br/>proves you're<br/><em>ready.</em></h2>
+      <p class="feat-desc">Based on your gap analysis, Leapr generates a real project built specifically for your skill gap — so you can show employers work, not just a CV. Build proof before you apply.</p>
+      <div class="feat-checks">
+        <div class="feat-check"><div class="check-dot"><svg width="7" height="7" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>Tailored to your exact skill gap</div>
+        <div class="feat-check"><div class="check-dot"><svg width="7" height="7" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>Step-by-step milestones to keep you moving</div>
+        <div class="feat-check"><div class="check-dot"><svg width="7" height="7" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>Prove your skills before the interview</div>
       </div>
     </div>
     <div class="reveal-right">
-      <div class="feat-eyebrow">3 — Market Intelligence</div>
-      <h2 class="feat-h2">Know where<br/>the market<br/>is heading.</h2>
-      <p class="feat-desc">Real-time market intelligence — fastest growing roles, in-demand skills, and average salaries after transition. Make your move based on data, not hope.</p>
-      <div class="feat-checks">
-        <div class="feat-check"><div class="check-circle"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg></div>2026 market data updated continuously</div>
-        <div class="feat-check"><div class="check-circle"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg></div>Fastest growing roles and salary ranges</div>
-        <div class="feat-check"><div class="check-circle"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg></div>In-demand skills with job opening counts</div>
-        <div class="feat-check"><div class="check-circle"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg></div>Average salary uplift after transition</div>
-      </div>
+      <svg viewBox="0 0 420 380" width="100%" height="auto" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background -->
+        <rect x="0" y="0" width="420" height="380" rx="20" fill="#f0ede8"/>
+
+        <!-- Desk surface -->
+        <rect x="60" y="230" width="300" height="14" rx="4" fill="#e8e4de"/>
+        <rect x="80" y="244" width="8" height="60" rx="4" fill="#ddd8d0"/>
+        <rect x="332" y="244" width="8" height="60" rx="4" fill="#ddd8d0"/>
+
+        <!-- Monitor -->
+        <rect x="120" y="120" width="180" height="114" rx="8" fill="#0f0f1a"/>
+        <rect x="128" y="128" width="164" height="98" rx="4" fill="#1a1a2e"/>
+        <!-- Monitor stand -->
+        <rect x="199" y="234" width="22" height="16" rx="2" fill="#ccc8c0"/>
+        <rect x="185" y="248" width="50" height="6" rx="3" fill="#ddd8d0"/>
+
+        <!-- Screen content — project kanban -->
+        <!-- Three columns on screen -->
+        <rect x="134" y="134" width="46" height="86" rx="3" fill="rgba(127,119,221,0.15)"/>
+        <text x="157" y="146" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="6" fill="rgba(255,255,255,0.5)" font-weight="600">TO DO</text>
+        <rect x="138" y="150" width="38" height="16" rx="2" fill="rgba(255,255,255,0.08)"/>
+        <rect x="138" y="170" width="38" height="16" rx="2" fill="rgba(255,255,255,0.08)"/>
+        <rect x="138" y="190" width="38" height="16" rx="2" fill="rgba(255,255,255,0.08)"/>
+
+        <rect x="186" y="134" width="46" height="86" rx="3" fill="rgba(127,119,221,0.2)"/>
+        <text x="209" y="146" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="6" fill="rgba(255,255,255,0.5)" font-weight="600">IN PROGRESS</text>
+        <rect x="190" y="150" width="38" height="24" rx="2" fill="#7F77DD"/>
+        <rect x="190" y="178" width="38" height="16" rx="2" fill="rgba(255,255,255,0.08)"/>
+
+        <rect x="238" y="134" width="46" height="86" rx="3" fill="rgba(127,119,221,0.1)"/>
+        <text x="261" y="146" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="6" fill="rgba(255,255,255,0.5)" font-weight="600">DONE</text>
+        <rect x="242" y="150" width="38" height="16" rx="2" fill="rgba(100,200,100,0.3)"/>
+        <rect x="242" y="170" width="38" height="16" rx="2" fill="rgba(100,200,100,0.3)"/>
+
+        <!-- PERSON sitting at desk -->
+        <!-- Chair -->
+        <rect x="168" y="268" width="84" height="8" rx="4" fill="#c8c0b8"/>
+        <rect x="202" y="276" width="16" height="28" rx="3" fill="#c8c0b8"/>
+        <rect x="176" y="296" width="68" height="6" rx="3" fill="#c8c0b8"/>
+
+        <!-- Body -->
+        <rect x="188" y="218" width="44" height="52" rx="12" fill="#7F77DD"/>
+        <!-- Arms on desk -->
+        <path d="M188 238 Q168 242 152 238" stroke="#7F77DD" stroke-width="10" stroke-linecap="round"/>
+        <path d="M232 238 Q252 242 268 238" stroke="#7F77DD" stroke-width="10" stroke-linecap="round"/>
+        <!-- Hands -->
+        <circle cx="152" cy="238" r="7" fill="#f5c5a0"/>
+        <circle cx="268" cy="238" r="7" fill="#f5c5a0"/>
+        <!-- Head -->
+        <circle cx="210" cy="206" r="22" fill="#f5c5a0"/>
+        <!-- Hair -->
+        <ellipse cx="210" cy="191" rx="22" ry="13" fill="#2d1a0e"/>
+        <!-- Eyes looking at screen -->
+        <circle cx="203" cy="207" r="2.5" fill="#2d1a0e"/>
+        <circle cx="217" cy="207" r="2.5" fill="#2d1a0e"/>
+        <!-- Focused expression -->
+        <path d="M205 215 Q210 218 215 215" stroke="#2d1a0e" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+
+        <!-- Floating skill bubbles around person -->
+        <!-- Figma bubble -->
+        <rect x="18" y="140" width="72" height="28" rx="14" fill="white" stroke="rgba(127,119,221,0.25)" stroke-width="1"/>
+        <circle cx="34" cy="154" r="7" fill="#f0effe"/>
+        <text x="34" y="158" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" fill="#7F77DD" font-weight="700">F</text>
+        <text x="64" y="158" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" fill="#0f0f1a" font-weight="600">Figma</text>
+
+        <!-- SQL bubble -->
+        <rect x="330" y="100" width="72" height="28" rx="14" fill="white" stroke="rgba(127,119,221,0.25)" stroke-width="1"/>
+        <circle cx="346" cy="114" r="7" fill="#f0effe"/>
+        <text x="346" y="118" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" fill="#7F77DD" font-weight="700">S</text>
+        <text x="377" y="118" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" fill="#0f0f1a" font-weight="600">SQL</text>
+
+        <!-- UX Research bubble -->
+        <rect x="300" y="170" width="102" height="28" rx="14" fill="white" stroke="rgba(127,119,221,0.25)" stroke-width="1"/>
+        <circle cx="316" cy="184" r="7" fill="#f0effe"/>
+        <text x="316" y="188" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" fill="#7F77DD" font-weight="700">U</text>
+        <text x="362" y="188" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" fill="#0f0f1a" font-weight="600">UX Research</text>
+
+        <!-- Analytics bubble -->
+        <rect x="18" y="190" width="90" height="28" rx="14" fill="white" stroke="rgba(127,119,221,0.25)" stroke-width="1"/>
+        <circle cx="34" cy="204" r="7" fill="#f0effe"/>
+        <text x="34" y="208" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="8" fill="#7F77DD" font-weight="700">A</text>
+        <text x="70" y="208" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" fill="#0f0f1a" font-weight="600">Analytics</text>
+
+        <!-- Progress bar at bottom -->
+        <rect x="60" y="330" width="300" height="6" rx="3" fill="rgba(0,0,0,0.06)"/>
+        <rect x="60" y="330" width="195" height="6" rx="3" fill="#7F77DD"/>
+        <text x="60" y="352" font-family="DM Sans,sans-serif" font-size="11" fill="#9ca3af">3 of 4 milestones complete</text>
+        <rect x="290" y="340" width="72" height="22" rx="8" fill="#7F77DD"/>
+        <text x="326" y="355" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" fill="white" font-weight="600">View project</text>
+
+        <!-- AI sparkle -->
+        <text x="18" y="80" font-family="DM Sans,sans-serif" font-size="10" fill="#9ca3af" font-weight="500">Built just for you by Leapr AI</text>
+        <rect x="18" y="56" width="130" height="18" rx="9" fill="#f0effe" stroke="rgba(127,119,221,0.2)" stroke-width="1"/>
+        <text x="83" y="69" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" fill="#7F77DD" font-weight="600">UX Research Case Study</text>
+      </svg>
     </div>
   </div>
 </section>
 
-<section class="feat-section gray">
-  <div class="feat-inner reverse">
-    <div class="screenshot-wrap reveal-right">
-      <div class="screenshot-frame">
-        <div class="screenshot-bar">
-          <div class="screenshot-bar-dot" style="background:#ff5f57"></div>
-          <div class="screenshot-bar-dot" style="background:#fbbf24"></div>
-          <div class="screenshot-bar-dot" style="background:#4ade80"></div>
-          <div class="screenshot-bar-url">app.leapr.co — Find Your Twin</div>
-        </div>
-        <img src="/screenshots/findyourtwin.png" alt="Leapr Find Your Twin" loading="lazy" />
-      </div>
+<!-- FEATURE 4 — Cohort -->
+<section class="section-bg">
+  <div class="cohort-section reveal">
+    <div class="reveal-right">
+      <svg viewBox="0 0 420 400" width="100%" height="auto" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background -->
+        <rect x="0" y="0" width="420" height="400" rx="20" fill="#f0ede8"/>
+
+        <!-- Header bar -->
+        <rect x="16" y="16" width="388" height="44" rx="12" fill="white" stroke="rgba(0,0,0,0.06)" stroke-width="1"/>
+        <circle cx="40" cy="38" r="10" fill="#7F77DD"/>
+        <text x="40" y="42" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="white" font-weight="700">PM</text>
+        <text x="58" y="34" font-family="DM Sans,sans-serif" font-size="12" fill="#0f0f1a" font-weight="700">PM Transition Cohort</text>
+        <text x="58" y="48" font-family="DM Sans,sans-serif" font-size="10" fill="#9ca3af">47 members · Active now</text>
+        <circle cx="380" cy="38" r="6" fill="#22c55e"/>
+
+        <!-- THREE PEOPLE sitting in a circle discussing -->
+        <!-- Ground/table circle -->
+        <ellipse cx="210" cy="250" rx="130" ry="50" fill="white" stroke="rgba(0,0,0,0.06)" stroke-width="1"/>
+
+        <!-- Person 1 — LEFT (Sarah) -->
+        <!-- Body -->
+        <rect x="66" y="210" width="34" height="46" rx="10" fill="#7F77DD"/>
+        <!-- Head -->
+        <circle cx="83" cy="198" r="19" fill="#f5c5a0"/>
+        <!-- Hair -->
+        <ellipse cx="83" cy="185" rx="19" ry="11" fill="#2d1a0e"/>
+        <!-- Eyes -->
+        <circle cx="78" cy="199" r="2" fill="#2d1a0e"/>
+        <circle cx="88" cy="199" r="2" fill="#2d1a0e"/>
+        <!-- Smile -->
+        <path d="M78 206 Q83 210 88 206" stroke="#2d1a0e" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        <!-- Arm pointing/gesturing -->
+        <path d="M100 225 Q118 220 128 218" stroke="#7F77DD" stroke-width="8" stroke-linecap="round"/>
+        <!-- Name -->
+        <text x="83" y="268" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" fill="#0f0f1a" font-weight="600">Sarah</text>
+        <text x="83" y="280" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="#9ca3af">ex-Teacher</text>
+
+        <!-- Person 2 — CENTER TOP (Raj) -->
+        <!-- Body -->
+        <rect x="193" y="174" width="34" height="46" rx="10" fill="#9490E8"/>
+        <!-- Head -->
+        <circle cx="210" cy="162" r="19" fill="#d4a574"/>
+        <!-- Hair -->
+        <ellipse cx="210" cy="150" rx="19" ry="10" fill="#1a0800"/>
+        <!-- Eyes -->
+        <circle cx="205" cy="163" r="2" fill="#1a0800"/>
+        <circle cx="215" cy="163" r="2" fill="#1a0800"/>
+        <!-- Talking expression -->
+        <path d="M205 171 Q210 175 215 171" stroke="#1a0800" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        <!-- Arms down -->
+        <path d="M193 190 Q178 196 168 200" stroke="#9490E8" stroke-width="8" stroke-linecap="round"/>
+        <path d="M227 190 Q242 196 252 200" stroke="#9490E8" stroke-width="8" stroke-linecap="round"/>
+        <!-- Name -->
+        <text x="210" y="234" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" fill="#0f0f1a" font-weight="600">Raj</text>
+        <text x="210" y="246" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="#9ca3af">ex-Engineer</text>
+
+        <!-- Person 3 — RIGHT (Maya) -->
+        <!-- Body -->
+        <rect x="320" y="210" width="34" height="46" rx="10" fill="#6B64C9"/>
+        <!-- Head -->
+        <circle cx="337" cy="198" r="19" fill="#e8b89a"/>
+        <!-- Hair long -->
+        <ellipse cx="337" cy="184" rx="19" ry="12" fill="#4a2010"/>
+        <rect x="318" y="184" width="8" height="30" rx="4" fill="#4a2010"/>
+        <rect x="350" y="184" width="8" height="30" rx="4" fill="#4a2010"/>
+        <!-- Eyes -->
+        <circle cx="332" cy="199" r="2" fill="#2d1a0e"/>
+        <circle cx="342" cy="199" r="2" fill="#2d1a0e"/>
+        <!-- Smile -->
+        <path d="M332 206 Q337 210 342 206" stroke="#2d1a0e" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        <!-- Arm gesturing -->
+        <path d="M320 225 Q302 220 292 218" stroke="#6B64C9" stroke-width="8" stroke-linecap="round"/>
+        <!-- Name -->
+        <text x="337" y="268" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="10" fill="#0f0f1a" font-weight="600">Maya</text>
+        <text x="337" y="280" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="#9ca3af">Now a PM</text>
+
+        <!-- CHAT BUBBLES floating around -->
+        <!-- Sarah's bubble -->
+        <rect x="16" y="110" width="148" height="44" rx="12" fill="white" stroke="rgba(0,0,0,0.07)" stroke-width="1"/>
+        <path d="M52 154 L44 162 L60 154" fill="white" stroke="rgba(0,0,0,0.07)" stroke-width="1"/>
+        <text x="90" y="128" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" fill="#0f0f1a" font-weight="600">Just got my first PM</text>
+        <text x="90" y="144" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" fill="#0f0f1a">interview call! 🎉</text>
+
+        <!-- Raj's bubble — top center -->
+        <rect x="140" y="60" width="140" height="44" rx="12" fill="#7F77DD"/>
+        <path d="M190 104 L182 112 L198 104" fill="#7F77DD"/>
+        <text x="210" y="78" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" fill="white" font-weight="600">SQL finally clicked for</text>
+        <text x="210" y="94" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" fill="rgba(255,255,255,0.85)">me this week 💪</text>
+
+        <!-- Maya's bubble -->
+        <rect x="258" y="110" width="148" height="44" rx="12" fill="white" stroke="rgba(0,0,0,0.07)" stroke-width="1"/>
+        <path d="M368" y="154" L376 162 L360 154" fill="white" stroke="rgba(0,0,0,0.07)" stroke-width="1"/>
+        <path d="M362 154 L370 162 L354 154" fill="white" stroke="rgba(0,0,0,0.06)" stroke-width="1"/>
+        <text x="332" y="128" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" fill="#0f0f1a" font-weight="600">Here's how I prepped</text>
+        <text x="332" y="144" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" fill="#9ca3af">for the PM interview →</text>
+
+        <!-- Bottom stats bar -->
+        <rect x="16" y="308" width="388" height="76" rx="12" fill="white" stroke="rgba(0,0,0,0.06)" stroke-width="1"/>
+        <text x="32" y="330" font-family="DM Sans,sans-serif" font-size="10" fill="#9ca3af" font-weight="500" letter-spacing="0.05em">YOUR COHORT ACTIVITY THIS WEEK</text>
+        <!-- Stats -->
+        <text x="56" y="360" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="20" fill="#7F77DD" font-weight="800">12</text>
+        <text x="56" y="374" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="#9ca3af">messages</text>
+        <line x1="100" y1="340" x2="100" y2="372" stroke="#f0ede8" stroke-width="1"/>
+        <text x="148" y="360" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="20" fill="#7F77DD" font-weight="800">3</text>
+        <text x="148" y="374" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="#9ca3af">wins shared</text>
+        <line x1="192" y1="340" x2="192" y2="372" stroke="#f0ede8" stroke-width="1"/>
+        <text x="240" y="360" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="20" fill="#7F77DD" font-weight="800">5</text>
+        <text x="240" y="374" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="#9ca3af">resources shared</text>
+        <rect x="282" y="336" width="110" height="36" rx="10" fill="#7F77DD"/>
+        <text x="337" y="358" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="11" fill="white" font-weight="600">Join cohort →</text>
+      </svg>
     </div>
     <div class="reveal-left">
-      <div class="feat-eyebrow">4 — Find Your Twin</div>
-      <h2 class="feat-h2">Match with someone<br/>who already<br/>made it.</h2>
-      <p class="feat-desc">Find someone who made your exact career transition. Learn from their path. Skip the mistakes they made. Your shortcut to the other side.</p>
+      <p class="feat-eyebrow">Your cohort</p>
+      <h2 class="feat-h2">People making<br/>the exact same<br/><em>move as you.</em></h2>
+      <p class="feat-desc">Not a forum. Not LinkedIn. A private room of people targeting your exact same role — sharing wins, asking the questions they can't ask in public, and holding each other accountable.</p>
       <div class="feat-checks">
-        <div class="feat-check"><div class="check-circle"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg></div>Match by your exact transition path</div>
-        <div class="feat-check"><div class="check-circle"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg></div>See their timeline and what worked</div>
-        <div class="feat-check"><div class="check-circle"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg></div>Connect directly via coffee chat</div>
-        <div class="feat-check"><div class="check-circle"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg></div>Your shortcut to the other side</div>
+        <div class="feat-check"><div class="check-dot"><svg width="7" height="7" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>Grouped by your exact target role</div>
+        <div class="feat-check"><div class="check-dot"><svg width="7" height="7" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>20+ active cohorts and growing</div>
+        <div class="feat-check"><div class="check-dot"><svg width="7" height="7" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>Real people mid-transition — not coaches</div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="who-section">
-  <div class="who-inner">
-    <div style="text-align:center;margin-bottom:0">
-      <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8B5CF6;margin-bottom:14px">Who it's for</div>
-      <h2 style="font-family:'Syne',sans-serif;font-size:clamp(36px,5vw,52px);font-weight:900;letter-spacing:-0.04em;color:#fff;margin-bottom:14px">Sound like you?</h2>
-      <p style="font-size:17px;color:rgba(255,255,255,0.42);max-width:440px;margin:0 auto">Leapr is built for people in the middle of a career transition — not for people who already made it.</p>
+<!-- FOUNDER -->
+<section class="section-white">
+  <div class="founder reveal">
+    <div>
+      <div class="founder-avatar">D</div>
+      <p class="founder-name">Deepika Sharma</p>
+      <p class="founder-title">Founder, Leapr · Patent Pending</p>
     </div>
-    <div class="who-grid">
-      <div class="who-card reveal"><div class="who-dot"></div><p class="who-text"><strong>Scared your role is changing</strong> and not sure what to move into before it's too late</p></div>
-      <div class="who-card reveal" style="transition-delay:0.1s"><div class="who-dot"></div><p class="who-text"><strong>Switching careers quietly</strong> but doing it alone — LinkedIn is the last place you'd be honest</p></div>
-      <div class="who-card reveal" style="transition-delay:0.2s"><div class="who-dot"></div><p class="who-text"><strong>Stuck with no direction</strong> — you know you want something different but don't know how</p></div>
-      <div class="who-card reveal"><div class="who-dot"></div><p class="who-text"><strong>In the middle chapter</strong> — past the old career, not yet in the new one</p></div>
-      <div class="who-card reveal" style="transition-delay:0.1s"><div class="who-dot"></div><p class="who-text"><strong>Tired of applying blindly</strong> with no sense of whether you're even qualified for the roles you want</p></div>
-      <div class="who-card reveal" style="transition-delay:0.2s"><div class="who-dot"></div><p class="who-text"><strong>Moving markets or countries</strong> and need to understand how your skills translate</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="founder-section">
-  <div class="founder-inner">
-    <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8B5CF6;margin-bottom:20px;text-align:center">From the founder</div>
-    <div class="founder-quote-card reveal">
-      <div class="quote-mark">"</div>
-      <p class="quote-text">I went through my own career transition. The doubt. The imposter syndrome. The "is it too late for me?"<br/><br/>The one thing I needed was a room full of people going through the same thing. Not mentors. Not influencers. Just real people, mid-transition, willing to talk honestly.<br/><br/>That room didn't exist. So I built it.</p>
-      <div class="founder-info">
-        <div class="founder-av">D</div>
-        <div>
-          <div class="founder-name">Deepika Sharma</div>
-          <div class="founder-role">Founder, Leapr · Career Transition Intelligence</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="transitions-section">
-  <div class="transitions-inner">
-    <div class="reveal" style="text-align:center">
-      <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8B5CF6;margin-bottom:12px">Explore transitions</div>
-      <h2 style="font-family:'Syne',sans-serif;font-size:clamp(28px,3.5vw,40px);font-weight:800;letter-spacing:-0.03em;color:#0f0820;margin-bottom:10px">Most popular career moves.</h2>
-      <p style="font-size:16px;color:#6b7280">See the exact skill gap, timeline, and roadmap for transitions people are making right now.</p>
-    </div>
-    <div class="transitions-grid">
-      <a href="/transition/data-analyst-to-product-manager" class="transition-card reveal"><div><div class="tc-title">Data Analyst → Product Manager</div><div class="tc-meta">6–12 months · High demand</div></div><span class="tc-arrow">→</span></a>
-      <a href="/transition/software-engineer-to-product-manager" class="transition-card reveal" style="transition-delay:0.05s"><div><div class="tc-title">Software Engineer → Product Manager</div><div class="tc-meta">8–14 months · Very popular</div></div><span class="tc-arrow">→</span></a>
-      <a href="/transition/marketing-manager-to-product-manager" class="transition-card reveal" style="transition-delay:0.1s"><div><div class="tc-title">Marketing Manager → Product Manager</div><div class="tc-meta">6–10 months · Growing fast</div></div><span class="tc-arrow">→</span></a>
-      <a href="/transition/business-analyst-to-product-manager" class="transition-card reveal"><div><div class="tc-title">Business Analyst → Product Manager</div><div class="tc-meta">5–9 months · High overlap</div></div><span class="tc-arrow">→</span></a>
-      <a href="/transition/software-engineer-to-data-scientist" class="transition-card reveal" style="transition-delay:0.05s"><div><div class="tc-title">Software Engineer → Data Scientist</div><div class="tc-meta">6–12 months · Technical leap</div></div><span class="tc-arrow">→</span></a>
-      <a href="/transition/data-analyst-to-data-scientist" class="transition-card reveal" style="transition-delay:0.1s"><div><div class="tc-title">Data Analyst → Data Scientist</div><div class="tc-meta">4–8 months · Natural path</div></div><span class="tc-arrow">→</span></a>
-      <a href="/transition/teacher-to-ux-designer" class="transition-card reveal"><div><div class="tc-title">Teacher → UX Designer</div><div class="tc-meta">8–14 months · Empathy-driven</div></div><span class="tc-arrow">→</span></a>
-      <a href="/transition/project-manager-to-product-manager" class="transition-card reveal" style="transition-delay:0.05s"><div><div class="tc-title">Project Manager → Product Manager</div><div class="tc-meta">5–9 months · Common move</div></div><span class="tc-arrow">→</span></a>
-    </div>
-    <div style="text-align:center" class="reveal">
-      <a href="https://app.leapr.co" style="display:inline-block;background:#5B21B6;color:#fff;padding:14px 32px;border-radius:10px;font-size:15px;font-weight:700;text-decoration:none;transition:transform 0.2s,box-shadow 0.2s" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 12px 32px rgba(91,33,182,0.3)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">Get my personalised gap analysis →</a>
-      <p style="font-size:12px;color:#9ca3af;margin-top:10px">Free · No credit card · 3 minutes</p>
+    <div class="founder-quote">
+      <p>"My entire Bangalore office closed overnight. I spent two years not knowing what I was missing — applying, hearing nothing, feeling invisible in the job market. Nobody could tell me exactly what stood between me and my next role."</p>
+      <p>"I built Leapr so nobody has to go through that blind. Every feature is something I wish had existed when I was making my move. My son named it — and that story is what I build it for every day."</p>
     </div>
   </div>
 </section>
 
 <!-- EMAIL SIGNUP -->
-<section style="background:#fff;padding:80px 48px;border-top:1px solid #f0eeff;border-bottom:1px solid #f0eeff;">
-  <div style="max-width:560px;margin:0 auto;text-align:center;" class="reveal">
-    <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#8B5CF6;margin-bottom:14px;">Stay in the loop</div>
-    <h2 style="font-family:'Syne',sans-serif;font-size:clamp(28px,3.5vw,40px);font-weight:800;letter-spacing:-0.03em;color:#0f0820;margin-bottom:12px;">Not ready to join yet?</h2>
-    <p style="font-size:16px;color:#6b7280;margin-bottom:32px;line-height:1.7;">Get weekly career transition insights, new cohort announcements, and market intelligence — straight to your inbox.</p>
-    <div style="display:flex;gap:10px;max-width:440px;margin:0 auto;" id="email-form">
-      <input
-        id="email-input"
-        type="email"
-        placeholder="your@email.com"
-        style="flex:1;padding:13px 18px;border:1.5px solid #ede9fe;border-radius:10px;font-size:15px;font-family:'Inter',sans-serif;outline:none;color:#111;transition:border-color 0.2s;"
-        onfocus="this.style.borderColor='#8B5CF6'"
-        onblur="this.style.borderColor='#ede9fe'"
-      />
-      <button
-        onclick="handleEmailSignup()"
-        id="signup-btn"
-        style="padding:13px 24px;background:#5B21B6;color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;white-space:nowrap;transition:transform 0.2s,box-shadow 0.2s;font-family:'Inter',sans-serif;"
-        onmouseover="this.style.transform='translateY(-1px)';this.style.boxShadow='0 8px 24px rgba(91,33,182,0.3)'"
-        onmouseout="this.style.transform='none';this.style.boxShadow='none'"
-      >Get updates →</button>
+<section class="section-bg">
+  <div class="email-section reveal">
+    <div>
+      <h2>Stay ahead of<br/>your <em>transition.</em></h2>
+      <p style="margin-top: 12px;">Get weekly career transition intelligence — in-demand skills, salary trends, and stories from people who made the leap. No spam, ever.</p>
     </div>
-    <p id="signup-msg" style="font-size:13px;color:#9ca3af;margin-top:12px;">No spam. Unsubscribe anytime.</p>
+    <div>
+      <div class="email-form" id="email-form">
+        <input type="email" class="email-input" id="email-input" placeholder="Your email address" />
+        <button class="email-submit" id="signup-btn" onclick="handleEmailSignup()">Get weekly insights →</button>
+        <p class="email-note" id="signup-msg">Join 500+ people navigating their career transition</p>
+      </div>
+    </div>
   </div>
 </section>
 
+<!-- CTA -->
 <section class="cta-section">
-  <div class="cta-blob"></div>
-  <h2 class="cta-h2 reveal">You don't have to<br/>figure this out alone.</h2>
-  <p class="cta-sub reveal">Join free. Find your cohort. Meet your people.</p>
-  <div class="cta-checks reveal">
-    <span class="cta-check">✓ Free to join</span>
-    <span class="cta-check">✓ No credit card required</span>
-    <span class="cta-check">✓ Web and mobile</span>
-  </div>
-  <a href="https://app.leapr.co" class="btn-hero-w reveal" style="font-size:17px;padding:16px 40px;display:inline-block">Join Leapr Free →</a>
-
-  <!-- MASCOT CELEBRATING -->
-  <div style="display:flex;justify-content:center;margin-top:40px;" class="reveal">
-    <div style="position:relative;display:inline-block;">
-      <style>
-        @keyframes leapr-bounce-cta { 0%,100%{transform:rotate(-4deg) scale(1) translateY(0)} 25%{transform:rotate(4deg) scale(1.06) translateY(-22px)} 75%{transform:rotate(-2deg) scale(1.03) translateY(-10px)} }
-        @keyframes leapr-sparkle { 0%,100%{opacity:0.25;transform:scale(0.8) rotate(0deg)} 50%{opacity:1;transform:scale(1.5) rotate(20deg)} }
-      </style>
-      <!-- SPARKLES -->
-      <span style="position:absolute;top:-16px;left:-16px;color:#c4b5fd;font-size:18px;animation:leapr-sparkle 0.9s ease-in-out infinite;animation-delay:0s;pointer-events:none;">✦</span>
-      <span style="position:absolute;top:-6px;right:-18px;color:#a78bfa;font-size:14px;animation:leapr-sparkle 0.9s ease-in-out infinite;animation-delay:0.3s;pointer-events:none;">✦</span>
-      <span style="position:absolute;bottom:10px;left:-20px;color:#c4b5fd;font-size:12px;animation:leapr-sparkle 0.9s ease-in-out infinite;animation-delay:0.6s;pointer-events:none;">✦</span>
-      <span style="position:absolute;bottom:-4px;right:-14px;color:#a78bfa;font-size:16px;animation:leapr-sparkle 0.9s ease-in-out infinite;animation-delay:0.15s;pointer-events:none;">✦</span>
-
-      <div style="animation:leapr-bounce-cta 0.75s ease-in-out infinite;">
-        <!-- BODY -->
-        <div style="width:100px;height:88px;background:linear-gradient(160deg,#7c3aed 0%,#5b21b6 100%);border-radius:30px;position:relative;box-shadow:0 0 90px rgba(255,255,255,0.25),0 0 55px rgba(196,181,253,0.4),inset 0 1px 0 rgba(255,255,255,0.12);margin:0 auto;">
-          <!-- LEFT ARM raised -->
-          <div style="width:15px;height:44px;background:linear-gradient(to bottom,#7c3aed,#5b21b6);border-radius:8px;position:absolute;top:15%;left:-17px;transform:rotate(-50deg) translateY(-12px);transform-origin:top center;"></div>
-          <!-- RIGHT ARM raised -->
-          <div style="width:15px;height:44px;background:linear-gradient(to bottom,#7c3aed,#5b21b6);border-radius:8px;position:absolute;top:15%;right:-17px;transform:rotate(50deg) translateY(-12px);transform-origin:top center;"></div>
-
-          <!-- HEAD -->
-          <div style="width:84px;height:80px;background:linear-gradient(145deg,#8b5cf6 0%,#6d28d9 100%);border-radius:26px;position:absolute;top:-65px;left:50%;transform:translateX(-50%);box-shadow:0 0 36px rgba(139,92,246,0.55),inset 0 1px 0 rgba(255,255,255,0.1);">
-            <!-- ANTENNA -->
-            <div style="width:4px;height:24px;background:linear-gradient(to top,#7c3aed,#c4b5fd);border-radius:3px;position:absolute;top:-30px;left:50%;transform:translateX(-50%);">
-              <div style="width:16px;height:16px;background:radial-gradient(circle at 35% 30%,#ddd6fe,#8b5cf6);border-radius:50%;position:absolute;top:-9px;left:-6px;animation:leapr-ball-pulse 2s ease-in-out infinite;"></div>
-            </div>
-            <!-- LEFT EYE -->
-            <div style="width:19px;height:19px;background:white;border-radius:50%;position:absolute;top:30%;left:15%;box-shadow:0 0 8px rgba(255,255,255,0.35);">
-              <div style="width:9px;height:9px;background:#1a0a2e;border-radius:50%;position:absolute;top:25%;left:25%;"></div>
-            </div>
-            <!-- RIGHT EYE -->
-            <div style="width:19px;height:19px;background:white;border-radius:50%;position:absolute;top:30%;right:15%;box-shadow:0 0 8px rgba(255,255,255,0.35);">
-              <div style="width:9px;height:9px;background:#1a0a2e;border-radius:50%;position:absolute;top:25%;left:25%;"></div>
-            </div>
-            <!-- BIG SMILE celebrating -->
-            <div style="width:52px;height:25px;border-bottom:4px solid rgba(255,255,255,0.9);border-radius:0 0 30px 30px;position:absolute;bottom:14%;left:50%;transform:translateX(-50%);"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- SPEECH BUBBLE -->
-      <div style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);border-radius:12px;padding:8px 16px;text-align:center;font-size:13px;color:#fff;font-weight:700;margin-top:16px;backdrop-filter:blur(8px);">
-        Let's make the leap together! 🚀
-      </div>
-    </div>
-  </div>
-
+  <p class="cta-eyebrow">500+ people already inside</p>
+  <h2 class="cta-h2">Stop guessing.<br/><em>Find out what's in your way.</em></h2>
+  <p class="cta-sub">Free to join. No credit card. 2 minutes to your first gap analysis.</p>
+  <a href="https://app.leapr.co" class="btn-cta">Find your path →</a>
+  <p class="cta-note">Web · iOS · Android</p>
 </section>
 
 <footer>
-  <a href="/" class="footer-logo-text" style="display:flex;align-items:center;gap:8px;">
-    <svg viewBox="0 0 80 110" width="18" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="40" y1="88" x2="40" y2="28" stroke="#A78BFA" stroke-width="5" stroke-linecap="round"/>
-      <path d="M40 60 Q14 48 12 20 Q36 18 40 54" fill="#A78BFA" opacity="0.38"/>
-      <path d="M40 38 Q66 24 68 4 Q44 2 40 32" fill="#A78BFA"/>
-      <line x1="24" y1="88" x2="56" y2="88" stroke="#A78BFA" stroke-width="3" stroke-linecap="round" opacity="0.15"/>
+  <a href="/" class="footer-logo">
+    <svg viewBox="0 0 80 110" width="14" height="18" fill="none">
+      <line x1="40" y1="88" x2="40" y2="28" stroke="#7F77DD" stroke-width="5" stroke-linecap="round"/>
+      <path d="M40 60 Q14 48 12 20 Q36 18 40 54" fill="#7F77DD" opacity="0.38"/>
+      <path d="M40 38 Q66 24 68 4 Q44 2 40 32" fill="#7F77DD"/>
     </svg>
-    Leapr
+    <span class="footer-logo-text">Leapr</span>
   </a>
   <p>© 2026 Leapr. All rights reserved. · Patent Pending</p>
   <div class="footer-links">
@@ -542,10 +970,11 @@
     <a href="/terms">Terms</a>
     <a href="/blog">Blog</a>
     <a href="/partners">Partner Programme</a>
-    <a href="mailto:hello@leapr.co">Contact</a>
+    <a href="/cdn-cgi/l/email-protection#9ff7faf3f3f0dff3fafeefedb1fcf0">Contact</a>
   </div>
 </footer>
 
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script>
   try {
     const keys = Object.keys(localStorage);
@@ -556,36 +985,11 @@
     }
   } catch(e) {}
 
-  const glow = document.getElementById('cursor-glow');
-  document.addEventListener('mousemove', e => { glow.style.left = e.clientX+'px'; glow.style.top = e.clientY+'px'; });
-
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); }, { passive: true });
-
   const revealObs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .who-card, .transition-card').forEach(el => revealObs.observe(el));
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => revealObs.observe(el));
 
-  const counterObs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      const el = e.target;
-      const target = parseInt(el.dataset.count);
-      const suffix = el.dataset.suffix || '+';
-      let current = 0;
-      const step = target / 60;
-      const t = setInterval(() => {
-        current = Math.min(current + step, target);
-        el.textContent = Math.floor(current) + suffix;
-        if (current >= target) { el.textContent = target + suffix; clearInterval(t); }
-      }, 16);
-      counterObs.unobserve(el);
-    });
-  }, { threshold: 0.5 });
-  document.querySelectorAll('[data-count]').forEach(el => counterObs.observe(el));
-
-  // Email signup
   async function handleEmailSignup() {
     const email = document.getElementById('email-input').value.trim();
     const btn = document.getElementById('signup-btn');
@@ -613,22 +1017,13 @@
 
       if (res.ok || res.status === 409) {
         document.getElementById('email-form').innerHTML = `
-          <div style="text-align:center;width:100%">
-            <div style="font-size:32px;margin-bottom:8px;">🎉</div>
-            <p style="font-size:16px;font-weight:700;color:#5B21B6;">You're on the list!</p>
-            <p style="font-size:14px;color:#9ca3af;margin-top:4px;">We'll be in touch soon.</p>
+          <div style="text-align:center;padding:24px 0;">
+            <p style="font-size:15px;font-weight:700;color:#7F77DD;margin-bottom:6px;">You're on the list.</p>
+            <p style="font-size:13px;color:#9ca3af;">We'll be in touch with your first weekly insight.</p>
           </div>`;
       } else {
         throw new Error('Failed');
       }
     } catch(e) {
       msg.textContent = 'Something went wrong. Please try again.';
-      msg.style.color = '#ef4444';
-      btn.textContent = 'Get updates →';
-      btn.disabled = false;
-    }
-  }
-  window.handleEmailSignup = handleEmailSignup;
-</script>
-</body>
-</html>
+     
