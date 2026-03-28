@@ -209,9 +209,12 @@
     /* SECTIONS */
     .section-white { background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .section-bg { background: var(--bg); }
+    .section-white + .section-bg,
+    .section-bg + .section-white { margin-top: 0; }
+    section { margin: 0; }
 
     .feat {
-      padding: 64px 80px;
+      padding: 48px 80px;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 80px;
@@ -219,8 +222,9 @@
       max-width: 1160px;
       margin: 0 auto;
     }
-    .feat.reverse { direction: rtl; }
-    .feat.reverse > * { direction: ltr; }
+    .feat.reverse { direction: ltr; }
+    .feat.reverse > *:first-child { order: 2; }
+    .feat.reverse > *:last-child { order: 1; }
 
     .feat-eyebrow {
       font-size: 11px;
@@ -255,7 +259,7 @@
 
     /* COHORT SECTION */
     .cohort-section {
-      padding: 64px 80px;
+      padding: 48px 80px;
       max-width: 1160px;
       margin: 0 auto;
       display: grid;
