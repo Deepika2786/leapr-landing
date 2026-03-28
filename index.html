@@ -14,6 +14,7 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Leapr","url":"https://leapr.co","applicationCategory":"BusinessApplication","operatingSystem":"Web, iOS, Android","description":"Leapr is a career transition intelligence platform that maps your exact skill gap and builds a personalised roadmap to your target role.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"creator":{"@type":"Person","name":"Deepika Sharma"},"featureList":["Career gap analysis","Personalised transition roadmap","Cohort community","Find Your Twin","Market intelligence","Coffee chats"]}</script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
@@ -1144,7 +1145,7 @@
 
   const revealObs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
+  }, { threshold: 0 });
   document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => revealObs.observe(el));
 
   const counterObs = new IntersectionObserver(entries => {
