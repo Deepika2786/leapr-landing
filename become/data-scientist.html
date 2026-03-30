@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Become a Data Scientist in 2026 — Complete Guide</title>
+  <meta name="description" content="A practical, step-by-step guide to becoming a Data Scientist in 2026. Learn the exact skills, timeline, and path — whatever your background." />
+  <meta property="og:title" content="How to Become a Data Scientist in 2026" />
+  <meta property="og:description" content="A practical, step-by-step guide to becoming a Data Scientist in 2026. No PhD required." />
+  <meta property="og:url" content="https://leapr.co/become/data-scientist" />
+  <link rel="canonical" href="https://leapr.co/become/data-scientist" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    :root { --bg: #f0ede8; --white: #ffffff; --ink: #0f0f1a; --ink-light: #4b5563; --ink-muted: #9ca3af; --purple: #7F77DD; --purple-light: #f0effe; --purple-border: rgba(127,119,221,0.2); --border: rgba(0,0,0,0.08); --border-light: rgba(0,0,0,0.05); }
+    body { font-family: 'DM Sans', -apple-system, sans-serif; color: var(--ink); background: var(--bg); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    nav { background: var(--bg); border-bottom: 1px solid var(--border); padding: 0 48px; height: 58px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .nav-logo-text { font-size: 15px; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; }
+    .nav-right { display: flex; gap: 8px; align-items: center; }
+    .btn-ghost { font-size: 13px; color: var(--ink-light); text-decoration: none; font-weight: 500; padding: 6px 14px; border-radius: 7px; transition: background 0.15s; }
+    .btn-ghost:hover { background: rgba(0,0,0,0.05); }
+    .btn-primary { font-size: 13px; font-weight: 700; color: #fff; background: var(--purple); padding: 8px 20px; border-radius: 7px; text-decoration: none; transition: opacity 0.15s, transform 0.15s; }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+    .hero { background: var(--white); border-bottom: 1px solid var(--border); padding: 80px 80px; max-width: 860px; margin: 0 auto; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 6px; background: var(--purple-light); border: 1px solid var(--purple-border); border-radius: 99px; padding: 4px 14px; margin-bottom: 28px; font-size: 11px; font-weight: 600; color: var(--purple); letter-spacing: 0.06em; text-transform: uppercase; }
+    .eyebrow-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--purple); }
+    h1 { font-family: 'Instrument Serif', Georgia, serif; font-size: clamp(40px, 5vw, 64px); font-weight: 400; letter-spacing: -0.02em; line-height: 1.05; color: var(--ink); margin: 0 0 24px; }
+    h1 em { font-style: italic; color: var(--purple); }
+    .hero-sub { font-size: 16px; color: var(--ink-light); line-height: 1.75; margin: 0 0 36px; max-width: 560px; }
+    .hero-meta { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 36px; }
+    .meta-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--ink-muted); }
+    .meta-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--purple); }
+    .btn-hero { display: inline-block; background: var(--purple); color: #fff; padding: 14px 28px; border-radius: 8px; font-size: 14px; font-weight: 700; text-decoration: none; transition: opacity 0.15s, transform 0.15s; }
+    .btn-hero:hover { opacity: 0.9; transform: translateY(-1px); }
+    .content { max-width: 860px; margin: 0 auto; padding: 0 80px; }
+    .section { padding: 64px 0; border-bottom: 1px solid var(--border); }
+    .section:last-child { border-bottom: none; }
+    .section-label { font-size: 11px; font-weight: 600; color: var(--purple); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+    h2 { font-family: 'Instrument Serif', Georgia, serif; font-size: clamp(28px, 3.5vw, 40px); font-weight: 400; letter-spacing: -0.02em; line-height: 1.1; color: var(--ink); margin-bottom: 16px; }
+    h2 em { font-style: italic; color: var(--purple); }
+    h3 { font-size: 17px; font-weight: 700; color: var(--ink); margin-bottom: 8px; letter-spacing: -0.02em; }
+    p { font-size: 15px; color: var(--ink-light); line-height: 1.8; margin-bottom: 16px; }
+    p:last-child { margin-bottom: 0; }
+    .card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 16px; }
+    .card:last-child { margin-bottom: 0; }
+    .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .tag { display: inline-block; font-size: 11px; font-weight: 600; color: var(--purple); background: var(--purple-light); border: 1px solid var(--purple-border); border-radius: 99px; padding: 3px 10px; margin-bottom: 12px; }
+    .skills-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .skill { font-size: 13px; color: var(--ink-light); background: var(--white); border: 1px solid var(--border); border-radius: 99px; padding: 5px 14px; }
+    .skill.have { color: #16a34a; background: #f0fdf4; border-color: rgba(22,163,74,0.2); }
+    .skill.need { color: var(--purple); background: var(--purple-light); border-color: var(--purple-border); }
+    .timeline { display: flex; flex-direction: column; gap: 0; }
+    .t-step { display: flex; gap: 20px; padding-bottom: 32px; position: relative; }
+    .t-step:last-child { padding-bottom: 0; }
+    .t-left { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+    .t-circle { width: 36px; height: 36px; border-radius: 50%; background: var(--purple); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; }
+    .t-line { width: 2px; background: var(--border); flex: 1; margin-top: 8px; }
+    .t-step:last-child .t-line { display: none; }
+    .t-time { font-size: 11px; font-weight: 600; color: var(--purple); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+    .faq-item { background: var(--white); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 8px; }
+    .faq-q { width: 100%; text-align: left; padding: 18px 20px; background: var(--white); border: none; color: var(--ink); font-size: 14px; font-weight: 600; font-family: 'DM Sans', sans-serif; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; transition: background 0.15s; }
+    .faq-q:hover { background: var(--bg); }
+    .faq-icon { color: var(--purple); font-size: 18px; flex-shrink: 0; transition: transform 0.3s; }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; background: var(--white); font-size: 14px; color: var(--ink-light); line-height: 1.75; padding: 0 20px; }
+    .faq-item.open .faq-a { max-height: 300px; padding: 0 20px 18px; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .cta-section { background: var(--purple); border-radius: 16px; padding: 56px; text-align: center; margin: 64px 0; }
+    .cta-section h2 { color: #fff; margin-bottom: 12px; }
+    .cta-section p { color: rgba(255,255,255,0.75); max-width: 480px; margin: 0 auto 32px; }
+    .btn-cta-white { display: inline-block; background: #fff; color: var(--purple); padding: 14px 32px; border-radius: 8px; font-size: 14px; font-weight: 700; text-decoration: none; transition: opacity 0.15s, transform 0.15s; }
+    .btn-cta-white:hover { opacity: 0.92; transform: translateY(-1px); }
+    .breadcrumb { padding: 16px 80px; max-width: 860px; margin: 0 auto; display: flex; align-items: center; gap: 6px; }
+    .breadcrumb a { font-size: 12px; color: var(--ink-muted); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { color: var(--purple); }
+    .breadcrumb span { font-size: 12px; color: var(--ink-muted); }
+    footer { border-top: 1px solid var(--border); padding: 28px 80px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-logo { display: flex; align-items: center; gap: 7px; text-decoration: none; }
+    .footer-logo-text { font-size: 13px; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; }
+    footer p { font-size: 12px; color: var(--ink-muted); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 12px; color: var(--ink-muted); text-decoration: none; }
+    .footer-links a:hover { color: var(--purple); }
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @media(max-width: 768px) { nav { padding: 0 20px; } .hero { padding: 48px 24px; } .breadcrumb { padding: 12px 24px; } .content { padding: 0 24px; } .card-grid { grid-template-columns: 1fr; } .cta-section { padding: 40px 24px; } footer { padding: 24px 20px; flex-direction: column; text-align: center; } }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/" class="nav-logo">
+    <svg viewBox="0 0 80 110" width="16" height="22" fill="none"><line x1="40" y1="88" x2="40" y2="28" stroke="#7F77DD" stroke-width="5" stroke-linecap="round"/><path d="M40 60 Q14 48 12 20 Q36 18 40 54" fill="#7F77DD" opacity="0.38"/><path d="M40 38 Q66 24 68 4 Q44 2 40 32" fill="#7F77DD"/></svg>
+    <span class="nav-logo-text">Leapr</span>
+  </a>
+  <div class="nav-right">
+    <a href="/" class="btn-ghost">Home</a>
+    <a href="https://app.leapr.co" class="btn-primary">Get started free →</a>
+  </div>
+</nav>
+<div class="breadcrumb"><a href="/">Leapr</a><span>→</span><a href="/become">Career Guides</a><span>→</span><span style="color:var(--ink)">How to Become a Data Scientist</span></div>
+<div style="background:var(--white);border-bottom:1px solid var(--border)">
+<div class="hero">
+  <div class="eyebrow"><span class="eyebrow-dot"></span> Career Guide 2026</div>
+  <h1>How to become a<br/><em>Data Scientist.</em></h1>
+  <p class="hero-sub">No PhD required. No pure maths degree. A practical guide to breaking into data science — from analyst, engineer, or any quantitative background.</p>
+  <div class="hero-meta">
+    <div class="meta-item"><span class="meta-dot"></span> 6–18 month transition</div>
+    <div class="meta-item"><span class="meta-dot"></span> No PhD required</div>
+    <div class="meta-item"><span class="meta-dot"></span> $120k–$190k average salary</div>
+  </div>
+  <a href="https://app.leapr.co" class="btn-hero">Find your exact skill gap → Free</a>
+</div>
+</div>
+<div class="content">
+  <div class="section reveal">
+    <p class="section-label">The role</p>
+    <h2>What does a Data Scientist<br/><em>actually do?</em></h2>
+    <p>A Data Scientist extracts insight from data to drive decisions. You build models, run experiments, analyse patterns, and communicate findings to non-technical stakeholders. The job sits at the intersection of statistics, programming, and business judgment.</p>
+    <p>The day-to-day varies enormously by company. At a startup you might do everything from ETL to ML deployment. At a large company you might own one very specific slice — like churn prediction or pricing models. Either way, the core is the same: use data to answer questions that matter.</p>
+    <div class="card-grid" style="margin-top:32px">
+      <div class="card"><div class="tag">You will do a lot of</div><h3>Analysis & modelling</h3><p>Exploring datasets, building predictive models, validating results, iterating.</p></div>
+      <div class="card"><div class="tag">You will do a lot of</div><h3>Communication</h3><p>Translating complex findings into clear business recommendations non-technical people can act on.</p></div>
+      <div class="card"><div class="tag">You will do less of</div><h3>Pure research</h3><p>Most industry roles are applied — solving real business problems, not publishing papers.</p></div>
+      <div class="card"><div class="tag">You will do less of</div><h3>Building data pipelines</h3><p>That's more data engineering. Some overlap exists but DS focuses on insight, not infrastructure.</p></div>
+    </div>
+  </div>
+  <div class="section reveal">
+    <p class="section-label">Skills</p>
+    <h2>What skills does a<br/><em>Data Scientist need?</em></h2>
+    <p>The core skillset has three layers — statistics, programming, and domain knowledge. Most career changers already have domain knowledge. The technical skills are learnable.</p>
+    <div class="card" style="margin-top:24px">
+      <h3>Technical skills</h3>
+      <p style="margin-bottom:0">These are the non-negotiables. Build them systematically.</p>
+      <div class="skills-row">
+        <span class="skill need">Python (pandas, numpy, sklearn)</span>
+        <span class="skill need">SQL — advanced</span>
+        <span class="skill need">Statistics & probability</span>
+        <span class="skill need">Machine learning fundamentals</span>
+        <span class="skill need">Data visualisation</span>
+        <span class="skill need">A/B testing & experimentation</span>
+        <span class="skill need">Feature engineering</span>
+        <span class="skill need">Model evaluation</span>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Business skills</h3>
+      <p style="margin-bottom:0">Often underrated — these separate good data scientists from great ones.</p>
+      <div class="skills-row">
+        <span class="skill have">Problem framing</span>
+        <span class="skill have">Stakeholder communication</span>
+        <span class="skill have">Business acumen</span>
+        <span class="skill have">Critical thinking</span>
+        <span class="skill have">Intellectual curiosity</span>
+      </div>
+    </div>
+    <div style="background:var(--purple-light);border:1px solid var(--purple-border);border-radius:10px;padding:20px;margin-top:16px">
+      <p style="color:var(--purple);font-size:14px;font-weight:600;margin-bottom:4px">Your gap is specific to you.</p>
+      <p style="color:var(--ink-light);font-size:13px;margin:0">Upload your resume on Leapr and get a personalised gap analysis. <a href="https://app.leapr.co" style="color:var(--purple);font-weight:600">Get your analysis free →</a></p>
+    </div>
+  </div>
+  <div class="section reveal">
+    <p class="section-label">The path</p>
+    <h2>Your step-by-step<br/><em>roadmap.</em></h2>
+    <div class="timeline" style="margin-top:32px">
+      <div class="t-step"><div class="t-left"><div class="t-circle">1</div><div class="t-line"></div></div><div><div class="t-time">Month 1–2</div><h3>Master Python and SQL</h3><p>Python is non-negotiable. Start with pandas and numpy for data manipulation. Advanced SQL is equally important — most hiring processes include a SQL test. Kaggle and Mode Analytics are good starting points.</p></div></div>
+      <div class="t-step"><div class="t-left"><div class="t-circle">2</div><div class="t-line"></div></div><div><div class="t-time">Month 2–4</div><h3>Learn statistics and ML fundamentals</h3><p>Take a statistics course (StatQuest on YouTube is excellent). Then work through the fundamentals of machine learning — regression, classification, clustering, model evaluation. Scikit-learn is the standard library.</p></div></div>
+      <div class="t-step"><div class="t-left"><div class="t-circle">3</div><div class="t-line"></div></div><div><div class="t-time">Month 3–6</div><h3>Build real projects</h3><p>Kaggle competitions are a start but not enough. Find a real dataset in your industry and solve a real problem. Document your approach, your decisions, and your results. One strong project beats ten toy datasets.</p></div></div>
+      <div class="t-step"><div class="t-left"><div class="t-circle">4</div><div class="t-line"></div></div><div><div class="t-time">Month 5–9</div><h3>Build your portfolio and GitHub</h3><p>Every project should be on GitHub with a clear README explaining the problem, your approach, and what you found. Hiring managers look at GitHub. Make it tell a story about how you think.</p></div></div>
+      <div class="t-step"><div class="t-left"><div class="t-circle">5</div><div class="t-line"></div></div><div><div class="t-time">Month 8–18</div><h3>Target the right first role</h3><p>Start with Data Analyst roles if you need a stepping stone — many analysts transition to DS within 12–18 months. Target companies in your domain. Your industry knowledge is a genuine advantage over pure technical candidates.</p></div></div>
+    </div>
+  </div>
+  <div class="section reveal">
+    <p class="section-label">Compensation</p>
+    <h2>What does a Data Scientist<br/><em>earn?</em></h2>
+    <div class="card-grid" style="margin-top:24px">
+      <div class="card"><div class="tag">Entry level</div><h3>Junior Data Scientist</h3><p>$95,000 – $130,000</p><p style="font-size:13px">0–2 years. Structured problems, supervised work, strong mentorship.</p></div>
+      <div class="card"><div class="tag">Mid level</div><h3>Data Scientist</h3><p>$130,000 – $175,000</p><p style="font-size:13px">2–5 years. Owns projects end-to-end. Works independently.</p></div>
+      <div class="card"><div class="tag">Senior</div><h3>Senior Data Scientist</h3><p>$165,000 – $220,000</p><p style="font-size:13px">5+ years. Technical leadership. Mentors others. Drives strategy.</p></div>
+      <div class="card"><div class="tag">Leadership</div><h3>Principal / Staff DS</h3><p>$200,000 – $350,000+</p><p style="font-size:13px">Org-wide influence. Sets technical direction. Often manages a team.</p></div>
+    </div>
+  </div>
+  <div class="section reveal">
+    <p class="section-label">FAQ</p>
+    <h2>Common <em>questions.</em></h2>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do I need a PhD to become a Data Scientist?<span class="faq-icon">+</span></button><div class="faq-a">No. A PhD helps for research-oriented roles at companies like Google DeepMind or Meta AI Research, but the vast majority of data scientist roles in industry don't require one. Strong portfolio, Python skills, and domain expertise will get you further than a PhD at most companies.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Data Scientist vs Data Analyst — what's the difference?<span class="faq-icon">+</span></button><div class="faq-a">Data Analysts focus on describing and visualising what has happened. Data Scientists focus on predicting what will happen and building models that automate decisions. In practice there's significant overlap, and many people use Data Analyst as a stepping stone to Data Scientist.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How long does it take to become a Data Scientist?<span class="faq-icon">+</span></button><div class="faq-a">Most career changers with a quantitative background (engineering, finance, maths) land their first DS role within 6–12 months of focused preparation. Non-quantitative backgrounds typically take 12–18 months. The range depends entirely on how much time you invest and whether you build real projects.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do I need to learn deep learning?<span class="faq-icon">+</span></button><div class="faq-a">Not for most roles. Deep learning is essential for computer vision, NLP, and AI product roles — but the majority of data science jobs use classical ML methods (regression, gradient boosting, clustering). Master the fundamentals first. Deep learning can come later.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What's the best first project to build?<span class="faq-icon">+</span></button><div class="faq-a">The best first project is one that solves a real problem in your current industry. If you're in healthcare, analyse a public health dataset. If you're in finance, build a churn model for a bank. Industry domain knowledge + data skills = a genuinely differentiated portfolio.</div></div>
+  </div>
+  <div class="cta-section reveal">
+    <h2>Know your exact gap.<br/>Not a guess.</h2>
+    <p>Upload your resume and tell us your target role. Leapr maps exactly what stands between you and your first data science job.</p>
+    <a href="https://app.leapr.co" class="btn-cta-white">Get my personalised gap analysis → Free</a>
+    <p style="margin-top:16px;font-size:12px;color:rgba(255,255,255,0.6)">Free · Takes 3 minutes · No credit card</p>
+  </div>
+</div>
+<footer>
+  <a href="/" class="footer-logo"><svg viewBox="0 0 80 110" width="14" height="18" fill="none"><line x1="40" y1="88" x2="40" y2="28" stroke="#7F77DD" stroke-width="5" stroke-linecap="round"/><path d="M40 60 Q14 48 12 20 Q36 18 40 54" fill="#7F77DD" opacity="0.38"/><path d="M40 38 Q66 24 68 4 Q44 2 40 32" fill="#7F77DD"/></svg><span class="footer-logo-text">Leapr</span></a>
+  <p>© 2026 Leapr. All rights reserved.</p>
+  <div class="footer-links"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/">Back to Leapr</a></div>
+</footer>
+<script>
+  const obs = new IntersectionObserver(entries => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  function toggleFaq(btn) { const item = btn.parentElement; const isOpen = item.classList.contains('open'); document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open')); if (!isOpen) item.classList.add('open'); }
+</script>
+</body>
+</html>
