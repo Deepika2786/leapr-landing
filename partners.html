@@ -963,13 +963,10 @@
     msg.textContent = '';
 
     try {
-      const res = await fetch('https://rlefumadvzpijgxjogoo.supabase.co/rest/v1/partner_applications', {
+      const res = await fetch('/api/partner', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJsZWZ1bWFkdnpwaWpneGpvZ29vIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk4MjA0NzgsImV4cCI6MjA1NTM5NjQ3OH0.sMkBVMBpVZCqCNkJnUuTqQ5n3D3u2x0MpgQIIlHQnPY',
-          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJsZWZ1bWFkdnpwaWpneGpvZ29vIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk4MjA0NzgsImV4cCI6MjA1NTM5NjQ3OH0.sMkBVMBpVZCqCNkJnUuTqQ5n3D3u2x0MpgQIIlHQnPY',
-          'Prefer': 'return=minimal'
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({ name, email, linkedin_url: linkedin, audience_size: audience, partner_type: type, why_partner: why })
       });
