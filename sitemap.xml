@@ -9,16 +9,10 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://leapr.co/privacy</loc>
-    <lastmod>2026-03-22</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://leapr.co/terms</loc>
-    <lastmod>2026-03-22</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <loc>https://leapr.co/partners</loc>
+    <lastmod>2026-03-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <!-- ═══ TRANSITION (375 pages) ═══ -->
