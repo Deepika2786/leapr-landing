@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Why You're Not Getting Interview Calls in 2026 — The Real Reasons</title>
+  <meta name="description" content="You're applying. You're qualified. Nobody's calling. Here's the honest, specific reason why — and what to do about it." />
+  <meta property="og:title" content="Why You're Not Getting Interview Calls in 2026" />
+  <meta property="og:description" content="You're applying. You're qualified. Nobody's calling. Here's the honest, specific reason why." />
+  <meta property="og:url" content="https://leapr.co/why-not-getting-interviews" />
+  <link rel="canonical" href="https://leapr.co/why-not-getting-interviews" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    :root { --bg: #f0ede8; --white: #ffffff; --ink: #0f0f1a; --ink-light: #4b5563; --ink-muted: #9ca3af; --purple: #7F77DD; --purple-light: #f0effe; --purple-border: rgba(127,119,221,0.2); --border: rgba(0,0,0,0.08); }
+    body { font-family: 'DM Sans', -apple-system, sans-serif; color: var(--ink); background: var(--bg); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    nav { background: var(--bg); border-bottom: 1px solid var(--border); padding: 0 48px; height: 58px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .nav-logo-text { font-size: 15px; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; }
+    .nav-right { display: flex; gap: 8px; align-items: center; }
+    .btn-ghost { font-size: 13px; color: var(--ink-light); text-decoration: none; font-weight: 500; padding: 6px 14px; border-radius: 7px; }
+    .btn-ghost:hover { background: rgba(0,0,0,0.05); }
+    .btn-primary { font-size: 13px; font-weight: 700; color: #fff; background: var(--purple); padding: 8px 20px; border-radius: 7px; text-decoration: none; }
+
+    /* HERO */
+    .hero-wrap { background: var(--white); border-bottom: 1px solid var(--border); }
+    .hero { max-width: 760px; margin: 0 auto; padding: 80px 80px 64px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 6px; background: #fef2f2; border: 1px solid rgba(220,38,38,0.2); border-radius: 99px; padding: 4px 14px; margin-bottom: 28px; font-size: 11px; font-weight: 600; color: #dc2626; letter-spacing: 0.06em; text-transform: uppercase; }
+    .eyebrow-dot { width: 5px; height: 5px; border-radius: 50%; background: #dc2626; }
+    h1 { font-family: 'Instrument Serif', Georgia, serif; font-size: clamp(36px, 5vw, 58px); font-weight: 400; letter-spacing: -0.02em; line-height: 1.08; color: var(--ink); margin: 0 0 24px; }
+    h1 em { font-style: italic; color: var(--purple); }
+    .hero-sub { font-size: 18px; color: var(--ink-light); line-height: 1.75; margin: 0 0 36px; max-width: 560px; }
+    .hero-note { font-size: 13px; color: var(--ink-muted); font-style: italic; }
+
+    /* CONTENT */
+    .content { max-width: 760px; margin: 0 auto; padding: 0 80px; }
+    .section { padding: 56px 0; border-bottom: 1px solid var(--border); }
+    .section:last-child { border-bottom: none; }
+
+    h2 { font-family: 'Instrument Serif', Georgia, serif; font-size: clamp(26px, 3vw, 36px); font-weight: 400; letter-spacing: -0.02em; line-height: 1.1; color: var(--ink); margin-bottom: 20px; }
+    h2 em { font-style: italic; color: var(--purple); }
+    h3 { font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 10px; letter-spacing: -0.02em; }
+    p { font-size: 16px; color: var(--ink-light); line-height: 1.85; margin-bottom: 20px; }
+    p:last-child { margin-bottom: 0; }
+    p strong { color: var(--ink); font-weight: 600; }
+
+    /* REASON CARDS */
+    .reason { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 32px; margin-bottom: 20px; }
+    .reason-number { font-family: 'Instrument Serif', Georgia, serif; font-size: 48px; font-weight: 400; color: var(--purple); opacity: 0.3; line-height: 1; margin-bottom: 8px; }
+    .reason h3 { font-size: 20px; margin-bottom: 12px; }
+    .reason p { font-size: 15px; margin-bottom: 12px; }
+    .reason p:last-child { margin-bottom: 0; }
+    .reason-fix { background: var(--purple-light); border: 1px solid var(--purple-border); border-radius: 10px; padding: 16px 20px; margin-top: 16px; }
+    .reason-fix-label { font-size: 11px; font-weight: 700; color: var(--purple); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+    .reason-fix p { font-size: 14px; color: var(--ink-light); margin: 0; }
+
+    /* STAT BOX */
+    .stat-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 32px 0; }
+    .stat-box { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 24px; text-align: center; }
+    .stat-num { font-family: 'Instrument Serif', Georgia, serif; font-size: 42px; font-weight: 400; color: var(--purple); line-height: 1; margin-bottom: 8px; }
+    .stat-label { font-size: 13px; color: var(--ink-muted); line-height: 1.4; }
+
+    /* QUOTE */
+    .quote-block { border-left: 3px solid var(--purple); padding: 20px 28px; margin: 32px 0; background: var(--white); border-radius: 0 12px 12px 0; }
+    .quote-text { font-family: 'Instrument Serif', Georgia, serif; font-size: 20px; color: var(--ink); line-height: 1.5; font-style: italic; margin-bottom: 12px; }
+    .quote-source { font-size: 13px; color: var(--ink-muted); }
+
+    /* CHECKLIST */
+    .checklist { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 28px; margin: 24px 0; }
+    .check-item { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+    .check-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .check-icon { width: 20px; height: 20px; border-radius: 50%; background: #fef2f2; border: 1px solid rgba(220,38,38,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; font-size: 10px; color: #dc2626; font-weight: 700; }
+    .check-icon.yes { background: #f0fdf4; border-color: rgba(22,163,74,0.2); color: #16a34a; }
+    .check-text { font-size: 14px; color: var(--ink-light); line-height: 1.6; }
+    .check-text strong { color: var(--ink); }
+
+    /* CTA */
+    .cta-section { background: var(--purple); border-radius: 16px; padding: 56px; text-align: center; margin: 64px 0; }
+    .cta-section h2 { color: #fff; margin-bottom: 12px; font-size: clamp(24px, 3vw, 36px); }
+    .cta-section p { color: rgba(255,255,255,0.75); max-width: 480px; margin: 0 auto 32px; font-size: 16px; }
+    .btn-cta-white { display: inline-block; background: #fff; color: var(--purple); padding: 16px 36px; border-radius: 8px; font-size: 15px; font-weight: 700; text-decoration: none; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 28px 80px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-logo { display: flex; align-items: center; gap: 7px; text-decoration: none; }
+    .footer-logo-text { font-size: 13px; font-weight: 700; color: var(--ink); }
+    footer p { font-size: 12px; color: var(--ink-muted); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 12px; color: var(--ink-muted); text-decoration: none; }
+    .footer-links a:hover { color: var(--purple); }
+
+    /* INLINE CTA */
+    .inline-cta { background: var(--purple-light); border: 1px solid var(--purple-border); border-radius: 12px; padding: 24px 28px; margin: 32px 0; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .inline-cta p { font-size: 15px; color: var(--ink); font-weight: 600; margin: 0; }
+    .inline-cta a { display: inline-block; background: var(--purple); color: #fff; padding: 10px 24px; border-radius: 7px; font-size: 13px; font-weight: 700; text-decoration: none; white-space: nowrap; }
+
+    @media(max-width: 768px) {
+      nav { padding: 0 20px; }
+      .hero { padding: 48px 24px 40px; }
+      .content { padding: 0 24px; }
+      .stat-row { grid-template-columns: 1fr; }
+      .cta-section { padding: 40px 24px; }
+      footer { padding: 24px 20px; flex-direction: column; text-align: center; }
+      .inline-cta { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <svg viewBox="0 0 80 110" width="16" height="22" fill="none"><line x1="40" y1="88" x2="40" y2="28" stroke="#7F77DD" stroke-width="5" stroke-linecap="round"/><path d="M40 60 Q14 48 12 20 Q36 18 40 54" fill="#7F77DD" opacity="0.38"/><path d="M40 38 Q66 24 68 4 Q44 2 40 32" fill="#7F77DD"/></svg>
+    <span class="nav-logo-text">Leapr</span>
+  </a>
+  <div class="nav-right">
+    <a href="/" class="btn-ghost">Home</a>
+    <a href="https://app.leapr.co" class="btn-primary">Get started free →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero-wrap">
+<div class="hero">
+  <div class="eyebrow"><span class="eyebrow-dot"></span> Real talk</div>
+  <h1>Why you're not getting<br/>interview calls.<br/><em>The honest answer.</em></h1>
+  <p class="hero-sub">You're applying. You're qualified — or at least you think you are. Nobody's calling. This is not a confidence problem. It's an information problem. Here's what's actually happening.</p>
+  <p class="hero-note">5 minute read — worth it if you've been applying for more than 4 weeks with no response.</p>
+</div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- THE HARD TRUTH -->
+  <div class="section">
+    <h2>First — it's probably<br/><em>not what you think.</em></h2>
+    <p>Most people assume silence means rejection. It usually doesn't. It means your application never reached a human being.</p>
+    <p>In 2026, <strong>over 75% of applications are filtered out before a recruiter sees them</strong> — by ATS software, keyword matching algorithms, and automated screening tools. You could be genuinely excellent for the role and still get nothing back.</p>
+    <p>The other assumption people make is that they need more experience. Sometimes true. But more often, the problem is precision — <strong>you're applying to roles where there's a specific skill gap nobody told you about.</strong> Not a big gap. Not an insurmountable one. Just an unaddressed one.</p>
+
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num">75%</div>
+        <div class="stat-label">of applications filtered before a human sees them</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">7 sec</div>
+        <div class="stat-label">average time a recruiter spends on your resume</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">250+</div>
+        <div class="stat-label">average applications per corporate job posting</div>
+      </div>
+    </div>
+
+    <p>These numbers aren't meant to discourage you. They're meant to reframe the problem. <strong>Getting interviews is a solvable technical problem</strong> — not evidence that you're not good enough.</p>
+  </div>
+
+  <!-- REASON 1 -->
+  <div class="section">
+    <h2>The real reasons.<br/><em>One by one.</em></h2>
+
+    <div class="reason">
+      <div class="reason-number">01</div>
+      <h3>Your resume has the wrong skills listed — not wrong experience, wrong skills.</h3>
+      <p>This is the most common and least obvious problem. Job postings in 2026 are increasingly specific about the exact skills they want. ATS systems are trained to find those exact keywords. If you're a Product Manager who has done roadmap prioritisation but your resume says "strategic planning" — you're invisible to the filter looking for "roadmap" and "prioritisation".</p>
+      <p>The fix is not rewriting your resume. The fix is understanding exactly which skills your target role requires in 2026 — not which skills you have — and closing the gap between the two.</p>
+      <div class="reason-fix">
+        <div class="reason-fix-label">What to do</div>
+        <p>Take 3 job descriptions for your target role. Pull out every skill mentioned more than twice. Compare against your resume. The gap between those two lists is your priority list — not a long course, just targeted, specific additions.</p>
+      </div>
+    </div>
+
+    <div class="reason">
+      <div class="reason-number">02</div>
+      <h3>You're applying to roles where you have a hidden skill gap.</h3>
+      <p>This is different from the resume problem. Your resume might be perfectly fine — but you're genuinely missing one or two skills the role requires, and nobody told you. Not your last manager. Not the job description (which is often outdated). Not LinkedIn.</p>
+      <p>The market moved. What companies hired for in 2023 is not what they're hiring for in 2026. Roles that didn't require SQL now do. Roles that didn't expect AI fluency now do. If you're using a skills profile from 3 years ago — you have gaps you don't know about.</p>
+      <div class="reason-fix">
+        <div class="reason-fix-label">What to do</div>
+        <p>Get a current, specific gap analysis for your exact transition. Not generic career advice — a personalised map of what your target role actually requires in 2026 versus what your background gives you. Leapr does this. Upload your resume, tell it your target role, and it shows you the precise gap.</p>
+      </div>
+    </div>
+
+    <div class="reason">
+      <div class="reason-number">03</div>
+      <h3>Your resume is being rejected by ATS before any human sees it.</h3>
+      <p>ATS (Applicant Tracking Systems) are used by over 90% of large companies. They scan for keywords, format, and relevance scores. A beautifully designed resume with tables, columns, graphics, or unusual fonts often scores zero — not because the content is bad, but because the ATS can't parse it.</p>
+      <p>Common ATS killers: two-column layouts, headers and footers with important information, graphics or icons, unusual section titles ("Where I've Been" instead of "Experience"), and PDFs that weren't exported correctly.</p>
+      <div class="reason-fix">
+        <div class="reason-fix-label">What to do</div>
+        <p>Use a clean, single-column resume. Simple section headings. No tables. No graphics. Export as PDF from a standard word processor. The goal is machine-readable first, human-beautiful second.</p>
+      </div>
+    </div>
+
+    <div class="reason">
+      <div class="reason-number">04</div>
+      <h3>You're applying too broadly instead of too specifically.</h3>
+      <p>Sending 50 applications to 50 different roles feels productive. It usually isn't. When you apply broadly, your resume isn't tailored to any specific role — which means it passes fewer ATS filters and resonates with fewer hiring managers.</p>
+      <p>The counterintuitive truth: <strong>10 highly targeted applications outperform 100 generic ones.</strong> Each application should be tailored to that specific role's keywords and requirements. This takes more time per application — but dramatically more time per interview.</p>
+      <div class="reason-fix">
+        <div class="reason-fix-label">What to do</div>
+        <p>Pick one specific target role and target company type. Tailor your resume specifically to that role's language. Apply to 10 well-chosen companies rather than 100 random ones. Track everything — role, company, date, response. Patterns will emerge.</p>
+      </div>
+    </div>
+
+    <div class="reason">
+      <div class="reason-number">05</div>
+      <h3>Your LinkedIn profile doesn't match your resume — or doesn't exist properly.</h3>
+      <p>Recruiters who see an interesting resume immediately check LinkedIn. If your LinkedIn is outdated, sparse, or tells a different story than your resume — they close the tab. You had them and lost them.</p>
+      <p>LinkedIn also has its own search algorithm. Recruiters search for candidates using keywords. If your profile doesn't contain the right keywords — especially your target role title, key skills, and industry terms — you won't appear in their searches at all.</p>
+      <div class="reason-fix">
+        <div class="reason-fix-label">What to do</div>
+        <p>Your LinkedIn headline should contain your target role title — not just your current one. Your About section should use the exact language of your target role. Your Skills section should list the specific skills that role requires. Make yourself findable, not just presentable.</p>
+      </div>
+    </div>
+
+    <div class="reason">
+      <div class="reason-number">06</div>
+      <h3>You're applying through the front door when everyone else is too.</h3>
+      <p>"Easy Apply" on LinkedIn and the "Submit" button on company career pages puts you in a pool of 200–500 applicants. Even if you're excellent, the odds are brutal at that volume. The people getting interviews from the same roles are often getting there a different way.</p>
+      <p>Referrals account for roughly 30–40% of hires at most companies — but only about 7% of applicants. The math is simple: referrals get a dramatically higher hit rate.</p>
+      <div class="reason-fix">
+        <div class="reason-fix-label">What to do</div>
+        <p>For every role you apply to, spend 10 minutes finding someone at that company on LinkedIn — especially in the team you'd join or someone with your target title. Send a short, specific message. Not asking for a job — asking for 15 minutes of their time to learn about the role. One warm referral is worth 50 cold applications.</p>
+      </div>
+    </div>
+
+    <div class="inline-cta">
+      <p>Find out your exact skill gap for your target role.</p>
+      <a href="https://app.leapr.co">Get my personalised analysis → Free</a>
+    </div>
+
+    <div class="reason">
+      <div class="reason-number">07</div>
+      <h3>The job market in your target role is genuinely harder right now.</h3>
+      <p>This one is important to acknowledge honestly. Some roles have more applicants than openings in 2026. Entry-level software engineering, marketing generalist, and project management roles are all more competitive than they were two years ago.</p>
+      <p>This isn't a reason to give up — it's a reason to be more strategic about which roles you target. Adjacent roles, emerging specialisations, and industries with genuine talent shortages (healthcare tech, AI governance, cybersecurity, data engineering) have far better hit rates than saturated markets.</p>
+      <div class="reason-fix">
+        <div class="reason-fix-label">What to do</div>
+        <p>Research whether your target role has more supply than demand right now. If so, consider an adjacent role that uses your skills but has less competition. Getting in the door in a slightly different role than your dream role is often the fastest path to the dream role itself.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT TO DO NOW -->
+  <div class="section">
+    <h2>The honest<br/><em>action plan.</em></h2>
+    <p>Not a 90-day programme. Not a course. Just the specific things that actually move the needle.</p>
+
+    <div class="checklist">
+      <div class="check-item">
+        <div class="check-icon">1</div>
+        <div class="check-text"><strong>Get a real gap analysis.</strong> Not generic advice — a specific map of what your target role requires vs what you have. This is step one because everything else depends on it. You can't close a gap you haven't identified.</div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon">2</div>
+        <div class="check-text"><strong>Rewrite your resume with the right keywords.</strong> Use the exact language from your target role's job descriptions. One column. No graphics. Clean and machine-readable.</div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon">3</div>
+        <div class="check-text"><strong>Update LinkedIn to match your target, not your history.</strong> Headline, About, Skills — all oriented toward where you're going, not where you've been.</div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon">4</div>
+        <div class="check-text"><strong>Apply to 10 specific roles with tailored applications</strong> — not 50 generic ones. Quality beats volume every time in the current market.</div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon">5</div>
+        <div class="check-text"><strong>For each application, find one person at that company.</strong> Message them. Ask for 15 minutes. Most people won't reply — but the ones who do change the odds dramatically.</div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon yes">✓</div>
+        <div class="check-text"><strong>Close the specific skill gap, not the general one.</strong> If your analysis shows you're missing one specific skill — add it. A targeted 4-week effort to close one gap is worth more than a 6-month course trying to close all of them.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE REAL THING -->
+  <div class="section">
+    <h2>The thing nobody<br/><em>says out loud.</em></h2>
+
+    <div class="quote-block">
+      <div class="quote-text">"Most people who aren't getting interviews aren't failing. They're applying with a map that's two years out of date."</div>
+      <div class="quote-source">— The pattern we see at Leapr, across every role and every background</div>
+    </div>
+
+    <p>The job market in 2026 moves faster than any individual can track manually. Skills that were optional in 2023 are expected now. Roles that barely existed are now hiring at scale. The gap between "what you did before" and "what they need now" grows every year — and nobody tells you about it until you're sitting in an interview wondering why it's going wrong.</p>
+
+    <p>Leapr exists specifically for this problem. You tell it what role you're targeting. You upload your resume. It shows you — precisely, specifically, not generically — what the gap is between where you are and where you want to be. Then it gives you a roadmap to close it.</p>
+
+    <p>Not a course. Not a coach. Just accurate, current, personalised intelligence about your specific transition. The thing that most people spend months trying to figure out on their own.</p>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Find out exactly<br/>what's missing.</h2>
+    <p>Upload your resume. Tell Leapr your target role. Get a precise, personalised gap analysis — not generic advice, your actual gap.</p>
+    <a href="https://app.leapr.co" class="btn-cta-white">Get my gap analysis → Free</a>
+    <p style="margin-top:16px;font-size:13px;color:rgba(255,255,255,0.6)">Free · Takes 3 minutes · No credit card needed</p>
+  </div>
+
+</div>
+
+<footer>
+  <a href="/" class="footer-logo">
+    <svg viewBox="0 0 80 110" width="14" height="18" fill="none"><line x1="40" y1="88" x2="40" y2="28" stroke="#7F77DD" stroke-width="5" stroke-linecap="round"/><path d="M40 60 Q14 48 12 20 Q36 18 40 54" fill="#7F77DD" opacity="0.38"/><path d="M40 38 Q66 24 68 4 Q44 2 40 32" fill="#7F77DD"/></svg>
+    <span class="footer-logo-text">Leapr</span>
+  </a>
+  <p>© 2026 Leapr. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="/privacy">Privacy</a>
+    <a href="/terms">Terms</a>
+    <a href="/">Back to Leapr</a>
+  </div>
+</footer>
+
+</body>
+</html>
