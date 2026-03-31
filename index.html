@@ -1171,6 +1171,13 @@
   }, { threshold: 0.5 });
   document.querySelectorAll('[data-count]').forEach(el => counterObs.observe(el));
 
+  // Capture referral code from URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const ref = urlParams.get('ref');
+  if (ref) {
+    localStorage.setItem('leapr_ref', ref);
+  }
+
   async function handleEmailSignup() {
     const email = document.getElementById('email-input').value.trim();
     const btn = document.getElementById('signup-btn');
