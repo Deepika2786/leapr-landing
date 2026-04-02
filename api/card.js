@@ -1,10 +1,3 @@
-const { createClient } = require('@supabase/supabase-js');
-
-const supabase = createClient(
-  'https://rlefumadvzpijgxjogoo.supabase.co',
-  process.env.SUPABASE_ANON_KEY
-);
-
 module.exports = async (req, res) => {
   const username = req.query.username;
 
@@ -13,11 +6,18 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const { data: profile } = await supabase
-      .from('user_profiles')
-      .select('*')
-      .eq('username', username)
-      .maybeSingle();
+    const response = await fetch(
+      `https://rlefumadvzpijgxjogoo.supabase.co/rest/v1/user_profiles?username=eq.${username}&select=name,display_name,target_role,current_role,match_percentage,location,years_of_experience`,
+      {
+        headers: {
+          'apikey': process.env.SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${process.env.SUPABASE_ANON_KEY}`,
+        }
+      }
+    );
+
+    const data = await response.json();
+    const profile = data?.[0];
 
     if (!profile) {
       return res.redirect('https://leapr.co');
@@ -27,13 +27,10 @@ module.exports = async (req, res) => {
     const targetRole = profile.target_role || '';
     const currentRole = profile.current_role || '';
     const matchPct = profile.match_percentage || 0;
-    const location = profile.location || profile.location_city || '';
-    const yearsExp = profile.years_of_experience || '';
-
-    const title = `${name} — Verified Career Profile on Leapr`;
-    const description = `${matchPct}% ready for ${targetRole}. Transitioning from ${currentRole}. Skills verified against real job postings. ATS Exempt.`;
     const appUrl = `https://app.leapr.co/card/${username}`;
     const imageUrl = `https://leapr.co/icons/og-card.png`;
+    const title = `${name} — Verified Career Profile on Leapr`;
+    const description = `${matchPct}% ready for ${targetRole}. Transitioning from ${currentRole}. Skills verified against real job postings. ATS Exempt.`;
 
     const html = `<!DOCTYPE html>
 <html>
@@ -41,8 +38,6 @@ module.exports = async (req, res) => {
   <meta charset="utf-8" />
   <title>${title}</title>
   <meta name="description" content="${description}" />
-
-  <!-- Open Graph -->
   <meta property="og:type" content="profile" />
   <meta property="og:title" content="${title}" />
   <meta property="og:description" content="${description}" />
@@ -51,17 +46,10 @@ module.exports = async (req, res) => {
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:site_name" content="Leapr" />
-
-  <!-- LinkedIn specific -->
-  <meta name="author" content="${name}" />
-
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="${title}" />
   <meta name="twitter:description" content="${description}" />
   <meta name="twitter:image" content="${imageUrl}" />
-
-  <!-- Redirect to app -->
   <meta http-equiv="refresh" content="0;url=${appUrl}" />
   <script>window.location.href = "${appUrl}";</script>
 </head>
