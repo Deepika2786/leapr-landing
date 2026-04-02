@@ -1,4 +1,4 @@
-module.exports = async (req, res) => {
+export default async function handler(req, res) {
   const username = req.query.username;
 
   if (!username) {
@@ -7,7 +7,7 @@ module.exports = async (req, res) => {
 
   try {
     const response = await fetch(
-      `https://rlefumadvzpijgxjogoo.supabase.co/rest/v1/user_profiles?username=eq.${username}&select=name,display_name,target_role,current_role,match_percentage,location,years_of_experience`,
+      `https://rlefumadvzpijgxjogoo.supabase.co/rest/v1/user_profiles?username=eq.${username}&select=name,display_name,target_role,current_role,match_percentage`,
       {
         headers: {
           'apikey': process.env.SUPABASE_ANON_KEY,
@@ -29,8 +29,8 @@ module.exports = async (req, res) => {
     const matchPct = profile.match_percentage || 0;
     const appUrl = `https://app.leapr.co/card/${username}`;
     const imageUrl = `https://leapr.co/icons/og-card.png`;
-    const title = `${name} — Verified Career Profile on Leapr`;
-    const description = `${matchPct}% ready for ${targetRole}. Transitioning from ${currentRole}. Skills verified against real job postings. ATS Exempt.`;
+    const title = `${name} — ${matchPct}% Ready for ${targetRole} | Leapr`;
+    const description = `Transitioning from ${currentRole} → ${targetRole}. Skills verified against real job postings. ATS Exempt. See full verified profile on Leapr.`;
 
     const html = `<!DOCTYPE html>
 <html>
@@ -54,16 +54,16 @@ module.exports = async (req, res) => {
   <script>window.location.href = "${appUrl}";</script>
 </head>
 <body>
-  <p>Redirecting to <a href="${appUrl}">${name}'s verified career profile</a>...</p>
+  <p>Redirecting to <a href="${appUrl}">${name}'s verified career profile on Leapr</a>...</p>
 </body>
 </html>`;
 
     res.setHeader('Content-Type', 'text/html');
     res.setHeader('Cache-Control', 's-maxage=300');
-    res.status(200).send(html);
+    return res.status(200).send(html);
 
   } catch (error) {
     console.error('Card error:', error);
-    res.redirect('https://leapr.co');
+    return res.redirect('https://leapr.co');
   }
-};
+}
