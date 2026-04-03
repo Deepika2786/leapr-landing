@@ -17,7 +17,7 @@
     const params = new URLSearchParams(window.location.search);
     const username = params.get('u');
     if (username) {
-      window.location.href = 'https://app.leapr.co/card/' + username;
+      window.location.href = 'https://app.leapr.co/@' + username;
     } else {
       window.location.href = 'https://leapr.co';
     }
