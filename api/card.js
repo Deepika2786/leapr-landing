@@ -17,7 +17,7 @@ module.exports = async function handler(req, res) {
     const rows = await response.json();
     const user = rows?.[0];
 
-    if (!user) return res.redirect(301, 'https://leapr.co');
+    if (!user) return res.status(500).send(`Failed. Response: ${JSON.stringify(rows)}, URL: ${process.env.SUPABASE_URL ? 'set' : 'missing'}, Key: ${process.env.SUPABASE_SERVICE_KEY ? 'set' : 'missing'}`);
 
     const ua = req.headers['user-agent'] || '';
     const isBot = /LinkedInBot|facebookexternalhit|Twitterbot|WhatsApp/i.test(ua);
