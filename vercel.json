@@ -1,9 +1,7 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
-  "rewrites": [
-    { "source": "/card/:username", "destination": "/card/index.html" }
-  ],
+  "rewrites": [],
   "redirects": [
     { "source": "/privacy", "destination": "https://app.leapr.co/privacy", "permanent": true },
     { "source": "/terms", "destination": "https://app.leapr.co/terms", "permanent": true }

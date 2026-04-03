@@ -14,9 +14,9 @@
   <meta name="twitter:image" content="https://leapr.co/icons/og-card.png" />
   <script>
     // Extract username from path e.g. /card/deepikasharma1
-    const parts = window.location.pathname.split('/');
-    const username = parts[parts.length - 1];
-    if (username && username !== 'card') {
+    const params = new URLSearchParams(window.location.search);
+    const username = params.get('u');
+    if (username) {
       window.location.href = 'https://app.leapr.co/card/' + username;
     } else {
       window.location.href = 'https://leapr.co';
