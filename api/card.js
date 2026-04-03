@@ -5,7 +5,7 @@ module.exports = async function handler(req, res) {
 
   try {
     const response = await fetch(
-      `${process.env.SUPABASE_URL}/rest/v1/user_profiles?username=eq.${username}&select=full_name,target_role,match_percentage,card_image_url&limit=1`,
+      `${process.env.SUPABASE_URL}/rest/v1/user_profiles?username=eq.${username}&select=name,target_role,match_percentage,card_image_url&limit=1`,
       {
         headers: {
           apikey: process.env.SUPABASE_SERVICE_KEY,
@@ -17,7 +17,7 @@ module.exports = async function handler(req, res) {
     const rows = await response.json();
     const user = rows?.[0];
 
-    if (!user) return res.status(500).send(`Failed. Response: ${JSON.stringify(rows)}, URL: ${process.env.SUPABASE_URL ? 'set' : 'missing'}, Key: ${process.env.SUPABASE_SERVICE_KEY ? 'set' : 'missing'}`);
+   if (!user) return res.redirect(301, 'https://leapr.co');
 
     const ua = req.headers['user-agent'] || '';
     const isBot = /LinkedInBot|facebookexternalhit|Twitterbot|WhatsApp/i.test(ua);
