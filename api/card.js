@@ -21,9 +21,9 @@ module.exports = async function handler(req, res) {
 
     const ua = req.headers['user-agent'] || '';
     const isBot = /LinkedInBot|facebookexternalhit|Twitterbot|WhatsApp/i.test(ua);
-    const profileUrl = `https://app.leapr.co/@${username}`;
+    const profileUrl = `https://app.leapr.co/u/${username}`;
     const imageUrl = user.card_image_url || 'https://leapr.co/icons/og-card.png';
-    const title = `${user.full_name} → ${user.target_role} | Leapr`;
+    const title = `${user.name} → ${user.target_role} | Leapr`;
     const description = user.match_percentage
       ? `${user.match_percentage}% ready for ${user.target_role}. Skills verified vs real job postings. ATS Exempt.`
       : `Aspiring ${user.target_role}. Verified career profile on Leapr.`;
