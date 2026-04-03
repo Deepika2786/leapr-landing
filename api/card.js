@@ -1,4 +1,4 @@
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   const { u: username } = req.query;
 
   if (!username) return res.redirect(301, 'https://leapr.co');
