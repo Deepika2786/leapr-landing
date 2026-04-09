@@ -236,6 +236,7 @@
           </select>
           <label class="field-label">Why is this a proxy risk?</label>
           <textarea class="field-textarea" id="proxy-reason" placeholder="Explain why employment type correlates with a protected characteristic in UK lending data..." oninput="checkStep2()"></textarea>
+          <button onclick="goBack()" style="background:none;border:1px solid #c5cdd6;color:#5a6a7e;padding:6px 12px;border-radius:2px;font-size:11px;cursor:pointer;margin-bottom:8px;width:100%;">← Back</button>
           <button class="calc-btn" onclick="goToStep(3)" id="step2-next" disabled>Proceed to Step 3 — Run Calculation →</button>
         </div>
       </div>
@@ -266,6 +267,7 @@
               <div class="calc-status" id="status-display">Enter rates above to calculate</div>
               <div style="font-size:11px;color:#8a9bb0;margin-top:4px;" id="threshold-display">Threshold: 0.80</div>
             </div>
+            <button onclick="goBack()" style="background:none;border:1px solid #c5cdd6;color:#5a6a7e;padding:6px 12px;border-radius:2px;font-size:11px;cursor:pointer;margin-bottom:8px;width:100%;">← Back</button>
             <button class="calc-btn" onclick="lockCalculation()" id="lock-btn">Confirm calculation & proceed →</button>
           </div>
         </div>
@@ -298,6 +300,7 @@
           <div class="response-option" onclick="selectResponse(this, 'C')">
             <input type="radio" name="response" value="C"> <strong>Option C:</strong> "James, I'll escalate this to Sarah and David in Legal. The bias result needs to be disclosed to them before any decision is made. This is above both our authority levels."
           </div>
+          <button onclick="goBack()" style="background:none;border:1px solid #c5cdd6;color:#5a6a7e;padding:6px 12px;border-radius:2px;font-size:11px;cursor:pointer;margin-bottom:8px;width:100%;">← Back</button>
           <button class="calc-btn" onclick="goToStep(5)" id="step4-next" disabled style="margin-top:12px;">Proceed to final submission →</button>
         </div>
       </div>
@@ -382,6 +385,14 @@ function toggleFlag(btn, rowIndex) {
   document.getElementById('step1-next').disabled = flaggedRows < 2;
 }
 
+function goBack() {
+  const current = [...document.querySelectorAll('[id^="step-"]')]
+    .find(el => el.style.display !== 'none' && el.id !== 'step-tab-1');
+  if (!current) return;
+  const n = parseInt(current.id.split('-')[1]);
+  if (n > 1) goToStep(n - 1);
+}
+
 function goToStep(n) {
   for (let i = 1; i <= 5; i++) {
     const el = document.getElementById('step-' + i);
@@ -402,7 +413,7 @@ function checkStep2() {
   const proxy = document.getElementById('proxy-select').value;
   const protect = document.getElementById('protected-select').value;
   const reason = document.getElementById('proxy-reason').value.trim();
-  document.getElementById('step2-next').disabled = !(proxy && protect && reason.length > 20);
+  document.getElementById('step2-next').disabled = !(proxy && protect && reason.length > 5);
 }
 
 function calculateRatio() {
