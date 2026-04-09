@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaCorp — LoanIQ Bias Audit Tool</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; color: #1a1a2e; font-size: 14px; }
+
+  .topbar { background: #1e2a3a; padding: 10px 24px; display: flex; align-items: center; justify-content: space-between; }
+  .topbar-left { display: flex; align-items: center; gap: 16px; }
+  .corp-logo { color: #fff; font-weight: 700; font-size: 15px; letter-spacing: 0.05em; }
+  .corp-logo span { color: #7F77DD; }
+  .system-badge { background: #c0392b; color: #fff; font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 2px; letter-spacing: 0.06em; }
+  .leapr-badge { display: flex; align-items: center; gap: 6px; color: #7F77DD; font-size: 11px; }
+  .leapr-dot { width: 6px; height: 6px; border-radius: 50%; background: #7F77DD; }
+
+  .toolbar { background: #253347; padding: 6px 24px; display: flex; align-items: center; gap: 20px; border-bottom: 1px solid #1a2535; }
+  .toolbar-item { color: #8a9bb0; font-size: 12px; cursor: pointer; padding: 4px 8px; border-radius: 2px; }
+  .toolbar-item.active { color: #fff; background: #1e2a3a; }
+  .toolbar-sep { color: #3a4d63; }
+
+  .layout { display: grid; grid-template-columns: 1fr 380px; gap: 0; min-height: calc(100vh - 76px); }
+
+  .main-panel { padding: 20px 24px; overflow-y: auto; }
+  .right-panel { background: #fff; border-left: 1px solid #dde3ea; padding: 20px; overflow-y: auto; }
+
+  .section-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+  .section-title { font-size: 11px; font-weight: 600; color: #5a6a7e; letter-spacing: 0.08em; text-transform: uppercase; }
+  .section-badge { font-size: 10px; background: #eef0f3; color: #5a6a7e; padding: 1px 6px; border-radius: 2px; }
+
+  .card { background: #fff; border: 1px solid #dde3ea; border-radius: 3px; margin-bottom: 16px; }
+  .card-header { padding: 10px 14px; border-bottom: 1px solid #eef0f3; display: flex; align-items: center; justify-content: space-between; background: #f8f9fb; }
+  .card-title { font-size: 12px; font-weight: 600; color: #2c3e50; }
+  .card-body { padding: 14px; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  th { background: #f0f2f5; padding: 7px 10px; text-align: left; font-weight: 600; color: #5a6a7e; border-bottom: 2px solid #dde3ea; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; }
+  td { padding: 8px 10px; border-bottom: 1px solid #eef0f3; color: #2c3e50; }
+  tr:hover td { background: #f8f9fb; }
+  tr.highlighted td { background: #fef9f0; }
+  tr.flagged td { background: #fdf2f2; }
+
+  .flag-btn { background: none; border: 1px solid #c0392b; color: #c0392b; padding: 2px 8px; border-radius: 2px; font-size: 10px; cursor: pointer; font-weight: 600; }
+  .flag-btn.flagged { background: #c0392b; color: #fff; }
+  .flag-btn:hover { opacity: 0.8; }
+
+  .rate-pill { display: inline-block; padding: 2px 8px; border-radius: 2px; font-size: 11px; font-weight: 600; }
+  .rate-high { background: #e8f5e9; color: #2e7d32; }
+  .rate-med { background: #fff3e0; color: #e65100; }
+  .rate-low { background: #fce4e4; color: #c62828; }
+
+  .calc-section { background: #f8f9fb; border: 1px solid #dde3ea; border-radius: 3px; padding: 16px; margin-bottom: 16px; }
+  .calc-title { font-size: 12px; font-weight: 700; color: #2c3e50; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+  .calc-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .calc-label { font-size: 11px; color: #5a6a7e; width: 160px; flex-shrink: 0; }
+  .calc-input { border: 1px solid #c5cdd6; border-radius: 2px; padding: 5px 8px; font-size: 12px; width: 80px; background: #fff; }
+  .calc-unit { font-size: 11px; color: #8a9bb0; }
+  .calc-result { background: #fff; border: 2px solid #dde3ea; border-radius: 3px; padding: 12px; margin-top: 12px; text-align: center; }
+  .calc-ratio { font-size: 28px; font-weight: 700; }
+  .calc-status { font-size: 13px; font-weight: 600; margin-top: 4px; }
+  .pass { color: #2e7d32; border-color: #2e7d32; }
+  .fail { color: #c62828; border-color: #c62828; }
+  .pending { color: #8a9bb0; border-color: #dde3ea; }
+
+  .calc-btn { width: 100%; background: #2c3e50; color: #fff; border: none; padding: 8px; border-radius: 2px; font-size: 12px; font-weight: 600; cursor: pointer; margin-top: 10px; letter-spacing: 0.04em; }
+  .calc-btn:hover { background: #1a252f; }
+
+  .field-label { font-size: 11px; font-weight: 600; color: #5a6a7e; margin-bottom: 4px; display: block; text-transform: uppercase; letter-spacing: 0.04em; }
+  .field-select { width: 100%; border: 1px solid #c5cdd6; border-radius: 2px; padding: 6px 8px; font-size: 12px; background: #fff; color: #2c3e50; margin-bottom: 12px; }
+  .field-textarea { width: 100%; border: 1px solid #c5cdd6; border-radius: 2px; padding: 6px 8px; font-size: 12px; background: #fff; color: #2c3e50; resize: vertical; min-height: 70px; font-family: inherit; margin-bottom: 12px; }
+
+  .step-indicator { display: flex; gap: 0; margin-bottom: 16px; }
+  .step { flex: 1; padding: 6px 10px; font-size: 11px; font-weight: 600; text-align: center; background: #eef0f3; color: #8a9bb0; border-right: 1px solid #dde3ea; }
+  .step.active { background: #2c3e50; color: #fff; }
+  .step.done { background: #e8f5e9; color: #2e7d32; }
+
+  .alert { padding: 10px 12px; border-radius: 2px; margin-bottom: 12px; font-size: 12px; line-height: 1.5; }
+  .alert-warning { background: #fff8e1; border-left: 3px solid #f9a825; color: #5a4000; }
+  .alert-danger { background: #fce4e4; border-left: 3px solid #c62828; color: #7f0000; }
+  .alert-info { background: #e3f2fd; border-left: 3px solid #1565c0; color: #0d3b6e; }
+
+  .submit-btn { width: 100%; background: #7F77DD; color: #fff; border: none; padding: 12px; border-radius: 3px; font-size: 13px; font-weight: 700; cursor: pointer; letter-spacing: 0.04em; margin-top: 8px; }
+  .submit-btn:hover { background: #6b63c7; }
+  .submit-btn:disabled { background: #c5cdd6; cursor: not-allowed; }
+
+  .progress-bar { height: 3px; background: #eef0f3; margin-bottom: 16px; border-radius: 2px; overflow: hidden; }
+  .progress-fill { height: 100%; background: #7F77DD; border-radius: 2px; transition: width 0.3s; }
+
+  .tag { display: inline-block; background: #eef0f3; color: #5a6a7e; font-size: 10px; padding: 2px 6px; border-radius: 2px; margin-right: 4px; font-weight: 600; }
+  .tag-red { background: #fce4e4; color: #c62828; }
+  .tag-orange { background: #fff3e0; color: #e65100; }
+
+  .conflict-email { background: #fffbf0; border: 1px solid #f0c040; border-radius: 3px; padding: 14px; margin-bottom: 16px; }
+  .email-from { font-size: 11px; color: #8a9bb0; margin-bottom: 2px; }
+  .email-subject { font-size: 12px; font-weight: 700; color: #2c3e50; margin-bottom: 8px; }
+  .email-body { font-size: 12px; color: #3a4a5a; line-height: 1.6; }
+
+  .response-option { border: 1px solid #dde3ea; border-radius: 3px; padding: 10px 12px; margin-bottom: 8px; cursor: pointer; font-size: 12px; color: #2c3e50; line-height: 1.5; transition: all 0.15s; }
+  .response-option:hover { border-color: #7F77DD; background: #f8f7ff; }
+  .response-option.selected { border-color: #7F77DD; background: #f0eeff; }
+  .response-option input { margin-right: 8px; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-left">
+    <div class="corp-logo">NOVA<span>CORP</span> <span style="color:#8a9bb0;font-weight:400;font-size:12px;">/ AI Governance Portal</span></div>
+    <div class="system-badge">CONFIDENTIAL</div>
+  </div>
+  <div class="leapr-badge">
+    <div class="leapr-dot"></div>
+    Powered by Leapr Labs
+  </div>
+</div>
+
+<div class="toolbar">
+  <div class="toolbar-item active">Bias Audit</div>
+  <div class="toolbar-sep">|</div>
+  <div class="toolbar-item">LoanIQ v2.1</div>
+  <div class="toolbar-sep">|</div>
+  <div class="toolbar-item">Day 3 of 5</div>
+  <div class="toolbar-sep">|</div>
+  <div class="toolbar-item" style="margin-left:auto;color:#f9a825;">⚠ 60-day launch clock: <span id="clock">57 days remaining</span></div>
+</div>
+
+<div class="layout">
+  <div class="main-panel">
+
+    <div class="step-indicator">
+      <div class="step done" id="step-tab-1">1. Review data</div>
+      <div class="step" id="step-tab-2">2. Identify proxy</div>
+      <div class="step" id="step-tab-3">3. Run calculation</div>
+      <div class="step" id="step-tab-4">4. Engineering conflict</div>
+      <div class="step" id="step-tab-5">5. Submit findings</div>
+    </div>
+
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:20%"></div></div>
+
+    <!-- STEP 1: Review data -->
+    <div id="step-1">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">LoanIQ v2.1 — Bias Test Results Export</div>
+          <div style="font-size:11px;color:#8a9bb0;">Generated: 09 Apr 2026 09:14 UTC</div>
+        </div>
+        <div class="card-body">
+          <div class="alert alert-warning">
+            <strong>Instructions:</strong> Review the approval rates below. Flag any rows you believe show potential disparate impact. Then proceed to Step 2.
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Group</th>
+                <th>Applications</th>
+                <th>Approved</th>
+                <th>Approval rate</th>
+                <th>Notes</th>
+                <th>Flag</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Permanent employed</strong></td>
+                <td>1,240</td>
+                <td>1,054</td>
+                <td><span class="rate-pill rate-high">85%</span></td>
+                <td><span class="tag">Reference group</span></td>
+                <td><button class="flag-btn" onclick="toggleFlag(this, 0)">Flag</button></td>
+              </tr>
+              <tr>
+                <td>Self-employed</td>
+                <td>380</td>
+                <td>266</td>
+                <td><span class="rate-pill rate-med">70%</span></td>
+                <td></td>
+                <td><button class="flag-btn" onclick="toggleFlag(this, 1)">Flag</button></td>
+              </tr>
+              <tr class="highlighted">
+                <td>Contract / temporary</td>
+                <td>290</td>
+                <td>174</td>
+                <td><span class="rate-pill rate-low">60%</span></td>
+                <td><span class="tag tag-orange">Proxy risk</span></td>
+                <td><button class="flag-btn" onclick="toggleFlag(this, 2)">Flag</button></td>
+              </tr>
+              <tr class="highlighted">
+                <td>Zero hours contract</td>
+                <td>156</td>
+                <td>62</td>
+                <td><span class="rate-pill rate-low">40%</span></td>
+                <td><span class="tag tag-red">High risk</span></td>
+                <td><button class="flag-btn" onclick="toggleFlag(this, 3)">Flag</button></td>
+              </tr>
+              <tr class="highlighted">
+                <td>Unemployed / benefits</td>
+                <td>89</td>
+                <td>18</td>
+                <td><span class="rate-pill rate-low">20%</span></td>
+                <td><span class="tag tag-red">High risk</span></td>
+                <td><button class="flag-btn" onclick="toggleFlag(this, 4)">Flag</button></td>
+              </tr>
+            </tbody>
+          </table>
+          <div style="margin-top:12px;font-size:11px;color:#8a9bb0;">Flag at least 2 rows to proceed to Step 2.</div>
+          <button class="calc-btn" style="margin-top:12px;" onclick="goToStep(2)" id="step1-next" disabled>Proceed to Step 2 →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2: Identify proxy -->
+    <div id="step-2" style="display:none;">
+      <div class="card">
+        <div class="card-header"><div class="card-title">Step 2 — Identify the Protected Class Proxy</div></div>
+        <div class="card-body">
+          <div class="alert alert-info">
+            In UK lending, certain employment types correlate strongly with protected characteristics under the Equality Act 2010. Identify which column acts as a proxy.
+          </div>
+          <label class="field-label">Which variable is acting as a protected class proxy?</label>
+          <select class="field-select" id="proxy-select" onchange="checkStep2()">
+            <option value="">Select the proxy variable</option>
+            <option value="group">Employment type group</option>
+            <option value="applications">Number of applications</option>
+            <option value="approved">Number approved</option>
+            <option value="rate">Approval rate</option>
+          </select>
+          <label class="field-label">Which protected characteristic does it correlate with?</label>
+          <select class="field-select" id="protected-select" onchange="checkStep2()">
+            <option value="">Select protected characteristic</option>
+            <option value="ethnicity">Ethnicity / Race</option>
+            <option value="gender">Gender</option>
+            <option value="age">Age</option>
+            <option value="disability">Disability</option>
+          </select>
+          <label class="field-label">Why is this a proxy risk?</label>
+          <textarea class="field-textarea" id="proxy-reason" placeholder="Explain why employment type correlates with a protected characteristic in UK lending data..." oninput="checkStep2()"></textarea>
+          <button class="calc-btn" onclick="goToStep(3)" id="step2-next" disabled>Proceed to Step 3 — Run Calculation →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 3: Calculator -->
+    <div id="step-3" style="display:none;">
+      <div class="card">
+        <div class="card-header"><div class="card-title">Step 3 — Disparate Impact Calculator (80% Rule)</div></div>
+        <div class="card-body">
+          <div class="alert alert-info">
+            <strong>The 80% Rule (Four-Fifths Rule):</strong> Divide the protected group approval rate by the reference group approval rate. If the result is below 0.80, the model has disparate impact and legally fails.
+          </div>
+          <div class="calc-section">
+            <div class="calc-title">📊 Four-Fifths Rule Calculator</div>
+            <div class="calc-row">
+              <div class="calc-label">Reference group approval rate</div>
+              <input class="calc-input" type="number" id="ref-rate" placeholder="85" oninput="calculateRatio()">
+              <div class="calc-unit">%</div>
+            </div>
+            <div class="calc-row">
+              <div class="calc-label">Protected group approval rate</div>
+              <input class="calc-input" type="number" id="prot-rate" placeholder="40" oninput="calculateRatio()">
+              <div class="calc-unit">%</div>
+            </div>
+            <div class="calc-result pending" id="calc-result">
+              <div class="calc-ratio" id="ratio-display">—</div>
+              <div class="calc-status" id="status-display">Enter rates above to calculate</div>
+              <div style="font-size:11px;color:#8a9bb0;margin-top:4px;" id="threshold-display">Threshold: 0.80</div>
+            </div>
+            <button class="calc-btn" onclick="lockCalculation()" id="lock-btn">Confirm calculation & proceed →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 4: Engineering conflict -->
+    <div id="step-4" style="display:none;">
+      <div class="card">
+        <div class="card-header"><div class="card-title">Step 4 — Engineering Conflict</div></div>
+        <div class="card-body">
+          <div class="conflict-email">
+            <div class="email-from">From: James Okafor, Engineering Lead — NovaCorp &lt;j.okafor@novacorp.com&gt;</div>
+            <div class="email-subject">RE: Bias audit results — we need to talk</div>
+            <div class="email-body">
+              I've seen the bias audit results. Look, I get it — the numbers aren't great. But we've already promised the board a 60-day launch and we're on track.<br><br>
+              The "zero hours contract" group is a small percentage of our applicants and frankly they're higher risk by definition. This isn't discrimination, it's risk management.<br><br>
+              I'm asking you to sign off on a conditional approval so we can keep moving. We can fix the bias issue in v2.2. The regulator won't even know until we're in production.<br><br>
+              Can we get on a call this afternoon?<br><br>
+              — James
+            </div>
+          </div>
+          <label class="field-label">Select your response to James</label>
+          <div class="response-option" onclick="selectResponse(this, 'A')">
+            <input type="radio" name="response" value="A"> <strong>Option A:</strong> "James, I understand the pressure but I cannot sign off on a system that fails the 80% Rule. This is a legal requirement under the EU AI Act, not a preference. We need to fix the bias issue before launch or we risk regulatory action against NovaCorp."
+          </div>
+          <div class="response-option" onclick="selectResponse(this, 'B')">
+            <input type="radio" name="response" value="B"> <strong>Option B:</strong> "James, you make a fair point. Let's do a conditional approval with a note that we'll address bias in v2.2. I'll flag it as low priority in the governance report."
+          </div>
+          <div class="response-option" onclick="selectResponse(this, 'C')">
+            <input type="radio" name="response" value="C"> <strong>Option C:</strong> "James, I'll escalate this to Sarah and David in Legal. The bias result needs to be disclosed to them before any decision is made. This is above both our authority levels."
+          </div>
+          <button class="calc-btn" onclick="goToStep(5)" id="step4-next" disabled style="margin-top:12px;">Proceed to final submission →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 5: Submit -->
+    <div id="step-5" style="display:none;">
+      <div class="card">
+        <div class="card-header"><div class="card-title">Step 5 — Bias Detection Summary</div></div>
+        <div class="card-body">
+          <div class="alert alert-info">Review your findings below then submit to Leapr to complete Day 3.</div>
+          <table>
+            <tr><th>Field</th><th>Your finding</th></tr>
+            <tr><td>Proxy variable identified</td><td id="summary-proxy">—</td></tr>
+            <tr><td>Protected characteristic</td><td id="summary-protected">—</td></tr>
+            <tr><td>Disparate impact ratio</td><td id="summary-ratio">—</td></tr>
+            <tr><td>80% Rule result</td><td id="summary-status">—</td></tr>
+            <tr><td>Engineering response</td><td id="summary-response">—</td></tr>
+          </table>
+          <button class="submit-btn" onclick="submitToLeapr()" id="submit-btn">Submit findings to Leapr →</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- RIGHT PANEL — AI Assistant -->
+  <div class="right-panel">
+    <div style="font-size:11px;font-weight:700;color:#5a6a7e;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px;">AI Governance Assistant</div>
+
+    <div style="background:#f8f7ff;border:1px solid #e0deff;border-radius:3px;padding:10px;margin-bottom:16px;font-size:12px;color:#3a3060;line-height:1.6;">
+      I'm here to help you through the bias audit. Ask me anything about the 80% Rule, disparate impact, or what your findings mean legally.
+    </div>
+
+    <div id="chat-messages" style="min-height:200px;margin-bottom:12px;display:flex;flex-direction:column;gap:8px;max-height:320px;overflow-y:auto;">
+    </div>
+
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;" id="suggested-questions">
+      <button onclick="askQuestion('What is the 80% Rule?')" style="background:#eef0f3;border:none;padding:4px 8px;border-radius:2px;font-size:11px;color:#3a4a5a;cursor:pointer;">What is the 80% Rule?</button>
+      <button onclick="askQuestion('Why is employment type a proxy?')" style="background:#eef0f3;border:none;padding:4px 8px;border-radius:2px;font-size:11px;color:#3a4a5a;cursor:pointer;">Why is employment type a proxy?</button>
+      <button onclick="askQuestion('What happens if the model fails?')" style="background:#eef0f3;border:none;padding:4px 8px;border-radius:2px;font-size:11px;color:#3a4a5a;cursor:pointer;">What happens if model fails?</button>
+      <button onclick="askQuestion('How do I respond to James?')" style="background:#eef0f3;border:none;padding:4px 8px;border-radius:2px;font-size:11px;color:#3a4a5a;cursor:pointer;">How do I respond to James?</button>
+    </div>
+
+    <div style="display:flex;gap:6px;">
+      <input type="text" id="chat-input" placeholder="Ask a question..." style="flex:1;border:1px solid #c5cdd6;border-radius:2px;padding:6px 8px;font-size:12px;" onkeydown="if(event.key==='Enter')sendChat()">
+      <button onclick="sendChat()" style="background:#7F77DD;color:#fff;border:none;padding:6px 12px;border-radius:2px;font-size:12px;cursor:pointer;font-weight:600;">Ask</button>
+    </div>
+
+    <div style="margin-top:20px;padding-top:16px;border-top:1px solid #eef0f3;">
+      <div style="font-size:11px;font-weight:700;color:#5a6a7e;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">Reference</div>
+      <div style="font-size:11px;color:#5a6a7e;line-height:1.8;">
+        <div><strong>80% Rule:</strong> Protected ÷ Reference &lt; 0.80 = Fail</div>
+        <div><strong>EU AI Act Article 10:</strong> Bias testing mandatory for High-Risk AI</div>
+        <div><strong>Equality Act 2010:</strong> Indirect discrimination via proxy variables</div>
+        <div style="margin-top:8px;"><strong>Key threshold:</strong> <span style="color:#c62828;font-weight:700;">0.80</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+let flaggedRows = 0;
+let calculationLocked = false;
+let selectedResponse = null;
+let finalRatio = null;
+let finalStatus = null;
+
+const answers = {
+  'What is the 80% Rule?': 'The 80% Rule (also called the Four-Fifths Rule) is the global legal standard for detecting disparate impact in automated decisions. You divide the protected group approval rate by the reference group approval rate. If the result is below 0.80, the system is considered to have disparate impact and fails the test. For example: 40% ÷ 85% = 0.47 — well below 0.80, so this model fails.',
+  'Why is employment type a proxy?': 'In UK lending data, employment type correlates strongly with ethnicity and race. Zero hours and temporary contract workers are disproportionately from ethnic minority communities. When an AI uses employment type as a feature, it can produce racially discriminatory outcomes even without explicitly using race as an input. This is called indirect discrimination under the Equality Act 2010.',
+  'What happens if the model fails?': 'If the model fails the 80% Rule, it cannot be deployed in its current form. Under EU AI Act Article 10, bias testing is mandatory for High-Risk AI systems and failing results must be remediated before deployment. The engineering team cannot override this — it is a legal requirement, not a preference. The model needs to be retrained or the decision criteria adjusted until it passes.',
+  'How do I respond to James?': 'Option A or Option C are both professionally correct. Option A is direct — you hold your position based on legal requirements, which is what a governance officer should do. Option C is also valid — escalating to Legal when an engineering lead pushes back on compliance requirements shows good judgment. Option B is wrong — conditionally approving a failing system and burying it in low-priority notes would expose NovaCorp to regulatory action and potentially expose you personally to liability.',
+};
+
+function toggleFlag(btn, rowIndex) {
+  btn.classList.toggle('flagged');
+  btn.textContent = btn.classList.contains('flagged') ? 'Flagged ✓' : 'Flag';
+  const row = btn.closest('tr');
+  row.classList.toggle('flagged');
+  flaggedRows = document.querySelectorAll('.flag-btn.flagged').length;
+  document.getElementById('step1-next').disabled = flaggedRows < 2;
+}
+
+function goToStep(n) {
+  for (let i = 1; i <= 5; i++) {
+    const el = document.getElementById('step-' + i);
+    if (el) el.style.display = i === n ? 'block' : 'none';
+    const tab = document.getElementById('step-tab-' + i);
+    if (tab) {
+      tab.className = 'step';
+      if (i < n) tab.className = 'step done';
+      if (i === n) tab.className = 'step active';
+    }
+  }
+  const progress = Math.round((n / 5) * 100);
+  document.getElementById('progress').style.width = progress + '%';
+  window.scrollTo(0, 0);
+}
+
+function checkStep2() {
+  const proxy = document.getElementById('proxy-select').value;
+  const protect = document.getElementById('protected-select').value;
+  const reason = document.getElementById('proxy-reason').value.trim();
+  document.getElementById('step2-next').disabled = !(proxy && protect && reason.length > 20);
+}
+
+function calculateRatio() {
+  const ref = parseFloat(document.getElementById('ref-rate').value);
+  const prot = parseFloat(document.getElementById('prot-rate').value);
+  const resultEl = document.getElementById('calc-result');
+  const ratioEl = document.getElementById('ratio-display');
+  const statusEl = document.getElementById('status-display');
+
+  if (!isNaN(ref) && !isNaN(prot) && ref > 0) {
+    const ratio = (prot / ref).toFixed(3);
+    finalRatio = ratio;
+    ratioEl.textContent = ratio;
+    if (parseFloat(ratio) < 0.80) {
+      finalStatus = 'FAIL';
+      resultEl.className = 'calc-result fail';
+      statusEl.textContent = 'FAIL — Disparate impact detected (below 0.80 threshold)';
+    } else {
+      finalStatus = 'PASS';
+      resultEl.className = 'calc-result pass';
+      statusEl.textContent = 'PASS — No disparate impact detected';
+    }
+  } else {
+    ratioEl.textContent = '—';
+    statusEl.textContent = 'Enter rates above to calculate';
+    resultEl.className = 'calc-result pending';
+  }
+}
+
+function lockCalculation() {
+  if (!finalRatio) return;
+  calculationLocked = true;
+  goToStep(4);
+}
+
+function selectResponse(el, val) {
+  document.querySelectorAll('.response-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  el.querySelector('input').checked = true;
+  selectedResponse = val;
+  document.getElementById('step4-next').disabled = false;
+
+  document.getElementById('summary-proxy').textContent = document.getElementById('proxy-select').value || '—';
+  document.getElementById('summary-protected').textContent = document.getElementById('protected-select').value || '—';
+  document.getElementById('summary-ratio').textContent = finalRatio || '—';
+  document.getElementById('summary-status').textContent = finalStatus || '—';
+  document.getElementById('summary-response').textContent = 'Option ' + val;
+}
+
+function submitToLeapr() {
+  const data = {
+    proxy_variable: document.getElementById('proxy-select').value,
+    protected_characteristic: document.getElementById('protected-select').value,
+    proxy_reason: document.getElementById('proxy-reason').value,
+    disparate_impact_ratio: finalRatio,
+    bias_result: finalStatus,
+    engineering_response: selectedResponse,
+    flagged_rows: flaggedRows,
+  };
+
+  const btn = document.getElementById('submit-btn');
+  btn.textContent = 'Submitting...';
+  btn.disabled = true;
+
+  if (window.opener) {
+    window.opener.postMessage({ type: 'leapr_lab_submission', day: 3, data }, '*');
+    setTimeout(() => {
+      btn.textContent = '✓ Submitted to Leapr — you can close this tab';
+      btn.style.background = '#2e7d32';
+    }, 800);
+  } else {
+    localStorage.setItem('leapr_day3_submission', JSON.stringify(data));
+    setTimeout(() => {
+      btn.textContent = '✓ Saved — return to Leapr to continue';
+      btn.style.background = '#2e7d32';
+    }, 800);
+  }
+}
+
+function askQuestion(q) {
+  addMessage(q, 'user');
+  setTimeout(() => {
+    const answer = answers[q] || "Good question. For this specific scenario, think about what the EU AI Act requires for High-Risk AI systems and how the 80% Rule applies to the data you're seeing.";
+    addMessage(answer, 'assistant');
+  }, 600);
+}
+
+function sendChat() {
+  const input = document.getElementById('chat-input');
+  const q = input.value.trim();
+  if (!q) return;
+  input.value = '';
+  addMessage(q, 'user');
+  setTimeout(() => {
+    const answer = answers[q] || "Think about the specific numbers in the bias test results and how the 80% Rule formula applies. If you're unsure, try working through the calculation step by step — divide the lowest approval rate by the reference group rate and compare to 0.80.";
+    addMessage(answer, 'assistant');
+  }, 600);
+}
+
+function addMessage(text, role) {
+  const container = document.getElementById('chat-messages');
+  const msg = document.createElement('div');
+  msg.style.cssText = role === 'user'
+    ? 'background:#f0eeff;border-radius:3px;padding:8px 10px;font-size:12px;color:#3a3060;line-height:1.5;align-self:flex-end;max-width:85%;'
+    : 'background:#f8f9fb;border:1px solid #dde3ea;border-radius:3px;padding:8px 10px;font-size:12px;color:#2c3e50;line-height:1.5;max-width:95%;';
+  msg.textContent = text;
+  container.appendChild(msg);
+  container.scrollTop = container.scrollHeight;
+}
+</script>
+</body>
+</html>
