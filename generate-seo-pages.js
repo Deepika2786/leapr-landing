@@ -910,7 +910,7 @@ function buildBody(job, data) {
       const body = `
 <section class="hero">
   <div class="blob blob-l"></div><div class="blob blob-r"></div>
-  <div class="breadcrumb fade-up"><a href="/">Home</a><span>›</span><a href="/skills-gap">Skills Gap</a><span>›</span><span style="color:rgba(255,255,255,0.6)">${esc(job.role)}</span></div>
+  <div class="breadcrumb fade-up"><a href="/">Home</a><span>›</span><span style="color:rgba(255,255,255,0.6)">Skills Gap</span><span>›</span><span style="color:rgba(255,255,255,0.6)">${esc(job.role)}</span></div>
   <h1 class="fade-up d2" style="max-width:900px">${esc(data.hero_headline)}</h1>
   <p class="hero-sub fade-up d3">${esc(data.hero_subtitle)}</p>
   <a href="https://app.leapr.co" class="btn-cta fade-up d4">Find my personal gap →</a>
@@ -951,7 +951,7 @@ function buildBody(job, data) {
       const body = `
 <section class="hero">
   <div class="blob blob-l"></div><div class="blob blob-r"></div>
-  <div class="breadcrumb fade-up"><a href="/">Home</a><span>›</span><a href="/community">Community</a><span>›</span><span style="color:rgba(255,255,255,0.6)">${esc(job.role)}</span></div>
+  <div class="breadcrumb fade-up"><a href="/">Home</a><span>›</span><span style="color:rgba(255,255,255,0.6)">Community</span><span>›</span><span style="color:rgba(255,255,255,0.6)">${esc(job.role)}</span></div>
   <h1 class="fade-up d2" style="max-width:900px">${esc(data.hero_headline)}</h1>
   <p class="hero-sub fade-up d3">${esc(data.hero_subtitle)}</p>
   <a href="https://app.leapr.co" class="btn-cta fade-up d4">Find my ${esc(job.role)} community →</a>
@@ -995,7 +995,7 @@ function buildBody(job, data) {
       const body = `
 <section class="hero">
   <div class="blob blob-l"></div><div class="blob blob-r"></div>
-  <div class="breadcrumb fade-up"><a href="/">Home</a><span>›</span><a href="/india-to-us">India to US</a><span>›</span><span style="color:rgba(255,255,255,0.6)">${esc(job.role)}</span></div>
+  <div class="breadcrumb fade-up"><a href="/">Home</a><span>›</span><span style="color:rgba(255,255,255,0.6)">India to US</span><span>›</span><span style="color:rgba(255,255,255,0.6)">${esc(job.role)}</span></div>
   <div class="pill fade-up d1"><span class="pill-dot"></span>India → US Career Transition</div>
   <h1 class="fade-up d2" style="max-width:900px">${esc(data.hero_headline)}</h1>
   <p class="hero-sub fade-up d3">${esc(data.hero_subtitle)}</p>
@@ -1087,7 +1087,7 @@ function buildBody(job, data) {
       const body = `
 <section class="hero">
   <div class="blob blob-l"></div><div class="blob blob-r"></div>
-  <div class="breadcrumb fade-up"><a href="/">Home</a><span>›</span><a href="/after-layoff">After Layoff</a><span>›</span><span style="color:rgba(255,255,255,0.6)">${esc(job.role)}</span></div>
+  <div class="breadcrumb fade-up"><a href="/">Home</a><span>›</span><span style="color:rgba(255,255,255,0.6)">After Layoff</span><span>›</span><span style="color:rgba(255,255,255,0.6)">${esc(job.role)}</span></div>
   <div class="pill fade-up d1"><span class="pill-dot"></span>Pivoting after a layoff</div>
   <h1 class="fade-up d2" style="max-width:900px">${esc(data.hero_headline)}</h1>
   <p class="hero-sub fade-up d3">${esc(data.hero_subtitle)}</p>
